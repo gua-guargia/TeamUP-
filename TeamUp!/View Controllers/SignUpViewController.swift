@@ -94,7 +94,7 @@ class SignUpViewController: UIViewController {
             //there is something wrong with the fields, show error messge
             showError(error!)
         }
-        else {
+    /*    else {
             //create the user
             Auth.auth().createUser(withEmail: "", password: "") { (result, err) in
                 //check for errors
@@ -110,8 +110,8 @@ class SignUpViewController: UIViewController {
                 
             }
             
-            //transition to the home screen
-        }
+           //transition to the home screen
+        }*/
         
     }
     
