@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		1846F026247D07A700A59E33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846F025247D07A700A59E33 /* LoginViewController.swift */; };
 		1846F028247D07C400A59E33 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846F027247D07C400A59E33 /* HomeViewController.swift */; };
 		1846F02B247D17F300A59E33 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846F02A247D17F200A59E33 /* Utilities.swift */; };
+		18E02CC2247E9ED200B03BA8 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E02CC1247E9ED200B03BA8 /* ProjectsTableViewController.swift */; };
+		18E02CC4247E9F1600B03BA8 /* Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E02CC3247E9F1500B03BA8 /* Projects.swift */; };
 		71283C032477CC2300A5AE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71283C022477CC2300A5AE60 /* AppDelegate.swift */; };
 		71283C052477CC2300A5AE60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71283C042477CC2300A5AE60 /* SceneDelegate.swift */; };
 		71283C072477CC2300A5AE60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71283C062477CC2300A5AE60 /* ViewController.swift */; };
@@ -27,6 +29,8 @@
 		1846F025247D07A700A59E33 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1846F027247D07C400A59E33 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1846F02A247D17F200A59E33 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		18E02CC1247E9ED200B03BA8 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
+		18E02CC3247E9F1500B03BA8 /* Projects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projects.swift; sourceTree = "<group>"; };
 		4C1195300F1980EF575D135E /* Pods-TeamUp!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamUp!.debug.xcconfig"; path = "Target Support Files/Pods-TeamUp!/Pods-TeamUp!.debug.xcconfig"; sourceTree = "<group>"; };
 		51D265D9CAF8E0E458D1D240 /* Pods_TeamUp_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamUp_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71283BFF2477CC2300A5AE60 /* TeamUp!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TeamUp!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +63,7 @@
 				1846F023247D078B00A59E33 /* SignUpViewController.swift */,
 				1846F025247D07A700A59E33 /* LoginViewController.swift */,
 				1846F027247D07C400A59E33 /* HomeViewController.swift */,
+				18E02CC1247E9ED200B03BA8 /* ProjectsTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -69,6 +74,14 @@
 				1846F02A247D17F200A59E33 /* Utilities.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		18E02CC5247E9F2700B03BA8 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				18E02CC3247E9F1500B03BA8 /* Projects.swift */,
+			);
+			path = class;
 			sourceTree = "<group>";
 		};
 		71283BF62477CC2300A5AE60 = {
@@ -94,6 +107,7 @@
 			children = (
 				71283C022477CC2300A5AE60 /* AppDelegate.swift */,
 				71283C042477CC2300A5AE60 /* SceneDelegate.swift */,
+				18E02CC5247E9F2700B03BA8 /* class */,
 				1846F02C247D180100A59E33 /* Helpers */,
 				1846F029247D07D000A59E33 /* View Controllers */,
 				71283C082477CC2300A5AE60 /* Main.storyboard */,
@@ -111,7 +125,6 @@
 				4C1195300F1980EF575D135E /* Pods-TeamUp!.debug.xcconfig */,
 				BAF7213EC7D0253145F37C78 /* Pods-TeamUp!.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -239,11 +252,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E02CC4247E9F1600B03BA8 /* Projects.swift in Sources */,
 				71283C072477CC2300A5AE60 /* ViewController.swift in Sources */,
 				71283C032477CC2300A5AE60 /* AppDelegate.swift in Sources */,
 				1846F02B247D17F300A59E33 /* Utilities.swift in Sources */,
 				1846F024247D078B00A59E33 /* SignUpViewController.swift in Sources */,
 				1846F026247D07A700A59E33 /* LoginViewController.swift in Sources */,
+				18E02CC2247E9ED200B03BA8 /* ProjectsTableViewController.swift in Sources */,
 				71283C052477CC2300A5AE60 /* SceneDelegate.swift in Sources */,
 				1846F028247D07C400A59E33 /* HomeViewController.swift in Sources */,
 			);
