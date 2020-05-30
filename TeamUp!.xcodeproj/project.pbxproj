@@ -21,6 +21,7 @@
 		71727BBE2481194D0065D29D /* ModuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71727BBD2481194D0065D29D /* ModuleTableViewCell.swift */; };
 		71727BC024811B540065D29D /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71727BBF24811B540065D29D /* Module.swift */; };
 		71727BC2248124310065D29D /* ModulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71727BC1248124310065D29D /* ModulesViewController.swift */; };
+		7186E83824823A9800D2FF38 /* ModuleCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186E83724823A9800D2FF38 /* ModuleCreationViewController.swift */; };
 		899E989FCE96E3B7192B6AEC /* Pods_TeamUp_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D265D9CAF8E0E458D1D240 /* Pods_TeamUp_.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		71727BBD2481194D0065D29D /* ModuleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTableViewCell.swift; sourceTree = "<group>"; };
 		71727BBF24811B540065D29D /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		71727BC1248124310065D29D /* ModulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesViewController.swift; sourceTree = "<group>"; };
+		7186E83724823A9800D2FF38 /* ModuleCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleCreationViewController.swift; sourceTree = "<group>"; };
 		BAF7213EC7D0253145F37C78 /* Pods-TeamUp!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamUp!.release.xcconfig"; path = "Target Support Files/Pods-TeamUp!/Pods-TeamUp!.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +63,9 @@
 		1846F029247D07D000A59E33 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7186E83724823A9800D2FF38 /* ModuleCreationViewController.swift */,
+				71727BC1248124310065D29D /* ModulesViewController.swift */,
+				71727BBD2481194D0065D29D /* ModuleTableViewCell.swift */,
 				71283C062477CC2300A5AE60 /* ViewController.swift */,
 				1846F023247D078B00A59E33 /* SignUpViewController.swift */,
 				1846F025247D07A700A59E33 /* LoginViewController.swift */,
@@ -112,8 +117,6 @@
 				1846F02C247D180100A59E33 /* Helpers */,
 				1846F029247D07D000A59E33 /* View Controllers */,
 				71283C082477CC2300A5AE60 /* Main.storyboard */,
-				71727BC1248124310065D29D /* ModulesViewController.swift */,
-				71727BBD2481194D0065D29D /* ModuleTableViewCell.swift */,
 				71283C0B2477CC2500A5AE60 /* Assets.xcassets */,
 				71283C0D2477CC2500A5AE60 /* LaunchScreen.storyboard */,
 				71283C102477CC2500A5AE60 /* Info.plist */,
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71283C072477CC2300A5AE60 /* ViewController.swift in Sources */,
+				7186E83824823A9800D2FF38 /* ModuleCreationViewController.swift in Sources */,
 				71283C032477CC2300A5AE60 /* AppDelegate.swift in Sources */,
 				71727BC2248124310065D29D /* ModulesViewController.swift in Sources */,
 				1846F02B247D17F300A59E33 /* Utilities.swift in Sources */,
