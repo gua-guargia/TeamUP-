@@ -27,7 +27,7 @@ class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITabl
         loadData()
         checkForUpdates()
         
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
         
     }
@@ -86,6 +86,11 @@ class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITabl
         cell?.textLabel?.text = "\(project.Name) - \(project.Organiser)"
         cell?.detailTextLabel?.text = "\(project.Description)"
         
+        cell?.textLabel?.numberOfLines = 0
+        cell?.textLabel?.lineBreakMode = .byWordWrapping
+
+        cell?.detailTextLabel?.numberOfLines = 0
+        cell?.detailTextLabel?.lineBreakMode = .byWordWrapping
         
         return cell!
     }
