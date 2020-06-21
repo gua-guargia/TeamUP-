@@ -7,7 +7,10 @@
 //
 
 import UIKit
+import FirebaseCore
 import FirebaseFirestore
+import FirebaseAuth
+import FirebaseFirestoreSwift
 
 class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -30,6 +33,8 @@ class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
         
+        tableView.allowsMultipleSelectionDuringEditing = true
+        
     }
     
     func loadData() {
@@ -44,8 +49,6 @@ class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITabl
                    }
                }
            }
-           
-           
        }
        
        func checkForUpdates() {
@@ -95,4 +98,33 @@ class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITabl
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
+            
+                // 2. Now Delete the Child from the database
+            let name = ProjectArray[indexPath.row].Name
+
+            let user = Auth.auth().currentUser
+           // let projsRef = db.collection("projects")
+            let query: Query = db.collection("projects").whereField("Name", isEqualTo: name)
+                query.getDocuments(completion: { (snapshot, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        for document in snapshot!.documents {
+                            //print("\(document.documentID) => \(document.data())")
+                            self.db.collection("projects").document("\(document.documentID)").delete()
+                    }
+                }})
+
+                ProjectArray.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+
+            }
+        }
 }
