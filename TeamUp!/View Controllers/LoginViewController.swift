@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
+import FirebaseFirestore
 
 class LoginViewController: UIViewController {
 
@@ -52,7 +54,7 @@ class LoginViewController: UIViewController {
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         //signing in the user
-        Auth.auth().signIn(withEmail: email, link: password) { (result, error) in
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error != nil {
                 //couldn't sign in
                 self.errorLabel.text = error!.localizedDescription

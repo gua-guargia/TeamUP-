@@ -56,16 +56,6 @@ class SignUpViewController: UIViewController {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //check the text field and validate that the data is correct. If everything is correct, this method returns nil. Otherwise, it returns the error message
     func validateFields() -> String? {
@@ -95,6 +85,7 @@ class SignUpViewController: UIViewController {
             //there is something wrong with the fields, show error messge
             showError(error!)
         }
+        
         else {
             //create the cleaned version of the data
             let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -113,7 +104,7 @@ class SignUpViewController: UIViewController {
                     // user was created successufully, now store the first name and last name
                     let db = Firestore.firestore()
                     
-                    db.collection("users1").addDocument(data:["firstname":firstName, "lastname":lastName, "uid":result!.user.uid]) { (error) in
+                    db.collection("users").addDocument(data:["firstname":firstName, "lastname":lastName, "uid":result!.user.uid]) { (error) in
                         
                         if error != nil {
                             //show error message
