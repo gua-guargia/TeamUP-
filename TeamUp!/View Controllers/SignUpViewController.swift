@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
 
@@ -94,9 +95,15 @@ class SignUpViewController: UIViewController {
             //there is something wrong with the fields, show error messge
             showError(error!)
         }
-    /*    else {
+        else {
+            //create the cleaned version of the data
+            let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
             //create the user
-            Auth.auth().createUser(withEmail: "", password: "") { (result, err) in
+            Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 //check for errors
                 if err != nil {
                     // there was an error creating the user
@@ -105,13 +112,23 @@ class SignUpViewController: UIViewController {
                 else {
                     // user was created successufully, now store the first name and last name
                     let db = Firestore.firestore()
-                    db.collection("users")
+                    
+                    db.collection("users1").addDocument(data:["firstname":firstName, "lastname":lastName, "uid":result!.user.uid]) { (error) in
+                        
+                        if error != nil {
+                            //show error message
+                            self.showError("Error saving user data")//one possible error
+                        }
+                    }
+                    
+                    //transition to the home screen
+                    self.transitionToHome()
                 }
                 
             }
             
-           //transition to the home screen
-        }*/
+           
+        }
         
     }
     
@@ -120,4 +137,11 @@ class SignUpViewController: UIViewController {
         errorLabel.alpha = 1
     }
     
+    
+    func transitionToHome() {
+        
+        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        self.view.window?.rootViewController = homeViewController
+        self.view.window?.makeKeyAndVisible()
+    }
 }

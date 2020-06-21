@@ -12,6 +12,7 @@
 		1846F026247D07A700A59E33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846F025247D07A700A59E33 /* LoginViewController.swift */; };
 		1846F028247D07C400A59E33 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846F027247D07C400A59E33 /* HomeViewController.swift */; };
 		1846F02B247D17F300A59E33 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846F02A247D17F200A59E33 /* Utilities.swift */; };
+		18E02CC9249F5BC500B03BA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E02CC8249F5BC500B03BA8 /* Constants.swift */; };
 		71283C032477CC2300A5AE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71283C022477CC2300A5AE60 /* AppDelegate.swift */; };
 		71283C052477CC2300A5AE60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71283C042477CC2300A5AE60 /* SceneDelegate.swift */; };
 		71283C072477CC2300A5AE60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71283C062477CC2300A5AE60 /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 		1846F025247D07A700A59E33 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1846F027247D07C400A59E33 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1846F02A247D17F200A59E33 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		18E02CC8249F5BC500B03BA8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4C1195300F1980EF575D135E /* Pods-TeamUp!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamUp!.debug.xcconfig"; path = "Target Support Files/Pods-TeamUp!/Pods-TeamUp!.debug.xcconfig"; sourceTree = "<group>"; };
 		51D265D9CAF8E0E458D1D240 /* Pods_TeamUp_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamUp_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71283BFF2477CC2300A5AE60 /* TeamUp!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TeamUp!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				1846F02A247D17F200A59E33 /* Utilities.swift */,
+				18E02CC8249F5BC500B03BA8 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71283C072477CC2300A5AE60 /* ViewController.swift in Sources */,
+				18E02CC9249F5BC500B03BA8 /* Constants.swift in Sources */,
 				71283C032477CC2300A5AE60 /* AppDelegate.swift in Sources */,
 				718D037F24827EB100BFF0F8 /* ProjectsTableViewController.swift in Sources */,
 				1846F02B247D17F300A59E33 /* Utilities.swift in Sources */,

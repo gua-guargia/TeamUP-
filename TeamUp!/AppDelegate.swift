@@ -5,9 +5,9 @@
 //  Created by Alicia Ho on 22/5/20.
 //  Copyright © 2020 Alicia Ho. All rights reserved.
 //
-
 import UIKit
 import Firebase
+import FirebaseFirestoreSwift
 import FirebaseFirestore
 
 @UIApplicationMain
@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        let db = Firestore.firestore()
+      //  let db = Firestore.firestore()
         
         return true
     }
