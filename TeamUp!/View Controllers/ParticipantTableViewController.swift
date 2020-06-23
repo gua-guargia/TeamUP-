@@ -1,8 +1,8 @@
 //
-//  ProjectsTableViewController.swift
+//  ParticipantTableViewController.swift
 //  TeamUp!
 //
-//  Created by Alicia Ho on 30/5/20.
+//  Created by Alicia Ho on 23/6/20.
 //  Copyright © 2020 Alicia Ho. All rights reserved.
 //
 
@@ -12,9 +12,10 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseFirestoreSwift
 
-class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var tableView: UITableView!
+class ParticipantTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
+    @IBOutlet weak var _tableView: UITableView!
     
     var db:Firestore!
     
@@ -23,36 +24,36 @@ class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        _tableView.delegate = self
+        _tableView.dataSource = self
         
         db = Firestore.firestore()
         loadData()
-        checkForUpdates()
+       // checkForUpdates()
         
-        tableView.estimatedRowHeight = 100
-        tableView.rowHeight = UITableView.automaticDimension
+        _tableView.estimatedRowHeight = 100
+        _tableView.rowHeight = UITableView.automaticDimension
         
-        tableView.allowsMultipleSelectionDuringEditing = true
+        _tableView.allowsMultipleSelectionDuringEditing = true
         
     }
     
     func loadData() {
-           db.collection("projects").getDocuments() {
+        db.collection("users123").document("nPuJKSBpWBtZ4OnCGf1a").collection("Projects").getDocuments() {
                querySnapshot, error in
                if let error = error {
                    print("\(error.localizedDescription)")
                }else{
                 self.ProjectArray = querySnapshot!.documents.compactMap({Project(dictionary: $0.data())})
                    DispatchQueue.main.async {
-                       self.tableView.reloadData()
+                       self._tableView.reloadData()
                    }
                }
            }
        }
        
-       func checkForUpdates() {
-           db.collection("projects")
+      func checkForUpdates() {
+           db.collection("users123").document("nPuJKSBpWBtZ4OnCGf1a").collection("Projects")
                .addSnapshotListener(includeMetadataChanges: true) {
                    querySnapshot, error in
                    
@@ -63,9 +64,8 @@ class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITabl
                        
                        if diff.type == .added {
                            self.ProjectArray.append(Project(dictionary: diff.document.data())!)
-                        print("2")
                            DispatchQueue.main.async {
-                               self.tableView.reloadData()
+                               self._tableView.reloadData()
                            }
                        }
                    }
@@ -75,18 +75,17 @@ class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITabl
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("project = \(ProjectArray.count)")
+        
         return ProjectArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        // let cell = tableView.dequeueReusableCell(withIdentifier: "ProjCell")
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "ProjCell", for: indexPath)
+        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "ParticipantCell", for: indexPath)
         if cell == nil || cell?.detailTextLabel == nil {
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "ProjCell")
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "ParticipantCell")
         }
         let project = ProjectArray[indexPath.row]
-        print("1")
         
         cell?.textLabel?.text = "\(project.Name) - \(project.Organiser)"
         cell?.detailTextLabel?.text = "\(project.Description)"
@@ -100,34 +99,31 @@ class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITabl
         return cell!
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    
+    if (editingStyle == UITableViewCell.EditingStyle.delete) {
+        
+            // 2. Now Delete the Child from the database
+        let name = ProjectArray[indexPath.row].Name
+
+        let user = Auth.auth().currentUser
+       // let projsRef = db.collection("projects")
+        let query: Query = db.collection("users123").document("nPuJKSBpWBtZ4OnCGf1a").collection("Projects").whereField("Name", isEqualTo: name)
+            query.getDocuments(completion: { (snapshot, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    for document in snapshot!.documents {
+                        //print("\(document.documentID) => \(document.data())")
+                        self.db.collection("users123").document("nPuJKSBpWBtZ4OnCGf1a").collection("Projects").document("\(document.documentID)").delete()
+                }
+            }})
+
+            ProjectArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+
+        }
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if (editingStyle == UITableViewCell.EditingStyle.delete) {
-            
-                // 2. Now Delete the Child from the database
-            let name = ProjectArray[indexPath.row].Name
-
-            let user = Auth.auth().currentUser
-           // let projsRef = db.collection("projects")
-            let query: Query = db.collection("projects").whereField("Name", isEqualTo: name)
-                query.getDocuments(completion: { (snapshot, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    } else {
-                        for document in snapshot!.documents {
-                            //print("\(document.documentID) => \(document.data())")
-                            self.db.collection("projects").document("\(document.documentID)").delete()
-                    }
-                }})
-
-                ProjectArray.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-
-            }
-        }
-    
 }
+

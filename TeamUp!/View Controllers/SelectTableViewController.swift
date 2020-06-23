@@ -1,8 +1,8 @@
 //
-//  ProjectsTableViewController.swift
+//  SelectTableViewController.swift
 //  TeamUp!
 //
-//  Created by Alicia Ho on 30/5/20.
+//  Created by Alicia Ho on 23/6/20.
 //  Copyright © 2020 Alicia Ho. All rights reserved.
 //
 
@@ -12,8 +12,8 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseFirestoreSwift
 
-class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class SelectTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var tableView: UITableView!
     
     var db:Firestore!
@@ -63,7 +63,6 @@ class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITabl
                        
                        if diff.type == .added {
                            self.ProjectArray.append(Project(dictionary: diff.document.data())!)
-                        print("2")
                            DispatchQueue.main.async {
                                self.tableView.reloadData()
                            }
@@ -75,23 +74,22 @@ class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITabl
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("project = \(ProjectArray.count)")
+        
         return ProjectArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        // let cell = tableView.dequeueReusableCell(withIdentifier: "ProjCell")
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "ProjCell", for: indexPath)
+        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "selectcell", for: indexPath)
         if cell == nil || cell?.detailTextLabel == nil {
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "ProjCell")
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "selectcell")
         }
         let project = ProjectArray[indexPath.row]
-        print("1")
         
         cell?.textLabel?.text = "\(project.Name) - \(project.Organiser)"
         cell?.detailTextLabel?.text = "\(project.Description)"
         
-        cell?.textLabel?.numberOfLines = 0
+       cell?.textLabel?.numberOfLines = 0
         cell?.textLabel?.lineBreakMode = .byWordWrapping
 
         cell?.detailTextLabel?.numberOfLines = 0
@@ -100,34 +98,31 @@ class ProjectsTableViewController: UIViewController, UITableViewDelegate, UITabl
         return cell!
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        if (editingStyle == UITableViewCell.EditingStyle.delete) {
-            
-                // 2. Now Delete the Child from the database
-            let name = ProjectArray[indexPath.row].Name
-
-            let user = Auth.auth().currentUser
-           // let projsRef = db.collection("projects")
-            let query: Query = db.collection("projects").whereField("Name", isEqualTo: name)
-                query.getDocuments(completion: { (snapshot, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    } else {
-                        for document in snapshot!.documents {
-                            //print("\(document.documentID) => \(document.data())")
-                            self.db.collection("projects").document("\(document.documentID)").delete()
-                    }
-                }})
-
-                ProjectArray.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-
+        let _addbutton = UITableViewRowAction(style: .normal, title: "Add") { (action, indexPath) in
+            // share item at indexPath
+            let project = self.ProjectArray[indexPath.row]
+            var Name : String = project.Name
+            var Description : String = project.Description
+            var Organiser : String = project.Organiser
+            var ref: DocumentReference? = nil
+            ref = self.db.collection("users123").document("nPuJKSBpWBtZ4OnCGf1a").collection("Projects").addDocument(data: [
+                "Name": Name,
+                "Description": Description,
+                "Organiser" : Organiser
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                }
             }
         }
+        _addbutton.backgroundColor = UIColor.blue
+
+        return [_addbutton]
+    
+    }
     
 }

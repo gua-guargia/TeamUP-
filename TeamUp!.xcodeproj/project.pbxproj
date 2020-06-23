@@ -22,6 +22,8 @@
 		718D037D24827ACE00BFF0F8 /* ProjectsCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D037C24827ACE00BFF0F8 /* ProjectsCreationViewController.swift */; };
 		718D037F24827EB100BFF0F8 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D037E24827EB100BFF0F8 /* ProjectsTableViewController.swift */; };
 		718D038124829FC100BFF0F8 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D038024829FC100BFF0F8 /* File.swift */; };
+		71AEEEA524A1E50F005CC75F /* ParticipantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEEEA424A1E50F005CC75F /* ParticipantTableViewController.swift */; };
+		71AEEEA724A1E67B005CC75F /* SelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEEEA624A1E67B005CC75F /* SelectTableViewController.swift */; };
 		899E989FCE96E3B7192B6AEC /* Pods_TeamUp_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D265D9CAF8E0E458D1D240 /* Pods_TeamUp_.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,8 @@
 		718D037C24827ACE00BFF0F8 /* ProjectsCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCreationViewController.swift; sourceTree = "<group>"; };
 		718D037E24827EB100BFF0F8 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
 		718D038024829FC100BFF0F8 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		71AEEEA424A1E50F005CC75F /* ParticipantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewController.swift; sourceTree = "<group>"; };
+		71AEEEA624A1E67B005CC75F /* SelectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableViewController.swift; sourceTree = "<group>"; };
 		BAF7213EC7D0253145F37C78 /* Pods-TeamUp!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamUp!.release.xcconfig"; path = "Target Support Files/Pods-TeamUp!/Pods-TeamUp!.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +67,8 @@
 		1846F029247D07D000A59E33 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				71AEEEA624A1E67B005CC75F /* SelectTableViewController.swift */,
+				71AEEEA424A1E50F005CC75F /* ParticipantTableViewController.swift */,
 				718D037E24827EB100BFF0F8 /* ProjectsTableViewController.swift */,
 				718D037C24827ACE00BFF0F8 /* ProjectsCreationViewController.swift */,
 				71283C062477CC2300A5AE60 /* ViewController.swift */,
@@ -259,12 +265,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				71283C072477CC2300A5AE60 /* ViewController.swift in Sources */,
+				71AEEEA524A1E50F005CC75F /* ParticipantTableViewController.swift in Sources */,
 				18E02CC9249F5BC500B03BA8 /* Constants.swift in Sources */,
 				71283C032477CC2300A5AE60 /* AppDelegate.swift in Sources */,
 				718D037F24827EB100BFF0F8 /* ProjectsTableViewController.swift in Sources */,
 				1846F02B247D17F300A59E33 /* Utilities.swift in Sources */,
 				1846F024247D078B00A59E33 /* SignUpViewController.swift in Sources */,
 				718D038124829FC100BFF0F8 /* File.swift in Sources */,
+				71AEEEA724A1E67B005CC75F /* SelectTableViewController.swift in Sources */,
 				1846F026247D07A700A59E33 /* LoginViewController.swift in Sources */,
 				718D037D24827ACE00BFF0F8 /* ProjectsCreationViewController.swift in Sources */,
 				71283C052477CC2300A5AE60 /* SceneDelegate.swift in Sources */,
