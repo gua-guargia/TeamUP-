@@ -85,30 +85,6 @@
             </objects>
             <point key="canvasLocation" x="2713.04347826087" y="-66.294642857142861"/>
         </scene>
-        <!--Home View Controller-->
-        <scene sceneID="PHc-IQ-DYC">
-            <objects>
-                <viewController storyboardIdentifier="HomeVC" id="ZEx-fk-OfY" customClass="HomeViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9h6-xk-ZDf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOb-Ne-idG">
-                                <rect key="frame" x="172" y="438" width="71" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="oGO-oz-IZD"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4R9-yV-zTA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3567" y="224"/>
-        </scene>
         <!--Login View Controller-->
         <scene sceneID="U8A-f5-LAx">
             <objects>
@@ -264,7 +240,7 @@
                                 <rect key="frame" x="174" y="605" width="66" height="30"/>
                                 <state key="normal" title="Individual"/>
                                 <connections>
-                                    <segue destination="YyS-8X-RFe" kind="show" id="pjc-6c-50A"/>
+                                    <segue destination="YyS-8X-RFe" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="pjc-6c-50A"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bP-jX-wxb">
@@ -289,23 +265,23 @@
             </objects>
             <point key="canvasLocation" x="5258" y="224"/>
         </scene>
-        <!--View Controller-->
+        <!--Individual View Controller-->
         <scene sceneID="I13-ce-ZLG">
             <objects>
-                <viewController id="YyS-8X-RFe" sceneMemberID="viewController">
+                <viewController id="YyS-8X-RFe" customClass="IndividualViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RNw-fV-hQP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTr-cA-LYe">
-                                <rect key="frame" x="181" y="360" width="52" height="30"/>
+                                <rect key="frame" x="181" y="264" width="52" height="30"/>
                                 <state key="normal" title="Creator"/>
                                 <connections>
-                                    <segue destination="YEJ-Ze-hdt" kind="show" id="8BF-Hf-Sf3"/>
+                                    <segue destination="YEJ-Ze-hdt" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="8BF-Hf-Sf3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adp-Mx-I13">
-                                <rect key="frame" x="170" y="508" width="74" height="30"/>
+                                <rect key="frame" x="170" y="412" width="74" height="30"/>
                                 <state key="normal" title="Participant"/>
                                 <connections>
                                     <segue destination="kiQ-SM-M9V" kind="show" id="Mh3-6I-dsi"/>
@@ -362,7 +338,7 @@
             <objects>
                 <viewController id="kiQ-SM-M9V" customClass="ParticipantTableViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Yf-u2-pew">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jw2-Co-0yI">
@@ -404,7 +380,7 @@
             <objects>
                 <viewController id="0lc-up-2cc" customClass="SelectTableViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f7R-XH-mJ9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pRa-y0-NHx">
@@ -470,7 +446,7 @@
                     <navigationItem key="navigationItem" id="WWu-VR-D5e">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Pgo-fu-jxZ">
                             <connections>
-                                <segue destination="zGX-VX-Tvy" kind="presentation" id="TWa-no-Cj8"/>
+                                <segue destination="zGX-VX-Tvy" kind="presentation" modalPresentationStyle="fullScreen" id="TWa-no-Cj8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -487,11 +463,11 @@
             <objects>
                 <viewController id="zGX-VX-Tvy" customClass="ProjectsCreationViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6tn-ZH-pth">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="f0H-yQ-SiN">
-                                <rect key="frame" x="40" y="131" width="334" height="214"/>
+                                <rect key="frame" x="40" y="163" width="334" height="214"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Project Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z9L-Mi-fJR">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -520,7 +496,7 @@
                                 </subviews>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2L-pH-foP">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Create a Project" id="XDc-Jv-tQf">
                                         <barButtonItem key="leftBarButtonItem" systemItem="trash" id="aUx-hh-nST">
