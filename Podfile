@@ -5,6 +5,7 @@ target 'TeamUp!' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
+pod "Koloda"
   # Pods for TeamUp!
 
 # add the Firebase pod for Google Analytics

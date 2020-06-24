@@ -19,6 +19,7 @@
 		71283C0A2477CC2300A5AE60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71283C082477CC2300A5AE60 /* Main.storyboard */; };
 		71283C0C2477CC2500A5AE60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71283C0B2477CC2500A5AE60 /* Assets.xcassets */; };
 		71283C0F2477CC2500A5AE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71283C0D2477CC2500A5AE60 /* LaunchScreen.storyboard */; };
+		7129615924A34C99003E801E /* KolodaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7129615824A34C99003E801E /* KolodaViewController.swift */; };
 		718D037D24827ACE00BFF0F8 /* ProjectsCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D037C24827ACE00BFF0F8 /* ProjectsCreationViewController.swift */; };
 		718D037F24827EB100BFF0F8 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D037E24827EB100BFF0F8 /* ProjectsTableViewController.swift */; };
 		718D038124829FC100BFF0F8 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D038024829FC100BFF0F8 /* File.swift */; };
@@ -44,6 +45,7 @@
 		71283C0B2477CC2500A5AE60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71283C0E2477CC2500A5AE60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71283C102477CC2500A5AE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7129615824A34C99003E801E /* KolodaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KolodaViewController.swift; sourceTree = "<group>"; };
 		718D037C24827ACE00BFF0F8 /* ProjectsCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCreationViewController.swift; sourceTree = "<group>"; };
 		718D037E24827EB100BFF0F8 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
 		718D038024829FC100BFF0F8 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				1846F023247D078B00A59E33 /* SignUpViewController.swift */,
 				1846F025247D07A700A59E33 /* LoginViewController.swift */,
 				1846F027247D07C400A59E33 /* HomeViewController.swift */,
+				7129615824A34C99003E801E /* KolodaViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			files = (
 				71283C072477CC2300A5AE60 /* ViewController.swift in Sources */,
 				71AEEEA524A1E50F005CC75F /* ParticipantTableViewController.swift in Sources */,
+				7129615924A34C99003E801E /* KolodaViewController.swift in Sources */,
 				18E02CC9249F5BC500B03BA8 /* Constants.swift in Sources */,
 				71283C032477CC2300A5AE60 /* AppDelegate.swift in Sources */,
 				718D037F24827EB100BFF0F8 /* ProjectsTableViewController.swift in Sources */,

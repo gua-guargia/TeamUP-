@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6bl-p0-nfU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G7T-0s-aR7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -326,6 +326,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZi-f5-uf6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5977" y="224"/>
+        </scene>
+        <!--Koloda View Controller-->
+        <scene sceneID="5Lr-9d-f3T">
+            <objects>
+                <viewController id="G7T-0s-aR7" customClass="KolodaViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1aW-Tc-bdg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFi-Ti-8AC" customClass="KolodaView" customModule="Koloda">
+                                <rect key="frame" x="54" y="170" width="306" height="329"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cFi-Ti-8AC" firstAttribute="centerX" secondItem="1aW-Tc-bdg" secondAttribute="centerX" id="1N1-zJ-ZBL"/>
+                            <constraint firstItem="cFi-Ti-8AC" firstAttribute="leading" secondItem="AKz-yH-xVE" secondAttribute="leading" constant="54" id="Auj-bX-wR1"/>
+                            <constraint firstItem="AKz-yH-xVE" firstAttribute="bottom" secondItem="cFi-Ti-8AC" secondAttribute="bottom" constant="363" id="N1I-Cq-oFp"/>
+                            <constraint firstItem="cFi-Ti-8AC" firstAttribute="top" secondItem="AKz-yH-xVE" secondAttribute="top" constant="126" id="yKQ-qt-dgS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AKz-yH-xVE"/>
+                    </view>
+                    <connections>
+                        <outlet property="kolodaView" destination="cFi-Ti-8AC" id="Oyy-hh-y4C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xgs-xP-rzm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5950.7246376811599" y="925.44642857142856"/>
         </scene>
         <!--Participant Table View Controller-->
         <scene sceneID="L0E-gC-68g">
