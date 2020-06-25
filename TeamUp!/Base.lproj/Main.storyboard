@@ -351,12 +351,22 @@
                                 <rect key="frame" x="54" y="170" width="306" height="329"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWb-m3-7fN">
+                                <rect key="frame" x="339" y="117" width="21" height="23"/>
+                                <state key="normal" title="Button" image="gobackward" catalog="system"/>
+                                <connections>
+                                    <action selector="revertButton:" destination="G7T-0s-aR7" eventType="touchUpInside" id="qO8-e6-kMm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="cFi-Ti-8AC" firstAttribute="centerX" secondItem="1aW-Tc-bdg" secondAttribute="centerX" id="1N1-zJ-ZBL"/>
                             <constraint firstItem="cFi-Ti-8AC" firstAttribute="leading" secondItem="AKz-yH-xVE" secondAttribute="leading" constant="54" id="Auj-bX-wR1"/>
                             <constraint firstItem="AKz-yH-xVE" firstAttribute="bottom" secondItem="cFi-Ti-8AC" secondAttribute="bottom" constant="363" id="N1I-Cq-oFp"/>
+                            <constraint firstItem="bWb-m3-7fN" firstAttribute="leading" secondItem="AKz-yH-xVE" secondAttribute="leading" constant="339" id="aTr-5F-NI4"/>
+                            <constraint firstItem="bWb-m3-7fN" firstAttribute="trailing" secondItem="cFi-Ti-8AC" secondAttribute="trailing" id="eP3-dI-J0O"/>
+                            <constraint firstItem="bWb-m3-7fN" firstAttribute="top" secondItem="AKz-yH-xVE" secondAttribute="top" constant="73" id="xlB-Ql-rPr"/>
                             <constraint firstItem="cFi-Ti-8AC" firstAttribute="top" secondItem="AKz-yH-xVE" secondAttribute="top" constant="126" id="yKQ-qt-dgS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AKz-yH-xVE"/>
@@ -590,4 +600,7 @@
             <point key="canvasLocation" x="4595.652173913044" y="927.45535714285711"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gobackward" catalog="system" width="121" height="128"/>
+    </resources>
 </document>
