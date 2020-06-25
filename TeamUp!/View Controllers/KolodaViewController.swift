@@ -9,6 +9,10 @@
 import UIKit
 import Koloda
 import pop
+import Firebase
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 private let numberOfCards: Int = 5
 private let frameAnimationSpringBounciness: CGFloat = 9
@@ -18,9 +22,10 @@ private let kolodaAlphaValueSemiTransparent: CGFloat = 0.1
 
 class KolodaViewController: UIViewController {
 
-  
+  var db:Firestore!
     @IBOutlet weak var kolodaView: KolodaView!
-    let images = ["Dr Strange", "Thor", "Iron Man", "Spider"]
+   // let images = ["Dr Strange", "Thor", "Iron Man", "Spider"]
+    var ProjectArray = [Project]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,14 +43,18 @@ class KolodaViewController: UIViewController {
         kolodaView.dataSource = self
         kolodaView.animator = KolodaViewAnimator(koloda: kolodaView)
         
+        db = Firestore.firestore()
+        loadData()
+        
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         
         
     }
     @IBAction func revertButton(_ sender: Any) {
         kolodaView?.revertAction()
+        print(ProjectArray.count)
     }
-}
+
 
     /*
     // MARK: - Navigation
@@ -56,13 +65,50 @@ class KolodaViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+ func loadData() {
+       db.collection("projects").getDocuments() {
+           querySnapshot, error in
+           if let error = error {
+               print("\(error.localizedDescription)")
+           }else{
+            self.ProjectArray = querySnapshot!.documents.compactMap({Project(dictionary: $0.data())})
+            }
+               DispatchQueue.main.async {
+                   self.kolodaView.reloadData()
+               }
+           }
+       }
+   }
+   
+  /* func checkForUpdates() {
+       db.collection("projects")
+           .addSnapshotListener(includeMetadataChanges: true) {
+               querySnapshot, error in
+               
+               guard let snapshot = querySnapshot else {return}
+               
+               snapshot.documentChanges.forEach {
+                   diff in
+                   
+                   if diff.type == .added {
+                       self.ProjectArray.append(Project(dictionary: diff.document.data())!)
+                       //DispatchQueue.main.async {
+                         //  self.kolodaView.reloadData()
+                       //}
+                   }
+               }
+               
+       }
+   }*/
+
     extension KolodaViewController: KolodaViewDelegate {
         func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
             kolodaView.resetCurrentCardIndex()
         }
 
         func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-           let alert = UIAlertController(title: "Congratulation!", message: "Now you're \(images[index])", preferredStyle: .alert)
+           let alert = UIAlertController(title: "Congratulation!", message: "You're now matched", preferredStyle: .alert)
            alert.addAction(UIAlertAction(title: "OK", style: .default))
            self.present(alert, animated: true)
         }
@@ -90,7 +136,7 @@ class KolodaViewController: UIViewController {
 extension KolodaViewController: KolodaViewDataSource {
 
     func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
-        return images.count
+        return ProjectArray.count
     }
 
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
@@ -98,10 +144,11 @@ extension KolodaViewController: KolodaViewDataSource {
     }
 
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-      let view = UIImageView(image: UIImage(named: images[index]))
-      view.layer.cornerRadius = 20
-      view.clipsToBounds = true
-      return view
+       let view = UILabel()
+        print("projectArray")
+        view.frame = CGRect.init(x: 0, y: 0, width: 300, height: 300)
+        view.text = ProjectArray[index].Name
+        return view
     }
 
     /*func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
