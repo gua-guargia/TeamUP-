@@ -27,7 +27,7 @@ class SelectTableViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
         
         db = Firestore.firestore()
-        loadData()
+        //loadData()
         checkForUpdates()
         
         tableView.estimatedRowHeight = 100

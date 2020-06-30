@@ -20,11 +20,11 @@ private let frameAnimationSpringSpeed: CGFloat = 16
 private let kolodaCountOfVisibleCards = 2
 private let kolodaAlphaValueSemiTransparent: CGFloat = 0.1
 
+
 class KolodaViewController: UIViewController {
 
   var db:Firestore!
     @IBOutlet weak var kolodaView: KolodaView!
-   // let images = ["Dr Strange", "Thor", "Iron Man", "Spider"]
     var ProjectArray = [Project]()
     
     override func viewDidLoad() {
@@ -44,7 +44,8 @@ class KolodaViewController: UIViewController {
         kolodaView.animator = KolodaViewAnimator(koloda: kolodaView)
         
         db = Firestore.firestore()
-        loadData()
+        //loadData()
+        checkForUpdates()
         
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         
@@ -54,7 +55,6 @@ class KolodaViewController: UIViewController {
         kolodaView?.revertAction()
         print(ProjectArray.count)
     }
-
 
     /*
     // MARK: - Navigation
@@ -79,9 +79,8 @@ class KolodaViewController: UIViewController {
                }
            }
        }
-   }
    
-  /* func checkForUpdates() {
+   func checkForUpdates() {
        db.collection("projects")
            .addSnapshotListener(includeMetadataChanges: true) {
                querySnapshot, error in
@@ -93,14 +92,15 @@ class KolodaViewController: UIViewController {
                    
                    if diff.type == .added {
                        self.ProjectArray.append(Project(dictionary: diff.document.data())!)
-                       //DispatchQueue.main.async {
-                         //  self.kolodaView.reloadData()
-                       //}
+                       DispatchQueue.main.async {
+                           self.kolodaView.reloadData()
+                       }
                    }
                }
                
        }
-   }*/
+   }
+}
 
     extension KolodaViewController: KolodaViewDelegate {
         func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
@@ -131,7 +131,42 @@ class KolodaViewController: UIViewController {
             animation?.springSpeed = frameAnimationSpringSpeed
             return animation
         }
-    }
+        
+         func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+            if(direction == .right){
+                let alert = UIAlertController(title: nil , message: nil, preferredStyle: .alert)
+               // alert.addAction(UIAlertAction(title: "OK", style: .default))
+                var imageView = UIImageView(frame: CGRect(x: 10, y: 50, width: 250, height: 230))
+                imageView.image = #imageLiteral(resourceName: "tick")
+                alert.view.addSubview(imageView)
+                let height = NSLayoutConstraint(item: alert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
+                let width = NSLayoutConstraint(item: alert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
+                alert.view.addConstraint(height)
+                alert.view.addConstraint(width)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    // your actions here...
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+                let project = self.ProjectArray[index]
+                    var Name : String = project.Name
+                    var Description : String = project.Description
+                    var Organiser : String = project.Organiser
+                    var ref: DocumentReference? = nil
+                    ref = self.db.collection("users123").document("nPuJKSBpWBtZ4OnCGf1a").collection("Projects").addDocument(data: [
+                        "Name": Name,
+                        "Description": Description,
+                        "Organiser" : Organiser
+                    ]) { err in
+                        if let err = err {
+                            print("Error adding document: \(err)")
+                        } else {
+                            print("Document added with ID: \(ref!.documentID)")
+                        }
+                    }
+                }
+            }
+}
 
 extension KolodaViewController: KolodaViewDataSource {
 
@@ -147,7 +182,7 @@ extension KolodaViewController: KolodaViewDataSource {
        let view = UILabel()
         print("projectArray")
         view.frame = CGRect.init(x: 0, y: 0, width: 300, height: 300)
-        view.text = ProjectArray[index].Name
+        view.text = "\(ProjectArray[index].Name) - \(ProjectArray[index].Description)"
         return view
     }
 

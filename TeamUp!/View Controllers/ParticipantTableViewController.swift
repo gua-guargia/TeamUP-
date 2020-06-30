@@ -28,8 +28,8 @@ class ParticipantTableViewController: UIViewController, UITableViewDelegate, UIT
         _tableView.dataSource = self
         
         db = Firestore.firestore()
-        loadData()
-       // checkForUpdates()
+        //loadData()
+        checkForUpdates()
         
         _tableView.estimatedRowHeight = 100
         _tableView.rowHeight = UITableView.automaticDimension
