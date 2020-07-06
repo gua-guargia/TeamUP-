@@ -1,25 +1,21 @@
 //
-//  CategoryViewController.swift
+//  PhotoViewerViewController.swift
 //  TeamUp!
 //
-//  Created by apple on 6/23/20.
+//  Created by Alicia Ho on 6/7/20.
 //  Copyright © 2020 Alicia Ho. All rights reserved.
 //
 
 import UIKit
-import FirebaseAuth
 
-class CategoryViewController: UIViewController {
+class PhotoViewerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        validateAuth()
-    }
+    
 
     /*
     // MARK: - Navigation
@@ -30,12 +26,5 @@ class CategoryViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    private func validateAuth() {
-        if FirebaseAuth.Auth.auth().currentUser == nil {
-            let vc = LoginViewController()
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .fullScreen
-            present(nav, animated: false)
-        }
-    }
+
 }

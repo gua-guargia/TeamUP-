@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B9b-zz-rax">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HeG-BZ-015">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -869,6 +869,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F77-SZ-iHL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4680" y="1412"/>
+        </scene>
+        <!--Chats-->
+        <scene sceneID="vkz-VL-waX">
+            <objects>
+                <viewController id="Sdy-FV-oTH" customClass="ConversationsViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iXC-uQ-cq9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="OvW-3z-jTz"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Chats" id="JOy-St-TPr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JL9-cU-E1U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9780" y="1361"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Sgi-Nd-7XS">
+            <objects>
+                <navigationController id="HeG-BZ-015" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="daP-b3-w4l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Sdy-FV-oTH" kind="relationship" relationship="rootViewController" id="ga7-Ep-yJN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ar3-vS-HZs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8997" y="1361"/>
         </scene>
         <!--Participant Table View Controller-->
         <scene sceneID="L0E-gC-68g">

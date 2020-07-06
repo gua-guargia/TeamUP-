@@ -21,4 +21,10 @@ pod 'Firebase/Database'
 pod 'FirebaseFirestoreSwift'
 pod "InitialsImageView"
 
+#Chat messenger
+pod 'MessageKit'
+pod 'JGProgressHUD'
+pod 'RealmSwift'
+pod 'SDWebImage'
+
 end
