@@ -19,9 +19,11 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var lastNameTextField: UITextField!
     
+    @IBOutlet weak var universityTextField: UITextField!
+    
+    @IBOutlet weak var majorTextField: UITextField!
     
     @IBOutlet weak var emailTextField: UITextField!
-    
     
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -47,6 +49,10 @@ class SignUpViewController: UIViewController {
         
         Utilities.styleTextField(lastNameTextField)
         
+        Utilities.styleTextField(universityTextField)
+        
+        Utilities.styleTextField(majorTextField)
+        
         Utilities.styleTextField(emailTextField)
         
         Utilities.styleTextField(passwordTextField)
@@ -59,10 +65,8 @@ class SignUpViewController: UIViewController {
     
     //check the text field and validate that the data is correct. If everything is correct, this method returns nil. Otherwise, it returns the error message
     func validateFields() -> String? {
-        
         //check that all fields are filled in
-        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            
+        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || universityTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || majorTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "Please fill in all fields."
         }
         
@@ -90,6 +94,8 @@ class SignUpViewController: UIViewController {
             //create the cleaned version of the data
             let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let university = universityTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let major = majorTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
@@ -104,7 +110,7 @@ class SignUpViewController: UIViewController {
                     // user was created successufully, now store the first name and last name
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data:["firstname":firstName, "lastname":lastName, "uid":result!.user.uid]) { (error) in
+                    db.collection("users").addDocument(data:["firstname":firstName, "lastname":lastName, "university":university,"major":major,"email":email,"uid":result!.user.uid]) { (error) in
                         
                         if error != nil {
                             //show error message
@@ -113,7 +119,7 @@ class SignUpViewController: UIViewController {
                     }
                     
                     //transition to the home screen
-                    self.transitionToHome()
+                    self.transitionToCategory()
                 }
                 
             }
@@ -129,10 +135,10 @@ class SignUpViewController: UIViewController {
     }
     
     
-    func transitionToHome() {
+    func transitionToCategory() {
         
-        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
-        self.view.window?.rootViewController = homeViewController
+        let categoryViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.categoryViewController) as? CategoryViewController
+        self.view.window?.rootViewController = categoryViewController
         self.view.window?.makeKeyAndVisible()
     }
 }

@@ -1,49 +1,23 @@
 //
-//  ModuleSearchTableViewController.swift
+//  ModulesDisplayTableViewController.swift
 //  TeamUp!
 //
-//  Created by apple on 6/23/20.
+//  Created by apple on 6/25/20.
 //  Copyright © 2020 Alicia Ho. All rights reserved.
 //
 
 import UIKit
-import FirebaseDatabase
-//try
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseFirestoreSwift
 
-class ModuleSearchTableViewController: UITableViewController, UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        //update the search result
-        filterContent(searchText: self.searchController.searchBar.text!)
-    }
-    
+class ModulesDisplayTableViewController: UITableViewController {
 
-    @IBOutlet var ModulesTableView: UITableView!
-    
-    
-    let searchController = UISearchController(searchResultsController: nil)
-    
-    var modulesArray = [NSDictionary?]()
-    var filterModules = [NSDictionary?]()
-    
-    var databaseRef = Database.database().reference()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style:.plain, target: .nil, acction: nil)
         
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
-        
-        databaseRef.child("NUS modules").queryOrdered(byChild: "code").observe(.childAdded, with: { (snapshot) in
-            self.modulesArray.append(snapshot.value as? NSDictionary)
-            //insert the rows
-            self.ModulesTableView.insertRows(at: [IndexPath(row:self.modulesArray.count-1,section:0)], with: UITableView.RowAnimation.automatic)
-        }) { (error) in
-            print(error.localizedDescription)
-        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -56,34 +30,23 @@ class ModuleSearchTableViewController: UITableViewController, UISearchResultsUpd
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if searchController.isActive && searchController.searchBar.text != "" {
-            return filterModules.count
-        }
-        return self.modulesArray.count
+        return 0
     }
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        let module : NSDictionary?
-        if searchController.isActive && searchController.searchBar.text != "" {
-            module = filterModules[indexPath.row]
-        }
-        else{
-            module = self.modulesArray[indexPath.row]
-        }
-        cell.textLabel?.text = module?["code"] as? String
-        cell.detailTextLabel?.text = module?["name"] as? String
+        // Configure the cell...
 
         return cell
     }
-    
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -129,18 +92,5 @@ class ModuleSearchTableViewController: UITableViewController, UISearchResultsUpd
         // Pass the selected object to the new view controller.
     }
     */
-    
-    @IBAction func dismissModuleSearch(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func filterContent(searchText:String)
-    {
-        self.filterModules = self.modulesArray.filter{ module in
-            let moduleCode = module!["code"] as? String
-            return(moduleCode?.lowercased().contains(searchText.lowercased()))!
-        }
-        tableView.reloadData()
-    }
-    
+
 }

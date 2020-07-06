@@ -29,6 +29,13 @@ struct Project {
     
 }
 
+struct ModulesStruct : Identifiable{
+    var id:String
+    var name:String
+    var code:String
+    var teammateNumber:String
+}
+
 extension Project : DocumentSerializable {
     init?(dictionary: [String : Any]) {
         guard let Name = dictionary["Name"] as? String,

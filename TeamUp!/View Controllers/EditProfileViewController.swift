@@ -1,19 +1,20 @@
 //
-//  HomeViewController.swift
+//  EditProfileViewController.swift
 //  TeamUp!
 //
-//  Created by apple on 5/26/20.
+//  Created by apple on 6/30/20.
 //  Copyright © 2020 Alicia Ho. All rights reserved.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
-
+class EditProfileViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //customToolbar.set
     }
     
 

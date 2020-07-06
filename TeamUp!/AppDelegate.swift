@@ -19,8 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+        //UINavigationBar.appearance().barTintColor = UIColor.yellow
+        //UINavigationBar.appearance().tintColor = UIColor.orange
         
-        let db = Firestore.firestore()
+     /*
+        //use ios font to find the suitable font
+        let navigationFont = UIFont(name: "AmericanTypewriter", size: 18)
+        let navigationFontAttributes = [NSAttributedString.Key.font: navigationFont]
+        UINavigationBar.appearance().titleTextAttributes = navigationFontAttributes as [NSAttributedString.Key : Any]
+        UIBarButtonItem.appearance().setTitleTextAttributes(navigationFontAttributes as [NSAttributedString.Key : Any], for: .normal)
+ */
+        
+        //let db = Firestore.firestore()
         
         return true
     }
