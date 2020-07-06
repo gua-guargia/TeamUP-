@@ -19,5 +19,6 @@ pod 'Firebase/Core'
 pod 'Firebase/Firestore'
 pod 'Firebase/Database'
 pod 'FirebaseFirestoreSwift'
+pod "InitialsImageView"
 
 end
