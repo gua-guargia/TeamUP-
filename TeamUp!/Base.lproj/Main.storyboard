@@ -1354,6 +1354,12 @@
                                                 <constraint firstItem="tlK-Kr-3VI" firstAttribute="leading" secondItem="XA3-gc-rqf" secondAttribute="trailing" constant="7" id="sXl-KO-fkm"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLbl" destination="lCM-qa-2b8" id="r2A-SG-Xup"/>
+                                            <outlet property="nameLbl" destination="dca-Tv-liI" id="aIO-Zt-bcx"/>
+                                            <outlet property="organiserLbl" destination="fdm-O3-pd2" id="6ow-a6-VpM"/>
+                                            <outlet property="webLbl" destination="tlK-Kr-3VI" id="kWR-UG-XHh"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

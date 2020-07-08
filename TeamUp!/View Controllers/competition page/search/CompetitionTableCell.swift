@@ -10,6 +10,10 @@ import UIKit
 
 class CompetitionTableCell: UITableViewCell {
 
+    @IBOutlet weak var descriptionLbl: UILabel!
+    @IBOutlet weak var webLbl: UILabel!
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var organiserLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
