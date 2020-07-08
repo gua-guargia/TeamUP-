@@ -14,6 +14,8 @@
 		183F808D24A5CA49000E26BE /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183F808C24A5CA49000E26BE /* TableCell.swift */; };
 		18412FF7247E2FBE00F76668 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18412FF6247E2FBE00F76668 /* GoogleService-Info.plist */; };
 		1846BFBC24B5CBB700DA47C6 /* ProjectTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846BFBB24B5CBB700DA47C6 /* ProjectTableCell.swift */; };
+		1846BFBF24B5D8DE00DA47C6 /* SearchCompetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846BFBE24B5D8DE00DA47C6 /* SearchCompetitionViewController.swift */; };
+		1846BFC124B5D90700DA47C6 /* CompetitionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846BFC024B5D90700DA47C6 /* CompetitionTableCell.swift */; };
 		1846F024247D078B00A59E33 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846F023247D078B00A59E33 /* SignUpViewController.swift */; };
 		1846F026247D07A700A59E33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846F025247D07A700A59E33 /* LoginViewController.swift */; };
 		1846F02B247D17F300A59E33 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846F02A247D17F200A59E33 /* Utilities.swift */; };
@@ -51,6 +53,8 @@
 		183F808C24A5CA49000E26BE /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		18412FF6247E2FBE00F76668 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1846BFBB24B5CBB700DA47C6 /* ProjectTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableCell.swift; sourceTree = "<group>"; };
+		1846BFBE24B5D8DE00DA47C6 /* SearchCompetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCompetitionViewController.swift; sourceTree = "<group>"; };
+		1846BFC024B5D90700DA47C6 /* CompetitionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionTableCell.swift; sourceTree = "<group>"; };
 		1846F023247D078B00A59E33 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1846F025247D07A700A59E33 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1846F02A247D17F200A59E33 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -96,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1846BFBD24B5D8B800DA47C6 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				1846BFBE24B5D8DE00DA47C6 /* SearchCompetitionViewController.swift */,
+				1846BFC024B5D90700DA47C6 /* CompetitionTableCell.swift */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
 		1846F029247D07D000A59E33 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +154,7 @@
 		18574E3124B5B98E00831817 /* competition page */ = {
 			isa = PBXGroup;
 			children = (
+				1846BFBD24B5D8B800DA47C6 /* search */,
 			);
 			path = "competition page";
 			sourceTree = "<group>";
@@ -414,6 +428,7 @@
 				18E02CC9249F5BC500B03BA8 /* Constants.swift in Sources */,
 				71283C032477CC2300A5AE60 /* AppDelegate.swift in Sources */,
 				18574E2524AB327A00831817 /* EditProfileViewController.swift in Sources */,
+				1846BFBF24B5D8DE00DA47C6 /* SearchCompetitionViewController.swift in Sources */,
 				7167EC1724B33D140002A3DD /* ConversationsViewController.swift in Sources */,
 				718D037F24827EB100BFF0F8 /* ProjectsTableViewController.swift in Sources */,
 				18574E2324AB323900831817 /* ProfileViewController.swift in Sources */,
@@ -425,6 +440,7 @@
 				183F808B24A5C966000E26BE /* SearchModuleViewController.swift in Sources */,
 				7167EC2124B33DCB0002A3DD /* Extensions.swift in Sources */,
 				183F808124A48658000E26BE /* CategoryViewController.swift in Sources */,
+				1846BFC124B5D90700DA47C6 /* CompetitionTableCell.swift in Sources */,
 				1846F026247D07A700A59E33 /* LoginViewController.swift in Sources */,
 				718D037D24827ACE00BFF0F8 /* ProjectsCreationViewController.swift in Sources */,
 				71283C052477CC2300A5AE60 /* SceneDelegate.swift in Sources */,

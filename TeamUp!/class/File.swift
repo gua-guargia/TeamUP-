@@ -31,6 +31,23 @@ struct Project {
     
 }
 
+struct Competition {
+    var Name:String
+    var Organiser:String
+    var Description:String
+    var WebLink: String
+    
+    var dictionary:[String:Any] {
+        return [
+            "Name": Name,
+            "Organiser" : Organiser,
+            "Description" : Description,
+            "WebLink": WebLink
+        ]
+    }
+    
+}
+
 struct ModulesStruct : Identifiable{
     var id:String
     var name:String
@@ -57,5 +74,18 @@ extension Project : DocumentSerializable {
         
         
         self.init(Name: Name, Organiser: Organiser, Description: Description, Role: Role)
+    }
+}
+
+
+extension Competition : DocumentSerializable {
+    init?(dictionary: [String : Any]) {
+        guard let Name = dictionary["Name"] as? String,
+            let Organiser = dictionary["Organiser"] as? String,
+            let Description = dictionary ["Description"] as? String,
+            let WebLink = dictionary["WebLink"] as? String else {return nil}
+        
+        
+        self.init(Name: Name, Organiser: Organiser, Description: Description, WebLink: WebLink)
     }
 }

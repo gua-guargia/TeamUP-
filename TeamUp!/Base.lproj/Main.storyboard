@@ -1140,6 +1140,21 @@
             </objects>
             <point key="canvasLocation" x="7326" y="-1233"/>
         </scene>
+        <!--Explore View Controller-->
+        <scene sceneID="t8v-Id-zcV">
+            <objects>
+                <viewController id="rol-Xc-CP0" customClass="ExploreViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dvE-gE-eeB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ib4-Il-36Z"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LIL-lE-fa1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11519" y="-912"/>
+        </scene>
         <!--Search Project View Controller-->
         <scene sceneID="xb2-qm-snG">
             <objects>
@@ -1254,7 +1269,117 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RX-Y8-6A9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11518.840579710146" y="-246.19565217391306"/>
+            <point key="canvasLocation" x="11519" y="-231"/>
+        </scene>
+        <!--Search Competition View Controller-->
+        <scene sceneID="7XT-dp-SkN">
+            <objects>
+                <viewController id="Lee-G3-txN" customClass="SearchCompetitionViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fWx-NV-atu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kxa-bx-yGH">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="nrC-VA-bqd">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompetitionCell" rowHeight="185" id="Fep-dB-SF9" customClass="CompetitionTableCell" customModule="TeamUp_" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="414" height="185"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fep-dB-SF9" id="XxF-86-uMQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="185"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Competition Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55V-9x-FBL">
+                                                    <rect key="frame" x="36" y="48" width="145.66666666666666" height="23"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organiser:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQl-4R-qdF">
+                                                    <rect key="frame" x="36" y="18" width="80" height="23"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA3-gc-rqf">
+                                                    <rect key="frame" x="36.000000000000007" y="78" width="70.666666666666686" height="23"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCM-qa-2b8">
+                                                    <rect key="frame" x="36" y="109" width="347" height="65"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdm-O3-pd2">
+                                                    <rect key="frame" x="123" y="18" width="42" height="23"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dca-Tv-liI">
+                                                    <rect key="frame" x="188.66666666666666" y="48" width="42" height="23"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlK-Kr-3VI">
+                                                    <rect key="frame" x="113.66666666666669" y="78" width="42" height="23"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="XA3-gc-rqf" firstAttribute="leading" secondItem="XxF-86-uMQ" secondAttribute="leadingMargin" constant="16" id="JXE-XJ-dVg"/>
+                                                <constraint firstItem="tlK-Kr-3VI" firstAttribute="top" secondItem="dca-Tv-liI" secondAttribute="bottom" constant="7" id="K08-zL-G45"/>
+                                                <constraint firstItem="fdm-O3-pd2" firstAttribute="leading" secondItem="qQl-4R-qdF" secondAttribute="trailing" constant="7" id="SjT-KX-scW"/>
+                                                <constraint firstItem="qQl-4R-qdF" firstAttribute="leading" secondItem="XxF-86-uMQ" secondAttribute="leadingMargin" constant="16" id="Smh-tu-mzU"/>
+                                                <constraint firstItem="XA3-gc-rqf" firstAttribute="top" secondItem="55V-9x-FBL" secondAttribute="bottom" constant="7" id="WFF-xb-V5d"/>
+                                                <constraint firstItem="fdm-O3-pd2" firstAttribute="top" secondItem="XxF-86-uMQ" secondAttribute="topMargin" constant="7" id="bfZ-HW-nWY"/>
+                                                <constraint firstItem="55V-9x-FBL" firstAttribute="leading" secondItem="XxF-86-uMQ" secondAttribute="leadingMargin" constant="16" id="btg-J0-d0w"/>
+                                                <constraint firstItem="dca-Tv-liI" firstAttribute="top" secondItem="fdm-O3-pd2" secondAttribute="bottom" constant="7" id="j9r-XL-1z9"/>
+                                                <constraint firstItem="dca-Tv-liI" firstAttribute="leading" secondItem="55V-9x-FBL" secondAttribute="trailing" constant="7" id="jZw-aS-b9H"/>
+                                                <constraint firstItem="qQl-4R-qdF" firstAttribute="top" secondItem="XxF-86-uMQ" secondAttribute="topMargin" constant="7" id="lgI-xK-C5n"/>
+                                                <constraint firstItem="55V-9x-FBL" firstAttribute="top" secondItem="qQl-4R-qdF" secondAttribute="bottom" constant="7" id="n1g-HV-TeA"/>
+                                                <constraint firstItem="tlK-Kr-3VI" firstAttribute="leading" secondItem="XA3-gc-rqf" secondAttribute="trailing" constant="7" id="sXl-KO-fkm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Lee-G3-txN" id="CBH-IZ-NJj"/>
+                                    <outlet property="delegate" destination="Lee-G3-txN" id="gS0-qS-qAl"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="jWU-6S-cGX" firstAttribute="bottom" secondItem="kxa-bx-yGH" secondAttribute="bottom" id="Etb-Yu-9ZI"/>
+                            <constraint firstItem="jWU-6S-cGX" firstAttribute="trailing" secondItem="kxa-bx-yGH" secondAttribute="trailing" id="bdT-du-fp2"/>
+                            <constraint firstItem="kxa-bx-yGH" firstAttribute="leading" secondItem="jWU-6S-cGX" secondAttribute="leading" id="fxB-rv-nUN"/>
+                            <constraint firstItem="kxa-bx-yGH" firstAttribute="top" secondItem="jWU-6S-cGX" secondAttribute="top" id="hhd-PE-b2T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jWU-6S-cGX"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZdR-kG-ira"/>
+                    <connections>
+                        <outlet property="searchBar" destination="nrC-VA-bqd" id="PaZ-se-ABE"/>
+                        <outlet property="table" destination="kxa-bx-yGH" id="G1C-X6-TeW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qBb-dV-pEe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11043" y="2250"/>
         </scene>
     </scenes>
     <resources>
