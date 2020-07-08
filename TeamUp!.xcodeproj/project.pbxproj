@@ -26,13 +26,9 @@
 		71283C0C2477CC2500A5AE60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71283C0B2477CC2500A5AE60 /* Assets.xcassets */; };
 		71283C0F2477CC2500A5AE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71283C0D2477CC2500A5AE60 /* LaunchScreen.storyboard */; };
 		7129615924A34C99003E801E /* KolodaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7129615824A34C99003E801E /* KolodaViewController.swift */; };
-		7167EC1724B33D140002A3DD /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC1624B33D140002A3DD /* ConversationsViewController.swift */; };
-		7167EC1924B33D330002A3DD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC1824B33D330002A3DD /* ChatViewController.swift */; };
-		7167EC1B24B33D500002A3DD /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC1A24B33D500002A3DD /* PhotoViewerViewController.swift */; };
-		7167EC1D24B33D690002A3DD /* NewConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC1C24B33D690002A3DD /* NewConversationsViewController.swift */; };
-		7167EC1F24B33D820002A3DD /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC1E24B33D820002A3DD /* VideoPlayerViewController.swift */; };
-		7167EC2124B33DCB0002A3DD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC2024B33DCB0002A3DD /* Extensions.swift */; };
-		7167EC2324B33DE80002A3DD /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC2224B33DE80002A3DD /* DatabaseManager.swift */; };
+		7167EC2924B5D0960002A3DD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC2824B5D0960002A3DD /* ChatViewController.swift */; };
+		7167EC2B24B5D1500002A3DD /* chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC2A24B5D1500002A3DD /* chat.swift */; };
+		7167EC2D24B5D1610002A3DD /* message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC2C24B5D1610002A3DD /* message.swift */; };
 		718D037D24827ACE00BFF0F8 /* ProjectsCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D037C24827ACE00BFF0F8 /* ProjectsCreationViewController.swift */; };
 		718D037F24827EB100BFF0F8 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D037E24827EB100BFF0F8 /* ProjectsTableViewController.swift */; };
 		718D038124829FC100BFF0F8 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D038024829FC100BFF0F8 /* File.swift */; };
@@ -65,13 +61,9 @@
 		71283C0E2477CC2500A5AE60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71283C102477CC2500A5AE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7129615824A34C99003E801E /* KolodaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KolodaViewController.swift; sourceTree = "<group>"; };
-		7167EC1624B33D140002A3DD /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
-		7167EC1824B33D330002A3DD /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		7167EC1A24B33D500002A3DD /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
-		7167EC1C24B33D690002A3DD /* NewConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsViewController.swift; sourceTree = "<group>"; };
-		7167EC1E24B33D820002A3DD /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
-		7167EC2024B33DCB0002A3DD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		7167EC2224B33DE80002A3DD /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		7167EC2824B5D0960002A3DD /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		7167EC2A24B5D1500002A3DD /* chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chat.swift; sourceTree = "<group>"; };
+		7167EC2C24B5D1610002A3DD /* message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = message.swift; sourceTree = "<group>"; };
 		718D037C24827ACE00BFF0F8 /* ProjectsCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCreationViewController.swift; sourceTree = "<group>"; };
 		718D037E24827EB100BFF0F8 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
 		718D038024829FC100BFF0F8 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -110,11 +102,7 @@
 				183F808C24A5CA49000E26BE /* TableCell.swift */,
 				18574E2224AB323900831817 /* ProfileViewController.swift */,
 				18574E2424AB327A00831817 /* EditProfileViewController.swift */,
-				7167EC1624B33D140002A3DD /* ConversationsViewController.swift */,
-				7167EC1824B33D330002A3DD /* ChatViewController.swift */,
-				7167EC1A24B33D500002A3DD /* PhotoViewerViewController.swift */,
-				7167EC1C24B33D690002A3DD /* NewConversationsViewController.swift */,
-				7167EC1E24B33D820002A3DD /* VideoPlayerViewController.swift */,
+				7167EC2824B5D0960002A3DD /* ChatViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -132,8 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				718D038024829FC100BFF0F8 /* File.swift */,
-				7167EC2024B33DCB0002A3DD /* Extensions.swift */,
-				7167EC2224B33DE80002A3DD /* DatabaseManager.swift */,
+				7167EC2A24B5D1500002A3DD /* chat.swift */,
+				7167EC2C24B5D1610002A3DD /* message.swift */,
 			);
 			path = class;
 			sourceTree = "<group>";
@@ -308,31 +296,27 @@
 			files = (
 				71283C072477CC2300A5AE60 /* ViewController.swift in Sources */,
 				183F808D24A5CA49000E26BE /* TableCell.swift in Sources */,
-				7167EC1F24B33D820002A3DD /* VideoPlayerViewController.swift in Sources */,
-				7167EC1924B33D330002A3DD /* ChatViewController.swift in Sources */,
-				7167EC1B24B33D500002A3DD /* PhotoViewerViewController.swift in Sources */,
 				183F808224A48658000E26BE /* IndividualViewController.swift in Sources */,
 				183F808724A494BE000E26BE /* ModulesDisplayTableViewController.swift in Sources */,
-				7167EC1D24B33D690002A3DD /* NewConversationsViewController.swift in Sources */,
 				71AEEEA524A1E50F005CC75F /* ParticipantTableViewController.swift in Sources */,
+				7167EC2B24B5D1500002A3DD /* chat.swift in Sources */,
 				7129615924A34C99003E801E /* KolodaViewController.swift in Sources */,
 				18E02CC9249F5BC500B03BA8 /* Constants.swift in Sources */,
 				71283C032477CC2300A5AE60 /* AppDelegate.swift in Sources */,
 				18574E2524AB327A00831817 /* EditProfileViewController.swift in Sources */,
-				7167EC1724B33D140002A3DD /* ConversationsViewController.swift in Sources */,
 				718D037F24827EB100BFF0F8 /* ProjectsTableViewController.swift in Sources */,
 				18574E2324AB323900831817 /* ProfileViewController.swift in Sources */,
+				7167EC2D24B5D1610002A3DD /* message.swift in Sources */,
 				1846F02B247D17F300A59E33 /* Utilities.swift in Sources */,
 				1846F024247D078B00A59E33 /* SignUpViewController.swift in Sources */,
 				718D038124829FC100BFF0F8 /* File.swift in Sources */,
 				71AEEEA724A1E67B005CC75F /* SelectTableViewController.swift in Sources */,
 				183F808B24A5C966000E26BE /* SearchModuleViewController.swift in Sources */,
-				7167EC2124B33DCB0002A3DD /* Extensions.swift in Sources */,
+				7167EC2924B5D0960002A3DD /* ChatViewController.swift in Sources */,
 				183F808124A48658000E26BE /* CategoryViewController.swift in Sources */,
 				1846F026247D07A700A59E33 /* LoginViewController.swift in Sources */,
 				718D037D24827ACE00BFF0F8 /* ProjectsCreationViewController.swift in Sources */,
 				71283C052477CC2300A5AE60 /* SceneDelegate.swift in Sources */,
-				7167EC2324B33DE80002A3DD /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
