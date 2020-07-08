@@ -125,7 +125,7 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
             return
         }
         currentModuleArray = modulesArray.filter({ module -> Bool in
-            module.name.lowercased().contains(searchText.lowercased())
+            module.code.lowercased().contains(searchText.lowercased())
         })
         table.reloadData()
     }

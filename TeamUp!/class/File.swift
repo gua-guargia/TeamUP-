@@ -18,12 +18,14 @@ struct Project {
     var Name:String
     var Organiser:String
     var Description:String
+    var Role: String
     
     var dictionary:[String:Any] {
         return [
             "Name": Name,
             "Organiser" : Organiser,
-            "Description" : Description
+            "Description" : Description,
+            "Role": Role
         ]
     }
     
@@ -50,8 +52,10 @@ extension Project : DocumentSerializable {
     init?(dictionary: [String : Any]) {
         guard let Name = dictionary["Name"] as? String,
             let Organiser = dictionary["Organiser"] as? String,
-            let Description = dictionary ["Description"] as? String else {return nil}
+            let Description = dictionary ["Description"] as? String,
+            let Role = dictionary["role"] as? String else {return nil}
         
-        self.init(Name: Name, Organiser: Organiser, Description: Description)
+        
+        self.init(Name: Name, Organiser: Organiser, Description: Description, Role: Role)
     }
 }
