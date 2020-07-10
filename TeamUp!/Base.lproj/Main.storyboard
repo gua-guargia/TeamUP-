@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fsn-Oj-4gM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hfr-XW-krP">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -163,10 +163,10 @@
             </objects>
             <point key="canvasLocation" x="3620.289855072464" y="600.81521739130437"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="EyX-sL-nYO">
             <objects>
-                <viewController id="hfr-XW-krP" customClass="ViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hfr-XW-krP" customClass="HomeViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uAb-b6-u4F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -223,7 +223,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="G88-0w-CFL"/>
                     <connections>
-                        <outlet property="loginButton" destination="Zhe-4K-kMs" id="02I-g5-CU8"/>
+                        <outlet property="loginButton" destination="Zhe-4K-kMs" id="Zbj-qF-MDS"/>
+                        <outlet property="signinButton" destination="1SZ-aw-P7j" id="INw-e4-1Q2"/>
                         <outlet property="signupButton" destination="1SZ-aw-P7j" id="ABI-S7-pKW"/>
                     </connections>
                 </viewController>
@@ -308,6 +309,13 @@
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgV-gK-NQ8">
+                                                <rect key="frame" x="16" y="644.33333333333337" width="382" height="30"/>
+                                                <state key="normal" title="Log out"/>
+                                                <connections>
+                                                    <action selector="signOutTapped:" destination="B9b-zz-rax" eventType="touchUpInside" id="gRj-C6-zKV"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -324,9 +332,11 @@
                                             <constraint firstItem="Msb-zg-kuD" firstAttribute="top" secondItem="WRC-dC-2FO" secondAttribute="bottom" constant="5" id="DxU-zb-g2S"/>
                                             <constraint firstAttribute="trailing" secondItem="IpT-89-XSE" secondAttribute="trailing" constant="16" id="F5h-Pb-RuT"/>
                                             <constraint firstAttribute="trailing" secondItem="LN4-Y9-czj" secondAttribute="trailing" constant="16" id="FKi-rH-lMx"/>
+                                            <constraint firstAttribute="trailing" secondItem="XgV-gK-NQ8" secondAttribute="trailing" constant="16" id="Jzg-iH-dC5"/>
                                             <constraint firstItem="WRC-dC-2FO" firstAttribute="top" secondItem="AIg-36-TRM" secondAttribute="bottom" constant="20" id="K8e-4h-6Ty"/>
                                             <constraint firstItem="pcU-OI-AFA" firstAttribute="top" secondItem="MHp-PL-j3V" secondAttribute="top" constant="50" id="KMU-sm-1wA"/>
                                             <constraint firstItem="ivb-tS-F0K" firstAttribute="leading" secondItem="MHp-PL-j3V" secondAttribute="leading" constant="16" id="NO5-in-rMu"/>
+                                            <constraint firstItem="XgV-gK-NQ8" firstAttribute="leading" secondItem="MHp-PL-j3V" secondAttribute="leading" constant="16" id="Vhz-AW-ivB"/>
                                             <constraint firstItem="pm6-6Q-Hcx" firstAttribute="top" secondItem="RSu-1C-4mW" secondAttribute="bottom" constant="10" id="Xg1-oS-9II"/>
                                             <constraint firstItem="Msb-zg-kuD" firstAttribute="leading" secondItem="MHp-PL-j3V" secondAttribute="leading" constant="16" id="Xse-fi-Njg"/>
                                             <constraint firstAttribute="trailing" secondItem="pm6-6Q-Hcx" secondAttribute="trailing" constant="16" id="YLr-Mb-bcm"/>
@@ -336,6 +346,7 @@
                                             <constraint firstItem="WRC-dC-2FO" firstAttribute="leading" secondItem="MHp-PL-j3V" secondAttribute="leading" constant="16" id="cjs-Ei-Gbb"/>
                                             <constraint firstAttribute="trailing" secondItem="Msb-zg-kuD" secondAttribute="trailing" constant="16" id="j1B-EM-qA9"/>
                                             <constraint firstItem="ZZ5-MW-6EE" firstAttribute="leading" secondItem="MHp-PL-j3V" secondAttribute="leading" constant="16" id="lys-9M-5yf"/>
+                                            <constraint firstItem="XgV-gK-NQ8" firstAttribute="top" secondItem="IpT-89-XSE" secondAttribute="bottom" constant="30" id="qFa-dS-fRm"/>
                                             <constraint firstItem="RSu-1C-4mW" firstAttribute="centerX" secondItem="MHp-PL-j3V" secondAttribute="centerX" id="qKQ-sx-KyW"/>
                                             <constraint firstAttribute="trailing" secondItem="ZZ5-MW-6EE" secondAttribute="trailing" constant="16" id="ta7-Wg-Q0B"/>
                                             <constraint firstItem="ZZ5-MW-6EE" firstAttribute="top" secondItem="pm6-6Q-Hcx" secondAttribute="bottom" constant="5" id="xbm-ot-NaQ"/>

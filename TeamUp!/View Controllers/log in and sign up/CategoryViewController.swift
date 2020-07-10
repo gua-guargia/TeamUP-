@@ -32,7 +32,7 @@ class CategoryViewController: UIViewController {
     */
     private func validateAuth() {
         if FirebaseAuth.Auth.auth().currentUser == nil {
-            let vc = LoginViewController()
+            let vc = HomeViewController()
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen
             present(nav, animated: false)

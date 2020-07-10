@@ -16,6 +16,7 @@
 		1846BFBC24B5CBB700DA47C6 /* ProjectTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846BFBB24B5CBB700DA47C6 /* ProjectTableCell.swift */; };
 		1846BFBF24B5D8DE00DA47C6 /* SearchCompetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846BFBE24B5D8DE00DA47C6 /* SearchCompetitionViewController.swift */; };
 		1846BFC124B5D90700DA47C6 /* CompetitionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846BFC024B5D90700DA47C6 /* CompetitionTableCell.swift */; };
+		1846BFC324B8A0F000DA47C6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846BFC224B8A0F000DA47C6 /* HomeViewController.swift */; };
 		1846F024247D078B00A59E33 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846F023247D078B00A59E33 /* SignUpViewController.swift */; };
 		1846F026247D07A700A59E33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846F025247D07A700A59E33 /* LoginViewController.swift */; };
 		1846F02B247D17F300A59E33 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846F02A247D17F200A59E33 /* Utilities.swift */; };
@@ -25,7 +26,6 @@
 		18E02CC9249F5BC500B03BA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E02CC8249F5BC500B03BA8 /* Constants.swift */; };
 		71283C032477CC2300A5AE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71283C022477CC2300A5AE60 /* AppDelegate.swift */; };
 		71283C052477CC2300A5AE60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71283C042477CC2300A5AE60 /* SceneDelegate.swift */; };
-		71283C072477CC2300A5AE60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71283C062477CC2300A5AE60 /* ViewController.swift */; };
 		71283C0A2477CC2300A5AE60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71283C082477CC2300A5AE60 /* Main.storyboard */; };
 		71283C0C2477CC2500A5AE60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71283C0B2477CC2500A5AE60 /* Assets.xcassets */; };
 		71283C0F2477CC2500A5AE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71283C0D2477CC2500A5AE60 /* LaunchScreen.storyboard */; };
@@ -55,6 +55,7 @@
 		1846BFBB24B5CBB700DA47C6 /* ProjectTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableCell.swift; sourceTree = "<group>"; };
 		1846BFBE24B5D8DE00DA47C6 /* SearchCompetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCompetitionViewController.swift; sourceTree = "<group>"; };
 		1846BFC024B5D90700DA47C6 /* CompetitionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionTableCell.swift; sourceTree = "<group>"; };
+		1846BFC224B8A0F000DA47C6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1846F023247D078B00A59E33 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1846F025247D07A700A59E33 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1846F02A247D17F200A59E33 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -67,7 +68,6 @@
 		71283BFF2477CC2300A5AE60 /* TeamUp!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TeamUp!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71283C022477CC2300A5AE60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71283C042477CC2300A5AE60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		71283C062477CC2300A5AE60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		71283C092477CC2300A5AE60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		71283C0B2477CC2500A5AE60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71283C0E2477CC2500A5AE60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -162,10 +162,10 @@
 		18574E3224B5B9BF00831817 /* log in and sign up */ = {
 			isa = PBXGroup;
 			children = (
-				71283C062477CC2300A5AE60 /* ViewController.swift */,
 				1846F023247D078B00A59E33 /* SignUpViewController.swift */,
 				1846F025247D07A700A59E33 /* LoginViewController.swift */,
 				183F807E24A48658000E26BE /* CategoryViewController.swift */,
+				1846BFC224B8A0F000DA47C6 /* HomeViewController.swift */,
 			);
 			path = "log in and sign up";
 			sourceTree = "<group>";
@@ -414,7 +414,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71283C072477CC2300A5AE60 /* ViewController.swift in Sources */,
 				1846BFBC24B5CBB700DA47C6 /* ProjectTableCell.swift in Sources */,
 				183F808D24A5CA49000E26BE /* TableCell.swift in Sources */,
 				7167EC1F24B33D820002A3DD /* VideoPlayerViewController.swift in Sources */,
@@ -441,6 +440,7 @@
 				7167EC2124B33DCB0002A3DD /* Extensions.swift in Sources */,
 				183F808124A48658000E26BE /* CategoryViewController.swift in Sources */,
 				1846BFC124B5D90700DA47C6 /* CompetitionTableCell.swift in Sources */,
+				1846BFC324B8A0F000DA47C6 /* HomeViewController.swift in Sources */,
 				1846F026247D07A700A59E33 /* LoginViewController.swift in Sources */,
 				718D037D24827ACE00BFF0F8 /* ProjectsCreationViewController.swift in Sources */,
 				71283C052477CC2300A5AE60 /* SceneDelegate.swift in Sources */,
