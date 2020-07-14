@@ -126,7 +126,7 @@ class EditProfileViewController: UIViewController {
             }
               
             // Add a new document in collection "cities"
-            db.collection("cities").document(documentID).setData([
+            db.collection("users").document(documentID).setData([
                 "lastname": lastName,
                 "email": email,
                 "firstname": firstName,

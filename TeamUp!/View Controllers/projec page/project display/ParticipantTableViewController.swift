@@ -37,42 +37,88 @@ class ParticipantTableViewController: UIViewController, UITableViewDelegate, UIT
         _tableView.allowsMultipleSelectionDuringEditing = true
         
     }
-    
+    var documentID = ""
+    /*
     func loadData() {
-        db.collection("users123").document("nPuJKSBpWBtZ4OnCGf1a").collection("Projects").getDocuments() {
-               querySnapshot, error in
-               if let error = error {
-                   print("\(error.localizedDescription)")
-               }else{
-                self.ProjectArray = querySnapshot!.documents.compactMap({Project(dictionary: $0.data())})
-                   DispatchQueue.main.async {
-                       self._tableView.reloadData()
-                   }
-               }
-           }
-       }
+            
+            let db = Firestore.firestore()
+        
+            //find uid
+            var CURRENT_USER_UID: String? {
+                if let currentUserUid = Auth.auth().currentUser?.uid {
+                    return currentUserUid
+                }
+                return nil
+            }
+        
+            //check whether the modules is alrdy there
+            db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
+                 if let error = error {
+                     print("Error getting documents: \(error.localizedDescription)")
+                 } else {
+                     for i in querySnapshot!.documents {
+                        let id = i.documentID
+                        self.documentID = id
+                        print("done snapshot, \(self.documentID)")
+                        let docRef = db.collection("users").document(self.documentID).collection("projects")
+                        
+                        docRef.whereField("approval", isEqualTo: true).getDocuments() {
+                            querySnapshot, error in
+                            if let error = error {
+                                print("\(error.localizedDescription)")
+                            } else{
+                             self.ProjectArray = querySnapshot!.documents.compactMap({Project(dictionary: $0.data())})
+                                DispatchQueue.main.async {
+                                    self._tableView.reloadData()
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+    }*/
        
       func checkForUpdates() {
-           db.collection("users123").document("nPuJKSBpWBtZ4OnCGf1a").collection("Projects")
-               .addSnapshotListener(includeMetadataChanges: true) {
-                   querySnapshot, error in
-                   
-                   guard let snapshot = querySnapshot else {return}
-                   
-                   snapshot.documentChanges.forEach {
-                       diff in
+            let db = Firestore.firestore()
+            
+                //find uid
+                var CURRENT_USER_UID: String? {
+                    if let currentUserUid = Auth.auth().currentUser?.uid {
+                        return currentUserUid
+                    }
+                    return nil
+                }
+            
+                //check whether the modules is alrdy there
+                db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
+                     if let error = error {
+                         print("Error getting documents: \(error.localizedDescription)")
+                     } else {
+                         for i in querySnapshot!.documents {
+                            let id = i.documentID
+                            self.documentID = id
+                            print("done snapshot, \(self.documentID)")
+                            let docRef = db.collection("users").document(self.documentID).collection("projects")
+                            
+                            docRef.addSnapshotListener(includeMetadataChanges: true) {
+                                querySnapshot, error in
+                                guard let snapshot = querySnapshot else {return}
+                                snapshot.documentChanges.forEach {
+                                    diff in
                        
-                       if diff.type == .added {
-                           self.ProjectArray.append(Project(dictionary: diff.document.data())!)
-                           DispatchQueue.main.async {
-                               self._tableView.reloadData()
-                           }
-                       }
-                   }
+                                    if diff.type == .added {
+                                        self.ProjectArray.append(Project(dictionary: diff.document.data())!)
+                                        DispatchQueue.main.async {
+                                            self._tableView.reloadData()
+                                        }
+                                    }
+                                }
                    
-           }
-       }
-    
+                            }
+                        }
+                    }
+            }
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -119,7 +165,7 @@ class ParticipantTableViewController: UIViewController, UITableViewDelegate, UIT
                 }
             }})
 
-            ProjectArray.remove(at: indexPath.row)
+        ProjectArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
 
         }

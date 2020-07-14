@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hfr-XW-krP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YyS-8X-RFe">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -225,7 +225,6 @@
                     <connections>
                         <outlet property="loginButton" destination="Zhe-4K-kMs" id="Zbj-qF-MDS"/>
                         <outlet property="signinButton" destination="1SZ-aw-P7j" id="INw-e4-1Q2"/>
-                        <outlet property="signupButton" destination="1SZ-aw-P7j" id="ABI-S7-pKW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rl-IF-tGR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -756,23 +755,40 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bd-Hn-ZvM">
-                                                    <rect key="frame" x="178" y="13" width="236" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bd-Hn-ZvM">
+                                                    <rect key="frame" x="274.33333333333331" y="24" width="41.666666666666686" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFt-gB-fNg">
-                                                    <rect key="frame" x="0.0" y="18" width="154" height="33"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFt-gB-fNg">
+                                                    <rect key="frame" x="4" y="24" width="41.666666666666664" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jej-ju-eig">
+                                                    <rect key="frame" x="324" y="19" width="86" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <color key="tintColor" red="0.84705882349999995" green="0.85882352939999995" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="+"/>
+                                                    <connections>
+                                                        <action selector="addTapped:" destination="cdX-nH-w8l" eventType="touchUpInside" id="1Ye-5i-Rg3"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wFt-gB-fNg" firstAttribute="centerY" secondItem="DkB-W9-hRF" secondAttribute="centerY" id="KoA-ki-0dX"/>
+                                                <constraint firstItem="jej-ju-eig" firstAttribute="leading" secondItem="3Bd-Hn-ZvM" secondAttribute="trailing" constant="8" id="Otw-he-MJa"/>
+                                                <constraint firstItem="3Bd-Hn-ZvM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wFt-gB-fNg" secondAttribute="trailing" constant="8" symbolic="YES" id="ehp-lJ-6Ne"/>
+                                                <constraint firstItem="wFt-gB-fNg" firstAttribute="leading" secondItem="DkB-W9-hRF" secondAttribute="leading" constant="4" id="mdL-Lu-9jh"/>
+                                                <constraint firstItem="3Bd-Hn-ZvM" firstAttribute="centerY" secondItem="DkB-W9-hRF" secondAttribute="centerY" id="nJw-er-9w2"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addButton" destination="jej-ju-eig" id="LGY-U4-h0Z"/>
                                             <outlet property="codeLbl" destination="wFt-gB-fNg" id="1xR-S4-soX"/>
                                             <outlet property="nameLbl" destination="3Bd-Hn-ZvM" id="gHp-iu-3kc"/>
                                         </connections>
@@ -801,7 +817,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFi-6i-lGj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5590" y="1412"/>
+            <point key="canvasLocation" x="5589.8550724637689" y="1411.9565217391305"/>
         </scene>
         <!--Koloda View Controller-->
         <scene sceneID="5Lr-9d-f3T">
@@ -1151,21 +1167,6 @@
             </objects>
             <point key="canvasLocation" x="7326" y="-1233"/>
         </scene>
-        <!--Explore View Controller-->
-        <scene sceneID="t8v-Id-zcV">
-            <objects>
-                <viewController id="rol-Xc-CP0" customClass="ExploreViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dvE-gE-eeB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="ib4-Il-36Z"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LIL-lE-fa1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="11519" y="-912"/>
-        </scene>
         <!--Search Project View Controller-->
         <scene sceneID="xb2-qm-snG">
             <objects>
@@ -1233,6 +1234,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1b-N6-DJt">
+                                                    <rect key="frame" x="356" y="44" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.2784313725" green="0.41960784309999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="+">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addTapped:" destination="f00-lI-4Ql" eventType="touchUpInside" id="GaN-Eb-VSS"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="xPV-Yc-1ah" firstAttribute="leading" secondItem="oK6-Az-cw5" secondAttribute="trailing" constant="7" id="6Fm-43-c9H"/>
@@ -1250,6 +1262,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addButton" destination="K1b-N6-DJt" id="kQN-c0-gtj"/>
                                             <outlet property="descriptionLbl" destination="Eoh-TR-lWm" id="is7-1a-B2q"/>
                                             <outlet property="nameLbl" destination="xPV-Yc-1ah" id="7HD-Rs-PCT"/>
                                             <outlet property="organiserLbl" destination="8fv-hs-WNL" id="0N4-gR-RVO"/>
@@ -1349,6 +1362,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ez1-rg-7xt">
+                                                    <rect key="frame" x="356" y="44" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.2784313725" green="0.41960784309999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="+">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addTapped:" destination="Fep-dB-SF9" eventType="touchUpInside" id="g8P-GZ-rbe"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="XA3-gc-rqf" firstAttribute="leading" secondItem="XxF-86-uMQ" secondAttribute="leadingMargin" constant="16" id="JXE-XJ-dVg"/>
@@ -1366,6 +1390,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addButton" destination="Ez1-rg-7xt" id="ZV7-tv-QdM"/>
                                             <outlet property="descriptionLbl" destination="lCM-qa-2b8" id="r2A-SG-Xup"/>
                                             <outlet property="nameLbl" destination="dca-Tv-liI" id="aIO-Zt-bcx"/>
                                             <outlet property="organiserLbl" destination="fdm-O3-pd2" id="6ow-a6-VpM"/>

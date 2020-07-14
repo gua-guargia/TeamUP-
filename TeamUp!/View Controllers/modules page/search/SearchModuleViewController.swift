@@ -55,7 +55,7 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
                     let code = i.get("code") as! String
                     let teammateNumber = i.get("teammateNumber") as! String
                     self.modulesArray.append(ModulesStruct(id: id, name: name, code: code,teammateNumber: teammateNumber))
-                    print("done snapshot, \(name), \(code)")
+                     print("done snapshot, \(name), \(code)")
                 //self.table.reloadData()
             }
             self.currentModuleArray = self.modulesArray
@@ -64,7 +64,7 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
         }
         print("initialize finished")
         setUpSearchBar()
-        alterLayout()
+  //      alterLayout()
         //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style:.plain, target: .nil, acction: nil)
         
     }
@@ -87,7 +87,9 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
         //cell.nameLbl.text = "no"
         cell.codeLbl.text = currentModuleArray[indexPath.row].code
         cell.nameLbl.text = currentModuleArray[indexPath.row].name
-        print("here is for the cell")
+        cell.backgroundColor = UIColor.getRandomColor(index:indexPath.row)
+        checkSelect(code: cell.codeLbl.text!, cell: cell)
+        //print("here is for the cell")
         
         return cell
     }
@@ -95,6 +97,10 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
+    //to select the modules
+
+    
     
     //keep the search bar at the top of the screen
    func alterLayout() {
@@ -125,9 +131,47 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
             return
         }
         currentModuleArray = modulesArray.filter({ module -> Bool in
-            module.code.lowercased().contains(searchText.lowercased())
+            module.code.lowercased().contains(searchText.lowercased()) || module.name.lowercased().contains(searchText.lowercased())
         })
         table.reloadData()
+    }
+    
+    
+    func checkSelect(code:String, cell:TableCell) {
+        var documentID = ""
+        let db = Firestore.firestore()
+        
+        //find uid
+        var CURRENT_USER_UID: String? {
+            if let currentUserUid = Auth.auth().currentUser?.uid {
+                return currentUserUid
+            }
+            return nil
+        }
+        
+        //check whether the modules is alrdy there
+        db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
+                 if let error = error {
+                     print("Error getting documents: \(error.localizedDescription)")
+                 } else {
+                     for i in querySnapshot!.documents {
+                        let id = i.documentID
+                        documentID = id
+                        print("done snapshot, \(documentID), \(code)")
+                        let docRef = db.collection("users").document(documentID).collection("modules").document(code)
+                        
+                        docRef.getDocument { (document, error) in
+                            if let document = document, document.exists {
+                                print("true, the doc exists")
+                                cell.addButton.setTitle("selected", for: UIControl.State())
+                            } else {
+                                print("false, the doc doesn't exist")
+                                cell.addButton.setTitle("+", for: UIControl.State())
+                            }
+                        }
+                     }
+                }
+        }
     }
     
 }

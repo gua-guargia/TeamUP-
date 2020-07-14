@@ -78,6 +78,8 @@ class SearchCompetitionViewController: UIViewController, UITableViewDataSource, 
             cell.webLbl.text = currentCompetitionArray[indexPath.row].WebLink
             cell.nameLbl.text = currentCompetitionArray[indexPath.row].Name
             cell.descriptionLbl.text = currentCompetitionArray[indexPath.row].Description
+            cell.backgroundColor = UIColor.getRandomColor(index:indexPath.row)
+            checkSelect(name: cell.nameLbl.text!, cell: cell)
             print("here is for the cell")
             
             return cell
@@ -88,17 +90,17 @@ class SearchCompetitionViewController: UIViewController, UITableViewDataSource, 
         }
         
         //keep the search bar at the top of the screen
-/*       func alterLayout() {
+       func alterLayout() {
             table.tableHeaderView = UIView()
             //search bar in section header
             table.estimatedSectionHeaderHeight = 100
             //search bar in navigation bar
             navigationItem.titleView = searchBar
             searchBar.showsScopeBar = false
-            searchBar.placeholder = "Search your modules here"
+            searchBar.placeholder = "Search the competition name/organiser/category here"
             self.navigationController?.hidesBarsOnSwipe = true
         }
-*/
+
         //set up the search bar
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             guard !searchText.isEmpty else {
@@ -107,9 +109,47 @@ class SearchCompetitionViewController: UIViewController, UITableViewDataSource, 
                 return
             }
             currentCompetitionArray = competitionArray.filter({ competition -> Bool in
-                competition.Name.lowercased().contains(searchText.lowercased())
+                competition.Name.lowercased().contains(searchText.lowercased()) || competition.Organiser.lowercased().contains(searchText.lowercased()) || competition.Description.lowercased().contains(searchText.lowercased())
             })
             table.reloadData()
+        }
+    
+    
+        func checkSelect(name:String, cell:CompetitionTableCell) {
+            var documentID = ""
+            let db = Firestore.firestore()
+        
+            //find uid
+            var CURRENT_USER_UID: String? {
+                if let currentUserUid = Auth.auth().currentUser?.uid {
+                    return currentUserUid
+                }
+                return nil
+            }
+        
+            //check whether the modules is alrdy there
+            db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
+                 if let error = error {
+                     print("Error getting documents: \(error.localizedDescription)")
+                 } else {
+                     for i in querySnapshot!.documents {
+                        let id = i.documentID
+                        documentID = id
+                        print("done snapshot, \(documentID), \(name)")
+                        let docRef = db.collection("users").document(documentID).collection("projects").document(name)
+                        
+                        docRef.getDocument { (document, error) in
+                            if let document = document, document.exists {
+                                print("true, the doc exists")
+                                cell.addButton.setTitle("selected", for: UIControl.State())
+                            } else {
+                                print("false, the doc doesn't exist")
+                                cell.addButton.setTitle("+", for: UIControl.State())
+                            }
+                        }
+                     }
+                }
+            }
         }
 
 }
