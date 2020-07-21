@@ -31,6 +31,21 @@ struct Project {
     
 }
 
+struct ProjectDisp {
+    var name:String
+    var approval:Bool
+    
+    var dictionary:[String:Any] {
+        return [
+            "name": name,
+            "approval": approval
+        ]
+    }
+    
+}
+
+
+
 struct Competition {
     var Name:String
     var Organiser:String
@@ -74,6 +89,14 @@ extension Project : DocumentSerializable {
         
         
         self.init(Name: Name, Organiser: Organiser, Description: Description, Role: Role)
+    }
+}
+
+extension ProjectDisp : DocumentSerializable {
+    init?(dictionary: [String : Any]) {
+        guard let name = dictionary["name"] as? String,
+            let approval = dictionary["approval"] as? Bool else {return nil}
+        self.init(name: name, approval: approval)
     }
 }
 

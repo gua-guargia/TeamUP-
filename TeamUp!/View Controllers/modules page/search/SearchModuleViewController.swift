@@ -64,7 +64,7 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
         }
         print("initialize finished")
         setUpSearchBar()
-  //      alterLayout()
+        alterLayout()
         //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style:.plain, target: .nil, acction: nil)
         
     }
