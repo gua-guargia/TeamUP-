@@ -36,6 +36,12 @@ struct ModulesStruct : Identifiable{
     var teammateNumber:String
 }
 
+struct ContactStruct : Identifiable{
+    var id:String
+    var name:String
+    var user2uid:String
+}
+
 struct ProfileInfo{
     var name:String
     var lastName:String

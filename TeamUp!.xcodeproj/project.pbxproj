@@ -34,6 +34,8 @@
 		718D038124829FC100BFF0F8 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D038024829FC100BFF0F8 /* File.swift */; };
 		71AEEEA524A1E50F005CC75F /* ParticipantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEEEA424A1E50F005CC75F /* ParticipantTableViewController.swift */; };
 		71AEEEA724A1E67B005CC75F /* SelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEEEA624A1E67B005CC75F /* SelectTableViewController.swift */; };
+		71D3184D24C2FDCF002EFFF0 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3184C24C2FDCF002EFFF0 /* TableViewCell.swift */; };
+		71D3184F24C6E78D002EFFF0 /* ChatDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3184E24C6E78D002EFFF0 /* ChatDViewController.swift */; };
 		899E989FCE96E3B7192B6AEC /* Pods_TeamUp_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D265D9CAF8E0E458D1D240 /* Pods_TeamUp_.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 		718D038024829FC100BFF0F8 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		71AEEEA424A1E50F005CC75F /* ParticipantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewController.swift; sourceTree = "<group>"; };
 		71AEEEA624A1E67B005CC75F /* SelectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableViewController.swift; sourceTree = "<group>"; };
+		71D3184C24C2FDCF002EFFF0 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		71D3184E24C6E78D002EFFF0 /* ChatDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDViewController.swift; sourceTree = "<group>"; };
 		BAF7213EC7D0253145F37C78 /* Pods-TeamUp!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamUp!.release.xcconfig"; path = "Target Support Files/Pods-TeamUp!/Pods-TeamUp!.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +107,8 @@
 				18574E2224AB323900831817 /* ProfileViewController.swift */,
 				18574E2424AB327A00831817 /* EditProfileViewController.swift */,
 				7167EC2824B5D0960002A3DD /* ChatViewController.swift */,
+				71D3184C24C2FDCF002EFFF0 /* TableViewCell.swift */,
+				71D3184E24C6E78D002EFFF0 /* ChatDViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -312,7 +318,9 @@
 				718D038124829FC100BFF0F8 /* File.swift in Sources */,
 				71AEEEA724A1E67B005CC75F /* SelectTableViewController.swift in Sources */,
 				183F808B24A5C966000E26BE /* SearchModuleViewController.swift in Sources */,
+				71D3184F24C6E78D002EFFF0 /* ChatDViewController.swift in Sources */,
 				7167EC2924B5D0960002A3DD /* ChatViewController.swift in Sources */,
+				71D3184D24C2FDCF002EFFF0 /* TableViewCell.swift in Sources */,
 				183F808124A48658000E26BE /* CategoryViewController.swift in Sources */,
 				1846F026247D07A700A59E33 /* LoginViewController.swift in Sources */,
 				718D037D24827ACE00BFF0F8 /* ProjectsCreationViewController.swift in Sources */,
