@@ -144,7 +144,7 @@ class moduleDisplayViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: "koloda")as! KolodaViewController
-        vc.projectName = moduleArray[indexPath.row]
+     //   vc.projectName = moduleArray[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
         print("done, I'm pushing the display module page")
     }

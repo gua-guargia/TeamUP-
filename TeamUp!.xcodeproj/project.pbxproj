@@ -39,16 +39,14 @@
 		71283C0C2477CC2500A5AE60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71283C0B2477CC2500A5AE60 /* Assets.xcassets */; };
 		71283C0F2477CC2500A5AE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71283C0D2477CC2500A5AE60 /* LaunchScreen.storyboard */; };
 		7129615924A34C99003E801E /* KolodaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7129615824A34C99003E801E /* KolodaViewController.swift */; };
-		7167EC1724B33D140002A3DD /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC1624B33D140002A3DD /* ConversationsViewController.swift */; };
 		7167EC1924B33D330002A3DD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC1824B33D330002A3DD /* ChatViewController.swift */; };
-		7167EC1B24B33D500002A3DD /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC1A24B33D500002A3DD /* PhotoViewerViewController.swift */; };
-		7167EC1D24B33D690002A3DD /* NewConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC1C24B33D690002A3DD /* NewConversationsViewController.swift */; };
-		7167EC1F24B33D820002A3DD /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC1E24B33D820002A3DD /* VideoPlayerViewController.swift */; };
-		7167EC2124B33DCB0002A3DD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC2024B33DCB0002A3DD /* Extensions.swift */; };
-		7167EC2324B33DE80002A3DD /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7167EC2224B33DE80002A3DD /* DatabaseManager.swift */; };
 		718D037D24827ACE00BFF0F8 /* ProjectsCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D037C24827ACE00BFF0F8 /* ProjectsCreationViewController.swift */; };
 		718D037F24827EB100BFF0F8 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D037E24827EB100BFF0F8 /* ProjectsTableViewController.swift */; };
 		718D038124829FC100BFF0F8 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D038024829FC100BFF0F8 /* File.swift */; };
+		71D3185124C97533002EFFF0 /* chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3185024C97533002EFFF0 /* chat.swift */; };
+		71D3185324C97541002EFFF0 /* message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3185224C97541002EFFF0 /* message.swift */; };
+		71D3185524C9767D002EFFF0 /* ChatDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3185424C9767D002EFFF0 /* ChatDViewController.swift */; };
+		71D3185724C976BA002EFFF0 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3185624C976BA002EFFF0 /* TableViewCell.swift */; };
 		899E989FCE96E3B7192B6AEC /* Pods_TeamUp_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D265D9CAF8E0E458D1D240 /* Pods_TeamUp_.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,16 +87,14 @@
 		71283C0E2477CC2500A5AE60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71283C102477CC2500A5AE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7129615824A34C99003E801E /* KolodaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KolodaViewController.swift; sourceTree = "<group>"; };
-		7167EC1624B33D140002A3DD /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		7167EC1824B33D330002A3DD /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		7167EC1A24B33D500002A3DD /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
-		7167EC1C24B33D690002A3DD /* NewConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsViewController.swift; sourceTree = "<group>"; };
-		7167EC1E24B33D820002A3DD /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
-		7167EC2024B33DCB0002A3DD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		7167EC2224B33DE80002A3DD /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		718D037C24827ACE00BFF0F8 /* ProjectsCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCreationViewController.swift; sourceTree = "<group>"; };
 		718D037E24827EB100BFF0F8 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
 		718D038024829FC100BFF0F8 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		71D3185024C97533002EFFF0 /* chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chat.swift; sourceTree = "<group>"; };
+		71D3185224C97541002EFFF0 /* message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = message.swift; sourceTree = "<group>"; };
+		71D3185424C9767D002EFFF0 /* ChatDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDViewController.swift; sourceTree = "<group>"; };
+		71D3185624C976BA002EFFF0 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		BAF7213EC7D0253145F37C78 /* Pods-TeamUp!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamUp!.release.xcconfig"; path = "Target Support Files/Pods-TeamUp!/Pods-TeamUp!.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,11 +212,9 @@
 		18574E3524B5BAED00831817 /* chat */ = {
 			isa = PBXGroup;
 			children = (
-				7167EC1624B33D140002A3DD /* ConversationsViewController.swift */,
 				7167EC1824B33D330002A3DD /* ChatViewController.swift */,
-				7167EC1A24B33D500002A3DD /* PhotoViewerViewController.swift */,
-				7167EC1C24B33D690002A3DD /* NewConversationsViewController.swift */,
-				7167EC1E24B33D820002A3DD /* VideoPlayerViewController.swift */,
+				71D3185424C9767D002EFFF0 /* ChatDViewController.swift */,
+				71D3185624C976BA002EFFF0 /* TableViewCell.swift */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -277,8 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				718D038024829FC100BFF0F8 /* File.swift */,
-				7167EC2024B33DCB0002A3DD /* Extensions.swift */,
-				7167EC2224B33DE80002A3DD /* DatabaseManager.swift */,
+				71D3185024C97533002EFFF0 /* chat.swift */,
+				71D3185224C97541002EFFF0 /* message.swift */,
 			);
 			path = class;
 			sourceTree = "<group>";
@@ -454,11 +448,8 @@
 				1846BFBC24B5CBB700DA47C6 /* ProjectTableCell.swift in Sources */,
 				18A174A024C8234000713737 /* waitingCell.swift in Sources */,
 				183F808D24A5CA49000E26BE /* TableCell.swift in Sources */,
-				7167EC1F24B33D820002A3DD /* VideoPlayerViewController.swift in Sources */,
 				7167EC1924B33D330002A3DD /* ChatViewController.swift in Sources */,
-				7167EC1B24B33D500002A3DD /* PhotoViewerViewController.swift in Sources */,
 				183F808224A48658000E26BE /* IndividualViewController.swift in Sources */,
-				7167EC1D24B33D690002A3DD /* NewConversationsViewController.swift in Sources */,
 				18A1749024C6EA6200713737 /* moduleDisplayViewController.swift in Sources */,
 				7129615924A34C99003E801E /* KolodaViewController.swift in Sources */,
 				18E02CC9249F5BC500B03BA8 /* Constants.swift in Sources */,
@@ -466,18 +457,19 @@
 				18A1749224C70A9C00713737 /* participantDisplayViewController.swift in Sources */,
 				18574E2524AB327A00831817 /* EditProfileViewController.swift in Sources */,
 				1846BFBF24B5D8DE00DA47C6 /* SearchCompetitionViewController.swift in Sources */,
+				71D3185524C9767D002EFFF0 /* ChatDViewController.swift in Sources */,
 				1846BFC824C16A1300DA47C6 /* moduleDisplayCell.swift in Sources */,
-				7167EC1724B33D140002A3DD /* ConversationsViewController.swift in Sources */,
 				1846BFC624C1526B00DA47C6 /* projectDisplayCell.swift in Sources */,
 				718D037F24827EB100BFF0F8 /* ProjectsTableViewController.swift in Sources */,
 				18574E2324AB323900831817 /* ProfileViewController.swift in Sources */,
+				71D3185124C97533002EFFF0 /* chat.swift in Sources */,
 				1846F02B247D17F300A59E33 /* Utilities.swift in Sources */,
 				1846F024247D078B00A59E33 /* SignUpViewController.swift in Sources */,
 				718D038124829FC100BFF0F8 /* File.swift in Sources */,
+				71D3185724C976BA002EFFF0 /* TableViewCell.swift in Sources */,
 				18574E2E24B5B79C00831817 /* SearchProjectViewController.swift in Sources */,
 				18A1749524C70F8700713737 /* creatorDisplayViewController.swift in Sources */,
 				183F808B24A5C966000E26BE /* SearchModuleViewController.swift in Sources */,
-				7167EC2124B33DCB0002A3DD /* Extensions.swift in Sources */,
 				183F808124A48658000E26BE /* CategoryViewController.swift in Sources */,
 				1846BFC124B5D90700DA47C6 /* CompetitionTableCell.swift in Sources */,
 				1846BFC324B8A0F000DA47C6 /* HomeViewController.swift in Sources */,
@@ -486,8 +478,8 @@
 				1846F026247D07A700A59E33 /* LoginViewController.swift in Sources */,
 				18A1749A24C718C500713737 /* competitionProjectViewController.swift in Sources */,
 				718D037D24827ACE00BFF0F8 /* ProjectsCreationViewController.swift in Sources */,
+				71D3185324C97541002EFFF0 /* message.swift in Sources */,
 				71283C052477CC2300A5AE60 /* SceneDelegate.swift in Sources */,
-				7167EC2324B33DE80002A3DD /* DatabaseManager.swift in Sources */,
 				18A1749C24C718E800713737 /* competitionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
