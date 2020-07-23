@@ -1,40 +1,36 @@
 //
-//  TableCell.swift
+//  waitingCell.swift
 //  TeamUp!
 //
-//  Created by apple on 6/26/20.
+//  Created by apple on 7/22/20.
 //  Copyright © 2020 Alicia Ho. All rights reserved.
 //
 
 import UIKit
 import FirebaseAuth
 import Firebase
+/*
+class waitingCell: UITableViewCell {
 
-class TableCell: UITableViewCell {
-
-    @IBOutlet var codeLbl: UILabel!
+    @IBOutlet weak var majorLbl: UILabel!
     
-    @IBOutlet var nameLbl: UILabel!
+    @IBOutlet weak var nameLbl: UILabel!
     
     @IBOutlet weak var addButton: UIButton!
-    
-    var documentID = ""
-    var documentIDCode = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+
     
-    @IBAction func addTapped(_ sender: UIButton) {
-        //show selected
+    @IBAction func addTaped(_ sender: UIButton) {
         if(addButton.title(for: UIControl.State()) != "+"){
             print("selected already")
             return
@@ -50,8 +46,9 @@ class TableCell: UITableViewCell {
                 return nil
             }
         
-            let code = self.codeLbl.text!
+            
             let name = self.nameLbl.text!
+            let major = self.majorLbl.text!
         
             //update the info about modules in user
             let db = Firestore.firestore()
@@ -97,6 +94,8 @@ class TableCell: UITableViewCell {
                 }
             }
         }
+        
+        
     }
     
-}
+}*/

@@ -13,12 +13,19 @@ import FirebaseFirestore
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+        UITabBar.appearance().barTintColor = .black
+        UITabBar.appearance().tintColor = .red
+        
+        window = UIWindow()
+        window?.makeKeyAndVisible()
+        window?.rootViewController = UINavigationController(rootViewController: ProfileViewController())
+        
         //UINavigationBar.appearance().barTintColor = UIColor.yellow
         //UINavigationBar.appearance().tintColor = UIColor.orange
         

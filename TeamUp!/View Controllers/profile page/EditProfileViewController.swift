@@ -29,25 +29,30 @@ class EditProfileViewController: UIViewController {
     
     var profileInfo = [ProfileInfo]()
     var documentID:String = ""
-    let db = Firestore.firestore()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         //customToolbar.set
+        print("\(self.profileInfo)")
         
-        setUpElements()
+        //set the navigation
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
+        
+        view.backgroundColor = .gray
     
         //to get the name information
-          
         var CURRENT_USER_UID: String? {
             if let currentUserUid = Auth.auth().currentUser?.uid {
                 return currentUserUid
             }
             return nil
         }
-        
+        //self.setUpData()
+        /*
+        let db = Firestore.firestore()
         db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
             self.profileInfo.removeAll()
             if let error = error {
@@ -57,6 +62,7 @@ class EditProfileViewController: UIViewController {
                     let id = i.documentID
                     let lastName = i.get("lastname") as! String
                     let firstName = i.get("firstname") as! String
+                    //self.courseText.text = i.get("major") as! String
                     let major = i.get("major") as! String
                     let email = i.get("email") as! String
                     let skills = i.get("skills") as! String
@@ -65,20 +71,66 @@ class EditProfileViewController: UIViewController {
                     self.profileInfo.append(ProfileInfo(name: name, lastName: lastName, firstName: firstName, email: email, modules_taken: modules_taken,skills: skills, major: major))
                     self.documentID = id
                     print("done snapshot, \(firstName), \(lastName)")
+                    
                 }
+                self.setUpData()
             }
-        }
+        }*/
         
-        courseText.text = profileInfo[0].major
-        emailText.text = profileInfo[0].email
-        skillsText.text = profileInfo[0].skills
-        modulesText.text = profileInfo[0].modules_taken
-        lastNameText.text = profileInfo[0].lastName
-        firstNameText.text = profileInfo[0].firstName
         
     }
     
-
+    private func setUpData() {
+        courseText.text = self.profileInfo[0].major
+        emailText.text = self.profileInfo[0].email
+        skillsText.text = self.profileInfo[0].skills
+        modulesText.text = self.profileInfo[0].modules_taken
+        lastNameText.text = self.profileInfo[0].lastName
+        firstNameText.text = self.profileInfo[0].firstName
+        setUpElements()
+    }
+    
+    @objc func handleDone() {
+        print("Handle done")
+        let error = validateFields()
+        if error != nil {
+            //there is something wrong with the fields, show error messge
+            showError(error!)
+        }
+        else {
+            //create the cleaned version of the data
+            let firstName = firstNameText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let lastName = lastNameText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let major = courseText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let email = emailText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let skills = skillsText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let modules = modulesText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                       
+            //update the info
+            var CURRENT_USER_UID: String? {
+                if let currentUserUid = Auth.auth().currentUser?.uid {
+                    return currentUserUid
+                }
+                return nil
+            }
+            let db = Firestore.firestore()
+            // Add a new document in collection "cities"
+            db.collection("users").document(documentID).setData([
+                "lastname": lastName,
+                "email": email,
+                "firstname": firstName,
+                "major": major,
+                "skills":skills,
+                "modules_taken":modules
+            ])
+        }
+    }
+    
+    @objc func handleCancel() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     func setUpElements() {
         //hide the error label
         
@@ -102,41 +154,6 @@ class EditProfileViewController: UIViewController {
         
     }
     
-    @IBAction func saveTapped(_ sender: Any) {
-        let error = validateFields()
-        if error != nil {
-            //there is something wrong with the fields, show error messge
-            showError(error!)
-        }
-        else {
-            //create the cleaned version of the data
-            let firstName = firstNameText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let lastName = lastNameText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let major = courseText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let email = emailText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let skills = skillsText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let modules = modulesText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                       
-            //update the info
-            var CURRENT_USER_UID: String? {
-                if let currentUserUid = Auth.auth().currentUser?.uid {
-                    return currentUserUid
-                }
-                return nil
-            }
-              
-            // Add a new document in collection "cities"
-            db.collection("users").document(documentID).setData([
-                "lastname": lastName,
-                "email": email,
-                "firstname": firstName,
-                "major": major,
-                "skills":skills,
-                "modules_taken":modules
-            ])
-        }
-    }
-    
     func showError(_ message:String) {
         errorLabel.text = message
         errorLabel.alpha = 1
@@ -151,4 +168,13 @@ class EditProfileViewController: UIViewController {
         return nil
     }
     
+}
+
+extension EditProfileViewController: AddProfileInfoDelegate {
+    func addProfileInfo(profileInfo: [ProfileInfo]) {
+        self.dismiss(animated: true) {
+            self.profileInfo = profileInfo
+            self.reloadInputViews()
+        }
+    }
 }

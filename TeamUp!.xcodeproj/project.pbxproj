@@ -30,6 +30,8 @@
 		18A1749724C7104800713737 /* creatorProjectDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1749624C7104800713737 /* creatorProjectDisplayCell.swift */; };
 		18A1749A24C718C500713737 /* competitionProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1749924C718C500713737 /* competitionProjectViewController.swift */; };
 		18A1749C24C718E800713737 /* competitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1749B24C718E800713737 /* competitionCell.swift */; };
+		18A1749E24C8226B00713737 /* waitingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1749D24C8226B00713737 /* waitingListViewController.swift */; };
+		18A174A024C8234000713737 /* waitingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1749F24C8234000713737 /* waitingCell.swift */; };
 		18E02CC9249F5BC500B03BA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E02CC8249F5BC500B03BA8 /* Constants.swift */; };
 		71283C032477CC2300A5AE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71283C022477CC2300A5AE60 /* AppDelegate.swift */; };
 		71283C052477CC2300A5AE60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71283C042477CC2300A5AE60 /* SceneDelegate.swift */; };
@@ -74,6 +76,8 @@
 		18A1749624C7104800713737 /* creatorProjectDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = creatorProjectDisplayCell.swift; sourceTree = "<group>"; };
 		18A1749924C718C500713737 /* competitionProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = competitionProjectViewController.swift; sourceTree = "<group>"; };
 		18A1749B24C718E800713737 /* competitionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = competitionCell.swift; sourceTree = "<group>"; };
+		18A1749D24C8226B00713737 /* waitingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = waitingListViewController.swift; sourceTree = "<group>"; };
+		18A1749F24C8234000713737 /* waitingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = waitingCell.swift; sourceTree = "<group>"; };
 		18E02CC8249F5BC500B03BA8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4C1195300F1980EF575D135E /* Pods-TeamUp!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamUp!.debug.xcconfig"; path = "Target Support Files/Pods-TeamUp!/Pods-TeamUp!.debug.xcconfig"; sourceTree = "<group>"; };
 		51D265D9CAF8E0E458D1D240 /* Pods_TeamUp_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamUp_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				7129615824A34C99003E801E /* KolodaViewController.swift */,
+				18A1749D24C8226B00713737 /* waitingListViewController.swift */,
+				18A1749F24C8234000713737 /* waitingCell.swift */,
 			);
 			path = "matching system";
 			sourceTree = "<group>";
@@ -446,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1846BFBC24B5CBB700DA47C6 /* ProjectTableCell.swift in Sources */,
+				18A174A024C8234000713737 /* waitingCell.swift in Sources */,
 				183F808D24A5CA49000E26BE /* TableCell.swift in Sources */,
 				7167EC1F24B33D820002A3DD /* VideoPlayerViewController.swift in Sources */,
 				7167EC1924B33D330002A3DD /* ChatViewController.swift in Sources */,
@@ -474,6 +481,7 @@
 				183F808124A48658000E26BE /* CategoryViewController.swift in Sources */,
 				1846BFC124B5D90700DA47C6 /* CompetitionTableCell.swift in Sources */,
 				1846BFC324B8A0F000DA47C6 /* HomeViewController.swift in Sources */,
+				18A1749E24C8226B00713737 /* waitingListViewController.swift in Sources */,
 				18A1749724C7104800713737 /* creatorProjectDisplayCell.swift in Sources */,
 				1846F026247D07A700A59E33 /* LoginViewController.swift in Sources */,
 				18A1749A24C718C500713737 /* competitionProjectViewController.swift in Sources */,

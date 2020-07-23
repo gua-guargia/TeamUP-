@@ -12,8 +12,12 @@ import FirebaseFirestore
 import Firebase
 import FirebaseAuth
 
-class ProfileViewController: UIViewController{
+protocol AddProfileInfoDelegate {
+    func addProfileInfo(profileInfo: [ProfileInfo])
+}
 
+class ProfileViewController: UIViewController{
+    var delegate: AddProfileInfoDelegate?
     
     @IBOutlet weak var userNameLabel: UILabel!
     
@@ -31,6 +35,11 @@ class ProfileViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       //self.navigationController?.navigationBar.prefersLargeTitles = true
+        //self.navigationItem.title = "Profile"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleAddContact))
+        view.backgroundColor = .gray
         
         //to get the name information
         var CURRENT_USER_UID: String? {
@@ -59,9 +68,19 @@ class ProfileViewController: UIViewController{
                 print("done snapshot, \(firstName), \(lastName)")
             }
             self.setUpData()
+            //let vc = storyboard?.instantiateViewController(withIdentifier:"editProfile") as! EditProfileViewController
+            //vc.profileInfo = self.profileInfo
         }
     }
     
+    //func
+    @objc func handleAddContact() {
+        let reader = self.profileInfo
+        delegate?.addProfileInfo(profileInfo: reader)
+        self.present(UINavigationController(rootViewController: EditProfileViewController()), animated: true, completion: nil)
+    }
+    
+    //set up data
     private func setUpData() {
         courseLabel.text = self.profileInfo[0].major
         emailLabel.text = self.profileInfo[0].email
@@ -69,6 +88,7 @@ class ProfileViewController: UIViewController{
         modulesTakenLabel.text = self.profileInfo[0].modules_taken
         userNameLabel.text = self.profileInfo[0].name
         profileImage.setImageForName(self.profileInfo[0].name, backgroundColor: UIColor.black, circular: true, textAttributes: nil, gradient: false)
+        print("\(self.profileInfo)")
     }
 
     @IBAction func signOutTapped(_ sender: Any) {
