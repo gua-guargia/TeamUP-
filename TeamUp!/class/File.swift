@@ -17,7 +17,6 @@ struct kolodaReader {
     var name:String
     var type:String
     var status:Bool
-    
 }
 
 

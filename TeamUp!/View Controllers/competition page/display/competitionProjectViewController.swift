@@ -144,7 +144,7 @@ class competitionProjectViewController: UIViewController, UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: "koloda")as! KolodaViewController
-      //  vc.competitionName = moduleArray[indexPath.row]
+        vc.passInfo = kolodaReader(name: moduleArray[indexPath.row], type: "project", status: true)
         self.navigationController?.pushViewController(vc, animated: true)
         print("done, I'm pushing the display module page")
     }

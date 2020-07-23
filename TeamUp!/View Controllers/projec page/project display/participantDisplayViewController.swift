@@ -26,7 +26,17 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
         //loadData()
         //checkForUpdates()
         loadProject()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAdd))
         
+    }
+    
+    @objc func handleAdd() {
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let vc = storyboard?.instantiateViewController(identifier: "koloda")as! KolodaViewController
+            vc.passInfo = kolodaReader(name:"", type: "participants", status: true)
+            self.navigationController?.pushViewController(vc, animated: true)
+            print("done, I'm pushing the display module page")
+        }
     }
        
     func loadProject() {

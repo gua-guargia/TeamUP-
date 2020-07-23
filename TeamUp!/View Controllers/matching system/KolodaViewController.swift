@@ -26,6 +26,7 @@ class KolodaViewController: UIViewController {
   var db:Firestore!
     @IBOutlet weak var kolodaView: KolodaView!
     var ProjectArray = [Project]()
+    var passInfo = kolodaReader(name: "", type: "", status: true)
     
     
     override func viewDidLoad() {
@@ -37,7 +38,7 @@ class KolodaViewController: UIViewController {
         // Do any additional setup after loading the view.
       //  kolodaView.dataSource = self
        // kolodaView.delegate = self
-        
+        print("\(passInfo)")
         kolodaView.alphaValueSemiTransparent = kolodaAlphaValueSemiTransparent
         kolodaView.countOfVisibleCards = kolodaCountOfVisibleCards
         kolodaView.delegate = self
