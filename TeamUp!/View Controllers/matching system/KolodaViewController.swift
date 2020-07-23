@@ -27,6 +27,7 @@ class KolodaViewController: UIViewController {
     @IBOutlet weak var kolodaView: KolodaView!
     var ProjectArray = [Project]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

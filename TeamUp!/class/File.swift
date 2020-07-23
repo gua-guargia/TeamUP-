@@ -13,6 +13,13 @@ protocol DocumentSerializable  {
     init?(dictionary:[String:Any])
 }
 
+struct kolodaReader {
+    var name:String
+    var type:String
+    var status:Bool
+    
+}
+
 
 struct Project {
     var Name:String

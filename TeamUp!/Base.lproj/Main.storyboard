@@ -834,7 +834,7 @@
         <!--Koloda View Controller-->
         <scene sceneID="5Lr-9d-f3T">
             <objects>
-                <viewController id="G7T-0s-aR7" customClass="KolodaViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="koloda" id="G7T-0s-aR7" customClass="KolodaViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1aW-Tc-bdg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
