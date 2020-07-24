@@ -1116,65 +1116,6 @@
             </objects>
             <point key="canvasLocation" x="9857.971014492754" y="-64.402173913043484"/>
         </scene>
-        <!--Projects Table View Controller-->
-        <scene sceneID="O3W-Mj-r8p">
-            <objects>
-                <viewController id="YEJ-Ze-hdt" customClass="ProjectsTableViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cg6-FG-AcK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oGt-Qk-MLJ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProjCell" rowHeight="136" id="UFY-AM-9sI">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="136"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UFY-AM-9sI" id="Zjj-Vr-WTW">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="136"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="project name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEG-XG-C4W">
-                                                    <rect key="frame" x="156.66666666666666" y="57.666666666666657" width="100.99999999999997" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="dEG-XG-C4W" firstAttribute="centerX" secondItem="Zjj-Vr-WTW" secondAttribute="centerX" id="Fft-IN-Vme"/>
-                                                <constraint firstItem="dEG-XG-C4W" firstAttribute="centerY" secondItem="Zjj-Vr-WTW" secondAttribute="centerY" id="bhv-7x-xWy"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="sf1-1s-yNh" firstAttribute="trailing" secondItem="oGt-Qk-MLJ" secondAttribute="trailing" id="0qW-rv-KAq"/>
-                            <constraint firstItem="sf1-1s-yNh" firstAttribute="bottom" secondItem="oGt-Qk-MLJ" secondAttribute="bottom" id="GJC-0U-IAC"/>
-                            <constraint firstItem="oGt-Qk-MLJ" firstAttribute="leading" secondItem="sf1-1s-yNh" secondAttribute="leading" id="Tc2-Tz-CDy"/>
-                            <constraint firstItem="oGt-Qk-MLJ" firstAttribute="top" secondItem="cg6-FG-AcK" secondAttribute="top" id="YdW-eW-dkk"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="sf1-1s-yNh"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="WWu-VR-D5e">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Pgo-fu-jxZ">
-                            <connections>
-                                <segue destination="zGX-VX-Tvy" kind="presentation" modalPresentationStyle="fullScreen" id="TWa-no-Cj8"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="oGt-Qk-MLJ" id="HUu-UM-uu3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HQE-wT-7uk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="10547.826086956522" y="-810.32608695652175"/>
-        </scene>
         <!--Project Creation-->
         <scene sceneID="UnV-Dt-YUV">
             <objects>
@@ -1215,20 +1156,15 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2L-pH-foP">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Create a Project" id="XDc-Jv-tQf">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="aUx-hh-nST">
-                                            <connections>
-                                                <action selector="Trashbutton:" destination="zGX-VX-Tvy" id="g2E-X1-yEL"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Iq4-sd-abv">
-                                            <connections>
-                                                <action selector="Donebutton:" destination="zGX-VX-Tvy" id="zPW-By-AKO"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Create a Project" id="XDc-Jv-tQf"/>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2x-8M-aRi">
+                                <rect key="frame" x="186.33333333333334" y="373" width="41.666666666666657" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -1236,8 +1172,10 @@
                             <constraint firstItem="x2L-pH-foP" firstAttribute="leading" secondItem="kzA-bX-5WN" secondAttribute="leading" id="BNm-AI-Piu"/>
                             <constraint firstItem="x2L-pH-foP" firstAttribute="top" secondItem="kzA-bX-5WN" secondAttribute="top" id="QRv-jA-IhQ"/>
                             <constraint firstItem="kzA-bX-5WN" firstAttribute="trailing" secondItem="f0H-yQ-SiN" secondAttribute="trailing" constant="40" id="ZiN-TI-kJS"/>
+                            <constraint firstItem="F2x-8M-aRi" firstAttribute="top" secondItem="f0H-yQ-SiN" secondAttribute="bottom" constant="40" id="fjz-jX-H3Q"/>
                             <constraint firstItem="f0H-yQ-SiN" firstAttribute="top" secondItem="x2L-pH-foP" secondAttribute="bottom" constant="75" id="nHC-gW-rmH"/>
                             <constraint firstItem="x2L-pH-foP" firstAttribute="trailing" secondItem="kzA-bX-5WN" secondAttribute="trailing" id="q7I-Kc-k9V"/>
+                            <constraint firstItem="F2x-8M-aRi" firstAttribute="centerX" secondItem="6tn-ZH-pth" secondAttribute="centerX" id="uNc-gG-9dL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kzA-bX-5WN"/>
                     </view>
@@ -1245,6 +1183,7 @@
                     <connections>
                         <outlet property="ProjectDescription" destination="HX7-yg-Qht" id="WpE-yi-nce"/>
                         <outlet property="ProjectName" destination="Z9L-Mi-fJR" id="Kca-QJ-6Rs"/>
+                        <outlet property="errorLabel" destination="F2x-8M-aRi" id="j9c-ye-LbB"/>
                         <outlet property="roleNeeded" destination="5m3-lu-TaA" id="ogB-Hv-kVV"/>
                     </connections>
                 </viewController>

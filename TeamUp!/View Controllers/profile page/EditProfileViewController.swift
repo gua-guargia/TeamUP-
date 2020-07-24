@@ -95,6 +95,7 @@ class EditProfileViewController: UIViewController {
                         "skills":skills,
                         "modules_taken":modules, "name": firstName + " " + lastName])
         }
+        
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
