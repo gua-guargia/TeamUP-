@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseFirestore
+//whatever
 
 protocol DocumentSerializable  {
     init?(dictionary:[String:Any])
@@ -149,7 +150,6 @@ extension Project : DocumentSerializable {
             let description = dictionary ["description"] as? String,
             let uid = dictionary["uid"] as? String,
             let roleNeeded = dictionary["roleNeeded"] as? String else {return nil}
-        
         
         self.init(name: name, organiser: organiser, description: description, roleNeeded: roleNeeded, uid:uid)
     }
