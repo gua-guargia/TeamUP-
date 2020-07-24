@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseFirestore
 import Firebase
+import FirebaseAuth
 
 class competitionProjectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -16,6 +17,11 @@ class competitionProjectViewController: UIViewController, UITableViewDataSource,
     var documentID = ""
      
     @IBOutlet weak var table: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadProject()
+    }
     
     override func viewDidLoad() {
          
@@ -25,7 +31,9 @@ class competitionProjectViewController: UIViewController, UITableViewDataSource,
          
          //loadData()
          //checkForUpdates()
-         loadProject()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleSearchContact))
+        view.backgroundColor = .gray
+         //loadProject()
          alterLayout()
          
         // _tableView.estimatedRowHeight = 100
@@ -34,6 +42,12 @@ class competitionProjectViewController: UIViewController, UITableViewDataSource,
       //   _tableView.allowsMultipleSelectionDuringEditing = true
          
      }
+    
+    @objc func handleSearchContact() {
+        let vc = storyboard?.instantiateViewController(identifier: "searchCompetition")as! SearchCompetitionViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
         
      func loadProject() {
          let db = Firestore.firestore()
@@ -144,7 +158,7 @@ class competitionProjectViewController: UIViewController, UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: "koloda")as! KolodaViewController
-        vc.passInfo = kolodaReader(name: moduleArray[indexPath.row], type: "project", status: true)
+        vc.passInfo = kolodaReader(name: moduleArray[indexPath.row], type: "competition", status: true)
         self.navigationController?.pushViewController(vc, animated: true)
         print("done, I'm pushing the display module page")
     }

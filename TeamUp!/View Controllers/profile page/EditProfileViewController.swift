@@ -27,15 +27,14 @@ class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var modulesText: UITextField!
     
-    var profileInfo = [ProfileInfo]()
     var documentID:String = ""
+    var passInfo = ProfileInfo(name: "", lastName: "", firstName: "", email: "", modules_taken: "", skills: "", major: "", uid: "")
         
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         //customToolbar.set
-        print("\(self.profileInfo)")
         
         //set the navigation
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
@@ -50,49 +49,23 @@ class EditProfileViewController: UIViewController {
             }
             return nil
         }
-        //self.setUpData()
-        /*
-        let db = Firestore.firestore()
-        db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-            self.profileInfo.removeAll()
-            if let error = error {
-                print("Error getting documents: \(error.localizedDescription)")
-            } else {
-                for i in querySnapshot!.documents {
-                    let id = i.documentID
-                    let lastName = i.get("lastname") as! String
-                    let firstName = i.get("firstname") as! String
-                    //self.courseText.text = i.get("major") as! String
-                    let major = i.get("major") as! String
-                    let email = i.get("email") as! String
-                    let skills = i.get("skills") as! String
-                    let modules_taken = i.get("modules_taken") as! String
-                    let name = firstName + " " + lastName
-                    self.profileInfo.append(ProfileInfo(name: name, lastName: lastName, firstName: firstName, email: email, modules_taken: modules_taken,skills: skills, major: major))
-                    self.documentID = id
-                    print("done snapshot, \(firstName), \(lastName)")
-                    
-                }
-                self.setUpData()
-            }
-        }*/
-        
-        
+        self.setUpData()
     }
     
     private func setUpData() {
-        courseText.text = self.profileInfo[0].major
-        emailText.text = self.profileInfo[0].email
-        skillsText.text = self.profileInfo[0].skills
-        modulesText.text = self.profileInfo[0].modules_taken
-        lastNameText.text = self.profileInfo[0].lastName
-        firstNameText.text = self.profileInfo[0].firstName
+        courseText.text = self.passInfo.major
+        emailText.text = self.passInfo.email
+        skillsText.text = self.passInfo.skills
+        modulesText.text = self.passInfo.modules_taken
+        lastNameText.text = self.passInfo.lastName
+        firstNameText.text = self.passInfo.firstName
         setUpElements()
     }
     
     @objc func handleDone() {
         print("Handle done")
         let error = validateFields()
+        let db = Firestore.firestore()
         if error != nil {
             //there is something wrong with the fields, show error messge
             showError(error!)
@@ -113,21 +86,26 @@ class EditProfileViewController: UIViewController {
                 }
                 return nil
             }
-            let db = Firestore.firestore()
-            // Add a new document in collection "cities"
-            db.collection("users").document(documentID).setData([
-                "lastname": lastName,
-                "email": email,
-                "firstname": firstName,
-                "major": major,
-                "skills":skills,
-                "modules_taken":modules
-            ])
+            
+            db.collection("users").document(CURRENT_USER_UID ?? "").setData([
+                        "lastname": lastName,
+                        "email": email,
+                        "firstname": firstName,
+                        "major": major,
+                        "skills":skills,
+                        "modules_taken":modules, "name": firstName + " " + lastName])
         }
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
+
     
     @objc func handleCancel() {
-        self.dismiss(animated: true, completion: nil)
+        print("cancel")
+        //self.dismiss(animated: true, completion: nil) //for modal view only
+        //for push view controller
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -168,13 +146,4 @@ class EditProfileViewController: UIViewController {
         return nil
     }
     
-}
-
-extension EditProfileViewController: AddProfileInfoDelegate {
-    func addProfileInfo(profileInfo: [ProfileInfo]) {
-        self.dismiss(animated: true) {
-            self.profileInfo = profileInfo
-            self.reloadInputViews()
-        }
-    }
 }

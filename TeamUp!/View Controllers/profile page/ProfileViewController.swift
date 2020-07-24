@@ -12,12 +12,8 @@ import FirebaseFirestore
 import Firebase
 import FirebaseAuth
 
-protocol AddProfileInfoDelegate {
-    func addProfileInfo(profileInfo: [ProfileInfo])
-}
 
 class ProfileViewController: UIViewController{
-    var delegate: AddProfileInfoDelegate?
     
     @IBOutlet weak var userNameLabel: UILabel!
     
@@ -33,51 +29,54 @@ class ProfileViewController: UIViewController{
     
     var profileInfo = [ProfileInfo]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
-       //self.navigationController?.navigationBar.prefersLargeTitles = true
-        //self.navigationItem.title = "Profile"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleAddContact))
-        view.backgroundColor = .gray
-        
-        //to get the name information
-        var CURRENT_USER_UID: String? {
-            if let currentUserUid = Auth.auth().currentUser?.uid {
-                return currentUserUid
-            }
-            return nil
-        }
         
         let db = Firestore.firestore()
-        db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
+        db.collection("users").document(Auth.auth().currentUser?.uid ?? "").getDocument{ (querySnapshot, error) in
             self.profileInfo.removeAll()
             if let error = error {
                 print("Error getting documents: \(error.localizedDescription)")
                 return
             }
-            for i in querySnapshot!.documents {
-                let lastName = i.get("lastname") as! String
-                let firstName = i.get("firstname") as! String
-                let major = i.get("major") as! String
-                let email = i.get("email") as! String
-                let skills = i.get("skills") as! String
-                let modules_taken = i.get("modules_taken") as! String
-                let name = firstName + " " + lastName
-                self.profileInfo.append(ProfileInfo(name: name, lastName: lastName, firstName: firstName, email: email, modules_taken: modules_taken,skills: skills, major: major))
-                print("done snapshot, \(firstName), \(lastName)")
-            }
+            guard let snap = querySnapshot else {return}
+            //let data = i.data()
+            //let lastName = data("lastname") as? String ?? "anoymous"
+            let lastName = snap.get("lastname") as? String ?? "no lastname"
+            let firstName = snap.get("firstname") as? String ?? "no firstname"
+            let major = snap.get("major") as? String ?? "no major"
+            let email = snap.get("email") as? String ?? "no email"
+            let skills = snap.get("skills") as? String ?? "no skills"
+            let modules_taken = snap.get("modules_taken") as? String ?? "no modules taken"
+            let name = firstName + " " + lastName
+            let newProfileInfo = ProfileInfo(name: name, lastName: lastName, firstName: firstName, email: email, modules_taken: modules_taken,skills: skills, major: major, uid: Auth.auth().currentUser?.uid ?? "")
+            self.profileInfo.append(newProfileInfo)
+            print("done snapshot, \(firstName), \(lastName)")
             self.setUpData()
-            //let vc = storyboard?.instantiateViewController(withIdentifier:"editProfile") as! EditProfileViewController
-            //vc.profileInfo = self.profileInfo
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super .viewDidAppear(true)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //self.navigationController?.navigationBar.prefersLargeTitles = true
+        //self.navigationItem.title = "Profile"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleAddContact))
+        view.backgroundColor = .gray
+        //self.setUpData()
     }
     
     //func
     @objc func handleAddContact() {
-        let reader = self.profileInfo
-        delegate?.addProfileInfo(profileInfo: reader)
-        self.present(UINavigationController(rootViewController: EditProfileViewController()), animated: true, completion: nil)
+        let vc = storyboard?.instantiateViewController(identifier: "editProfile")as! EditProfileViewController
+        vc.passInfo = profileInfo[0]
+        self.navigationController?.pushViewController(vc, animated: true)
+        print("done, I'm pushing the display module page")
     }
     
     //set up data
@@ -90,7 +89,8 @@ class ProfileViewController: UIViewController{
         profileImage.setImageForName(self.profileInfo[0].name, backgroundColor: UIColor.black, circular: true, textAttributes: nil, gradient: false)
         print("\(self.profileInfo)")
     }
-
+    
+    
     @IBAction func signOutTapped(_ sender: Any) {
         do {
             try Auth.auth().signOut()

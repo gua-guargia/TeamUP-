@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gu3-f5-ccM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gu3-f5-ccM">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -574,31 +574,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rOu-qT-svp">
                                 <rect key="frame" x="0.0" y="96" width="414" height="591"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAH-mc-ha6">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vh6-c2-wVZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
-                                                <state key="normal" title="Profile"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StN-Ba-DgL">
-                                                <rect key="frame" x="207" y="0.0" width="207" height="50"/>
-                                                <state key="normal" title="Chat"/>
-                                                <connections>
-                                                    <segue destination="jqf-Lb-3ec" kind="presentation" id="CHI-0a-cW1"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.92941176469999998" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Ft2-1C-FYb"/>
-                                            <constraint firstItem="StN-Ba-DgL" firstAttribute="width" secondItem="vh6-c2-wVZ" secondAttribute="width" id="XAa-Kb-C9S"/>
-                                            <constraint firstItem="vh6-c2-wVZ" firstAttribute="leading" secondItem="dAH-mc-ha6" secondAttribute="leading" id="d3K-3S-ufR"/>
-                                            <constraint firstAttribute="trailing" secondItem="StN-Ba-DgL" secondAttribute="trailing" id="yJM-kl-fxH"/>
-                                        </constraints>
-                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bP-jX-wxb">
-                                        <rect key="frame" x="0.0" y="50.000000000000014" width="414" height="180.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="197"/>
                                         <color key="backgroundColor" red="0.98039215686274506" green="0.49411764705882355" blue="0.49411764705882355" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="24"/>
                                         <state key="normal" title="School Projects ">
@@ -609,25 +586,25 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7t-Hi-k9b">
-                                        <rect key="frame" x="0.0" y="230.33333333333331" width="414" height="180.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="197" width="414" height="197"/>
                                         <color key="backgroundColor" red="0.96470588235294119" green="0.61568627450980395" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="24"/>
                                         <state key="normal" title="Competitions">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="7oo-iq-gpw" kind="presentation" modalPresentationStyle="fullScreen" id="gRv-Uc-lfl"/>
+                                            <segue destination="7oo-iq-gpw" kind="show" id="gRv-Uc-lfl"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dhr-gZ-HLs">
-                                        <rect key="frame" x="0.0" y="410.66666666666669" width="414" height="180.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="394" width="414" height="197"/>
                                         <color key="backgroundColor" red="0.27843137254901962" green="0.6705882352941176" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Individual Projects">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <segue destination="YyS-8X-RFe" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="pjc-6c-50A"/>
+                                            <segue destination="YyS-8X-RFe" kind="push" id="pjc-6c-50A"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -635,12 +612,9 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="G7t-Hi-k9b" secondAttribute="trailing" id="70Y-uA-tYT"/>
                                     <constraint firstItem="Dhr-gZ-HLs" firstAttribute="height" secondItem="8bP-jX-wxb" secondAttribute="height" multiplier="1:1" id="I4X-UX-sjY"/>
-                                    <constraint firstAttribute="trailing" secondItem="dAH-mc-ha6" secondAttribute="trailing" id="L3z-Xl-rNg"/>
                                     <constraint firstItem="Dhr-gZ-HLs" firstAttribute="leading" secondItem="rOu-qT-svp" secondAttribute="leading" id="NMa-tt-YPt"/>
-                                    <constraint firstItem="dAH-mc-ha6" firstAttribute="top" secondItem="rOu-qT-svp" secondAttribute="top" id="PO2-LN-jXE"/>
                                     <constraint firstAttribute="trailing" secondItem="Dhr-gZ-HLs" secondAttribute="trailing" id="bbM-XL-6ND"/>
                                     <constraint firstItem="8bP-jX-wxb" firstAttribute="leading" secondItem="rOu-qT-svp" secondAttribute="leading" id="dEw-bs-mfx"/>
-                                    <constraint firstItem="dAH-mc-ha6" firstAttribute="leading" secondItem="rOu-qT-svp" secondAttribute="leading" id="g1N-ag-Qxf"/>
                                     <constraint firstAttribute="bottom" secondItem="Dhr-gZ-HLs" secondAttribute="bottom" id="mdO-3g-B7c"/>
                                     <constraint firstAttribute="trailing" secondItem="8bP-jX-wxb" secondAttribute="trailing" id="sjd-3g-nza"/>
                                     <constraint firstItem="G7t-Hi-k9b" firstAttribute="leading" secondItem="rOu-qT-svp" secondAttribute="leading" id="yui-I9-Mok"/>
@@ -674,7 +648,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="WEm-Om-Nvh">
             <objects>
-                <tabBarController id="Gu3-f5-ccM" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainTab" id="Gu3-f5-ccM" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uLO-np-TU4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -699,10 +673,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ofd-Sp-HcY">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="591"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nTr-cA-LYe">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="295.66666666666669"/>
                                         <color key="backgroundColor" red="0.2784313725" green="0.6705882353" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -715,18 +689,18 @@
                                             </attributedString>
                                         </state>
                                         <connections>
-                                            <segue destination="6WQ-lD-Rsb" kind="presentation" id="F0l-hq-a3w"/>
+                                            <segue destination="6WQ-lD-Rsb" kind="show" id="F0l-hq-a3w"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adp-Mx-I13">
-                                        <rect key="frame" x="0.0" y="368" width="414" height="368"/>
+                                        <rect key="frame" x="0.0" y="295.66666666666674" width="414" height="295.33333333333326"/>
                                         <color key="backgroundColor" red="0.37647058823529411" green="0.69019607843137254" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="24"/>
                                         <state key="normal" title="Participant">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="ZRm-Ma-h0Y" kind="presentation" id="ZJs-Pw-Mvt"/>
+                                            <segue destination="ZRm-Ma-h0Y" kind="show" id="ZJs-Pw-Mvt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -753,7 +727,7 @@
         <!--Search Module View Controller-->
         <scene sceneID="3R5-xd-vpW">
             <objects>
-                <viewController id="jdU-sc-uQr" customClass="SearchModuleViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchModule" id="jdU-sc-uQr" customClass="SearchModuleViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cdN-Ab-NfH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -936,11 +910,11 @@
             <objects>
                 <viewController id="ZRm-Ma-h0Y" customClass="participantDisplayViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uhv-UN-8kG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MT1-WM-Icd">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="591"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ParticipantCell" rowHeight="181" id="313-BL-wRI" customClass="projectDisplayCell" customModule="TeamUp_" customModuleProvider="target">
@@ -975,6 +949,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3d2-Rs-SFN"/>
                     </view>
+                    <navigationItem key="navigationItem" id="DoT-8m-lcs"/>
                     <connections>
                         <outlet property="table" destination="MT1-WM-Icd" id="sqE-6d-5zJ"/>
                     </connections>
@@ -1086,18 +1061,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Trs-c9-JNG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12265.217391304348" y="634.23913043478262"/>
+            <point key="canvasLocation" x="12817" y="637"/>
         </scene>
         <!--Creator Display View Controller-->
         <scene sceneID="Am5-LT-gc9">
             <objects>
                 <viewController id="6WQ-lD-Rsb" customClass="creatorDisplayViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ngu-M4-BEB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wKZ-ow-sXz">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="591"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="creatorCell" rowHeight="132" id="xOW-xC-tfs" customClass="creatorProjectDisplayCell" customModule="TeamUp_" customModuleProvider="target">
@@ -1132,6 +1107,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="040-VM-g2w"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cH1-tw-d51"/>
                     <connections>
                         <outlet property="table" destination="wKZ-ow-sXz" id="dHC-25-l6g"/>
                     </connections>
@@ -1202,7 +1178,7 @@
         <!--Project Creation-->
         <scene sceneID="UnV-Dt-YUV">
             <objects>
-                <viewController id="zGX-VX-Tvy" customClass="ProjectsCreationViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="projectCreation" id="zGX-VX-Tvy" customClass="ProjectsCreationViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6tn-ZH-pth">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1218,7 +1194,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Organiser Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5m3-lu-TaA">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Role Needed for your Project" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5m3-lu-TaA">
                                         <rect key="frame" x="0.0" y="87" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="GlS-vA-o8l"/>
@@ -1267,9 +1243,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Project Creation" id="qey-09-M9b"/>
                     <connections>
-                        <outlet property="OrganiserName" destination="5m3-lu-TaA" id="a7u-2P-9SK"/>
                         <outlet property="ProjectDescription" destination="HX7-yg-Qht" id="WpE-yi-nce"/>
                         <outlet property="ProjectName" destination="Z9L-Mi-fJR" id="Kca-QJ-6Rs"/>
+                        <outlet property="roleNeeded" destination="5m3-lu-TaA" id="ogB-Hv-kVV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCu-aF-pXt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1296,7 +1272,7 @@
         <!--Search Project View Controller-->
         <scene sceneID="xb2-qm-snG">
             <objects>
-                <viewController id="Fsn-Oj-4gM" customClass="SearchProjectViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Fsn-Oj-4gM" customClass="SearchProjectViewController" customModule="searchProject" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Ck-YL-urm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1419,7 +1395,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RX-Y8-6A9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12426.08695652174" y="-231.52173913043481"/>
+            <point key="canvasLocation" x="11493" y="637"/>
         </scene>
         <!--Competition Project View Controller-->
         <scene sceneID="hY0-ZV-ZKj">
@@ -1430,7 +1406,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zmf-aC-13c">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="591"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="competitionCell" rowHeight="147" id="b3N-vX-9Fv" customClass="competitionCell" customModule="TeamUp_" customModuleProvider="target">
@@ -1465,6 +1441,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="taS-R9-Ni5"/>
                     </view>
+                    <navigationItem key="navigationItem" id="buf-ch-erb"/>
                     <connections>
                         <outlet property="table" destination="zmf-aC-13c" id="oUI-NR-cQ5"/>
                     </connections>
@@ -1476,7 +1453,7 @@
         <!--Search Competition View Controller-->
         <scene sceneID="7XT-dp-SkN">
             <objects>
-                <viewController id="Lee-G3-txN" customClass="SearchCompetitionViewController" customModule="TeamUp_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Lee-G3-txN" customClass="SearchCompetitionViewController" customModule="searchCompetition" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fWx-NV-atu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1722,9 +1699,6 @@
             <point key="canvasLocation" x="5464" y="1210"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="q8E-7H-lRB"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="gobackward" catalog="system" width="121" height="128"/>
         <image name="icons8-admin-settings-male-30" width="30" height="30"/>

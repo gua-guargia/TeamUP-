@@ -65,9 +65,20 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
         print("initialize finished")
         setUpSearchBar()
         alterLayout()
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
         //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style:.plain, target: .nil, acction: nil)
         
     }
+    
+    @objc func handleCancel() {
+        print("cancel")
+        //self.dismiss(animated: true, completion: nil) //for modal view only
+        //for push view controller
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     private func setUpSearchBar() {
         searchBar.delegate = self

@@ -21,17 +21,19 @@ struct kolodaReader {
 
 
 struct Project {
-    var Name:String
-    var Organiser:String
-    var Description:String
-    var Role: String
+    var name:String
+    var organiser:String
+    var description:String
+    var roleNeeded: String
+    var uid: String
     
     var dictionary:[String:Any] {
         return [
-            "Name": Name,
-            "Organiser" : Organiser,
-            "Description" : Description,
-            "Role": Role
+            "name": name,
+            "organiser" : organiser,
+            "description" : description,
+            "roleNeeded": roleNeeded,
+            "uid": uid
         ]
     }
     
@@ -74,6 +76,21 @@ struct ModulesStruct : Identifiable{
     var name:String
     var code:String
     var teammateNumber:String
+    
+}
+
+struct Modules{
+    var name:String
+    var code:String
+    var teammateNumber:Int
+    
+    var dictionary:[String:Any] {
+        return [
+            "name" : name,
+            "code" : code,
+            "teammateNumber": teammateNumber
+        ]
+    }
 }
 
 struct ContactStruct : Identifiable{
@@ -91,17 +108,48 @@ struct ProfileInfo{
     var modules_taken:String
     var skills:String
     var major:String
+    var uid:String
 }
+
+struct waitingListInfo{
+    var name:String
+    var major:String
+    var uid:String
+}
+
+struct Profile {
+    var lastname:String
+    var firstname:String
+    var email:String
+    var modules_taken:String
+    var skills:String
+    var major:String
+    var uid:String
+    
+    var dictionary:[String:Any] {
+        return [
+            "lastname" : lastname,
+            "firstname" : firstname,
+            "email" : email,
+            "modules_taken": modules_taken,
+            "skills":skills,
+            "major":major,
+            "uid":uid
+        ]
+    }
+}
+
 
 extension Project : DocumentSerializable {
     init?(dictionary: [String : Any]) {
-        guard let Name = dictionary["Name"] as? String,
-            let Organiser = dictionary["Organiser"] as? String,
-            let Description = dictionary ["Description"] as? String,
-            let Role = dictionary["role"] as? String else {return nil}
+        guard let name = dictionary["name"] as? String,
+            let organiser = dictionary["organiser"] as? String,
+            let description = dictionary ["description"] as? String,
+            let uid = dictionary["uid"] as? String,
+            let roleNeeded = dictionary["roleNeeded"] as? String else {return nil}
         
         
-        self.init(Name: Name, Organiser: Organiser, Description: Description, Role: Role)
+        self.init(name: name, organiser: organiser, description: description, roleNeeded: roleNeeded, uid:uid)
     }
 }
 
@@ -123,6 +171,32 @@ extension Competition : DocumentSerializable {
         
         
         self.init(Name: Name, Organiser: Organiser, Description: Description, WebLink: WebLink)
+    }
+}
+
+extension Profile : DocumentSerializable {
+    init?(dictionary: [String : Any]) {
+        guard let lastname = dictionary["lastname"] as? String,
+            let firstname = dictionary["firstname"] as? String,
+            let email = dictionary ["email"] as? String,
+            let skills = dictionary["skills"] as? String,
+            let modules_taken = dictionary["modules_taken"] as? String,
+            let uid = dictionary["uid"] as? String,
+            let major = dictionary["major"] as? String else {return nil}
+        
+        
+        self.init(lastname: lastname, firstname: firstname, email:email, modules_taken:modules_taken, skills:skills, major:major, uid:uid)
+    }
+}
+
+extension Modules: DocumentSerializable {
+    init?(dictionary: [String : Any]) {
+        guard let name = dictionary["name"] as? String,
+            let code = dictionary ["code"] as? String,
+            let teammateNumber = dictionary["teammateNumber"] as? Int else {return nil}
+        
+        
+        self.init(name: name, code: code, teammateNumber: teammateNumber)
     }
 }
 

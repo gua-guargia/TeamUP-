@@ -27,8 +27,15 @@ class creatorDisplayViewController: UIViewController, UITableViewDataSource, UIT
         
         //loadData()
         //checkForUpdates()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAdd))
         loadProject()
         alterLayout()
+    }
+    
+    @objc func handleAdd() {
+        let vc = storyboard?.instantiateViewController(identifier: "searchProject")as! SearchProjectViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
        
@@ -141,5 +148,11 @@ class creatorDisplayViewController: UIViewController, UITableViewDataSource, UIT
             moduleArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(identifier: "koloda")as! KolodaViewController
+        vc.passInfo = kolodaReader(name: moduleArray[indexPath.row], type: "creator", status: true)
+        self.navigationController?.pushViewController(vc, animated: true)
+        print("done, I'm pushing the display module page")
     }
 }

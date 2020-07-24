@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseFirestore
 import Firebase
+import FirebaseAuth
 
 class moduleDisplayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -17,22 +18,26 @@ class moduleDisplayViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var table: UITableView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadProject()
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.table.delegate = self
         self.table.dataSource = self
         
-        //loadData()
-        //checkForUpdates()
-        loadProject()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleSearchContact))
+        view.backgroundColor = .gray
         alterLayout()
+    }
+    
+    @objc func handleSearchContact() {
+        let vc = storyboard?.instantiateViewController(identifier: "searchModule")as! SearchModuleViewController
         
-       // _tableView.estimatedRowHeight = 100
-     //   _tableView.rowHeight = UITableView.automaticDimension
-        
-     //   _tableView.allowsMultipleSelectionDuringEditing = true
-        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
        
     func loadProject() {
@@ -70,8 +75,6 @@ class moduleDisplayViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                  }
             }
-            //print("print \(self.moduleArray)")
-            //self.table.reloadData()
         }
     }
     

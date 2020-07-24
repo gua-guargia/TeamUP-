@@ -31,14 +31,17 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
     }
     
     @objc func handleAdd() {
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let vc = storyboard?.instantiateViewController(identifier: "koloda")as! KolodaViewController
-            vc.passInfo = kolodaReader(name:"", type: "participants", status: true)
-            self.navigationController?.pushViewController(vc, animated: true)
-            print("done, I'm pushing the display module page")
-        }
+        let vc = storyboard?.instantiateViewController(identifier: "projectCreation")as! ProjectsCreationViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-       
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(identifier: "koloda")as! KolodaViewController
+        vc.passInfo = kolodaReader(name:"", type: "participants", status: true)
+        self.navigationController?.pushViewController(vc, animated: true)
+        print("done, I'm pushing the display module page")
+    }
+    
     func loadProject() {
         let db = Firestore.firestore()
         var documentID = ""
@@ -58,7 +61,7 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
                     documentID = id
                     self.documentID = documentID
                     //get the project approved
-                    let docRef = db.collection("users").document(documentID).collection("individualParticipant")
+                    let docRef = db.collection("users").document(documentID).collection("individualParticipants")
                     
                     docRef.getDocuments() { (document, error) in
                         if let error = error {
@@ -80,7 +83,7 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
     
       func checkForUpdates() {
         let db = Firestore.firestore()
-        let docRef = db.collection("users").document(self.documentID).collection("individualParticipant")
+        let docRef = db.collection("users").document(self.documentID).collection("individualParticipants")
                             
         docRef.addSnapshotListener(includeMetadataChanges: true) {
                 querySnapshot, error in
@@ -127,14 +130,14 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
         // 2. Now Delete the Child from the database
         let name = projectArray[indexPath.row].name
         let db = Firestore.firestore()
-        let query: Query = db.collection("users").document(self.documentID).collection("individualParticipant").whereField("name", isEqualTo: name)
+        let query: Query = db.collection("users").document(self.documentID).collection("individualParticipants").whereField("name", isEqualTo: name)
             query.getDocuments(completion: { (snapshot, error) in
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
                     for document in snapshot!.documents {
                         //print("\(document.documentID) => \(document.data())")
-                        db.collection("users").document(self.documentID).collection("individualParticipant").document("\(document.documentID)").delete()}}})
+                        db.collection("users").document(self.documentID).collection("individualParticipants").document("\(document.documentID)").delete()}}})
         //need to add the code to change the creator side, to delete the participant from the creator's list
         
         projectArray.remove(at: indexPath.row)

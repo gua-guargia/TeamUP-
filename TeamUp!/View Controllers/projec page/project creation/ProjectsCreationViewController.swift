@@ -19,7 +19,7 @@ class ProjectsCreationViewController: UIViewController {
     @IBOutlet weak var ProjectName: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var ProjectDescription: UITextField!
-    @IBOutlet weak var OrganiserName: UITextField!
+    @IBOutlet weak var roleNeeded: UITextField!
     
     
     override func viewDidLoad() {

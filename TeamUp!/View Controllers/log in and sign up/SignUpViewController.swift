@@ -98,6 +98,9 @@ class SignUpViewController: UIViewController {
             let major = majorTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let skills = "nil"
+            let modules_taken = "nil"
+            let name = firstName + " " + lastName
             
             //create the user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
@@ -110,7 +113,7 @@ class SignUpViewController: UIViewController {
                     // user was created successufully, now store the first name and last name
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data:["firstname":firstName, "lastname":lastName, "university":university,"major":major,"email":email,"uid":result!.user.uid]) { (error) in
+                    db.collection("users").document(result!.user.uid).setData(["firstname":firstName, "lastname":lastName, "university":university,"major":major,"email":email,"uid":result!.user.uid, "skills":skills, "modules_taken":modules_taken, "name":name]) { (error) in
                         
                         if error != nil {
                             //show error message
@@ -137,7 +140,7 @@ class SignUpViewController: UIViewController {
     
     func transitionToCategory() {
         
-        let categoryViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.categoryViewController) as? CategoryViewController
+        let categoryViewController = self.storyboard?.instantiateViewController(identifier: "mainTab") as? UITabBarController
         self.view.window?.rootViewController = categoryViewController
         self.view.window?.makeKeyAndVisible()
     }
