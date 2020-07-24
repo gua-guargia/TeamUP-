@@ -38,41 +38,44 @@ class ChatDViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         
            let db = Firestore.firestore()
-           // TODO: Check whether this listener is only called once or not
-          db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-          if let error = error {
-              print("Error getting documents: \(error.localizedDescription)")
-          }
-          else {
-              for i in querySnapshot!.documents {
-                  let id = i.documentID
-                  self.documentIDCode = id
-                  print("done snapshot, \(self.documentIDCode)")
-                  print("current user = \(CURRENT_USER_UID)")
-                
-                db.collection("users").document(self.documentIDCode).collection("waitinglist").getDocuments { (snap, err) in
-                    // TODO: clear your modulesArray //to make sure the reload data doesn't stuck tgt
-                    self.ContactsArray.removeAll()
-                    if err != nil {
-                            print((err?.localizedDescription)!)
-                            return
-                    }
-                    for i in snap!.documents{
-                            let id = i.documentID
-                            let name = i.get("teammatename") as! String
-                            let user2uid = i.get("teammateuid") as! String
-                            self.ContactsArray.append(ContactStruct(id: id, name: name, user2uid: user2uid))
-                            print("done snapshot, \(name), \(user2uid)")
-                        //self.table.reloadData()
-                    }
-                    self.currentContactsArray = self.ContactsArray
-                    
-                    self.table.reloadData()//to make sure everytime the page is open, the data in the table is updated!
-                }
-            
-            }
-          }
-        }
+              // TODO: Check whether this listener is only called once or not
+             db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
+             if let error = error {
+                 print("Error getting documents: \(error.localizedDescription)")
+             }
+             else {
+                 for i in querySnapshot!.documents {
+                   print("meeee")
+                     let id = i.documentID
+                     self.documentIDCode = id
+                     print("done snapshot, \(self.documentIDCode)")
+                     print("current user = \(CURRENT_USER_UID)")
+                   
+                   db.collection("users").document(self.documentIDCode).collection("waitinglist").getDocuments { (snap, err) in
+                       // TODO: clear your modulesArray //to make sure the reload data doesn't stuck tgt
+                       self.ContactsArray.removeAll()
+                       if err != nil {
+                               print((err?.localizedDescription)!)
+                               return
+                       }
+                       for i in snap!.documents{
+                               let id = i.documentID
+                               let name = i.get("name") as! String
+                               let user2uid = i.get("id") as! String
+                               let user2type = i.get("type") as! String
+                               let user2Proj = i.get("teamname") as! String
+                               self.ContactsArray.append(ContactStruct(id: id, name: name, user2uid: user2uid, user2type: user2type, user2Proj: user2Proj))
+                               print("done snapshot, \(name), \(user2uid)")
+                           //self.table.reloadData()
+                       }
+                       self.currentContactsArray = self.ContactsArray
+                       
+                       self.table.reloadData()//to make sure everytime the page is open, the data in the table is updated!
+                   }
+               
+               }
+             }
+           }
         
            print("initialize finished")
            setUpSearchBar()
@@ -141,6 +144,10 @@ class ChatDViewController: UIViewController, UITableViewDataSource, UITableViewD
         vc.user2Name = currentContactsArray[indexPath.row].name
         
         vc.user2UID = currentContactsArray[indexPath.row].user2uid
+        
+        vc.user2Type = currentContactsArray[indexPath.row].user2type
+        
+        vc.user2Proj = currentContactsArray[indexPath.row].user2Proj
         
         self.navigationController?.pushViewController(vc, animated: true)
          print("meee")

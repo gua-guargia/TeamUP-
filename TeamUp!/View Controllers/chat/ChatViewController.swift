@@ -25,6 +25,9 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
     var user2ImgUrl: String?
     var user2UID: String?
     var documentIDCode = ""
+    var documentCode = ""
+    var user2Type: String?
+    var user2Proj: String?
     
     
      var db:Firestore!
@@ -41,6 +44,8 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
         messageInputBar.inputTextView.tintColor = .blue
         messageInputBar.sendButton.setTitleColor(.blue, for: .normal)
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Friend", style: .plain, target: self, action: #selector(addTapped))
+        
         messageInputBar.delegate = self
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -48,6 +53,47 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
         
         loadChat()
     }
+    
+    @objc func addTapped () {
+           let alert = UIAlertController(title: "Congratulation!" , message: "Teammate added", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+           self.present(alert, animated: true, completion: nil)
+            var CURRENT_USER_UID: String? {
+                       if let currentUserUid = Auth.auth().currentUser?.uid {
+                           return currentUserUid
+                       }
+                       return nil
+            }
+            let db = Firestore.firestore()
+            db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
+                if let error = error {
+                    print("Error getting documents: \(error.localizedDescription)")
+                }
+                else {
+                    for i in querySnapshot!.documents {
+                        let id = i.documentID
+                        self.documentIDCode = id
+                        print("done snapshot, \(self.documentIDCode)")
+                        print("current user = \(CURRENT_USER_UID)")
+                       db.collection("users").document(self.documentIDCode).collection("\(self.user2Type!)").whereField("name", isEqualTo: (self.user2Proj!)).getDocuments(){(querySnapshot, error) in
+                           if let error = error {
+                               print("Error getting documents: \(error.localizedDescription)")
+                           }
+                           else {
+                               for i in querySnapshot!.documents {
+                                   let id = i.documentID
+                                   self.documentCode = id
+                                   print("done snapshot, \(self.documentCode)")
+                                   
+                                   db.collection("users").document(self.documentIDCode).collection(self.user2Type!).document(self.documentCode).collection("teammate").addDocument(data:["uid":self.user2UID, "name": self.user2Name])
+                           
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       }
     
     func createNewChat() {
         let users = [self.currentUser.uid, self.user2UID]

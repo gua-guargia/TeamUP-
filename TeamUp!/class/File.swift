@@ -97,6 +97,8 @@ struct ContactStruct : Identifiable{
     var id:String
     var name:String
     var user2uid:String
+    var user2type:String
+    var user2Proj:String
 }
 
 
