@@ -57,19 +57,9 @@ class competitionProjectViewController: UIViewController, UITableViewDataSource,
              }
              return nil
          }
-         //check whether the modules is alrdy there
-         db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-             self.moduleArray.removeAll()
-              if let error = error {
-                  print("Error getting documents: \(error.localizedDescription)")
-              } else {
-                  for i in querySnapshot!.documents {
-                     let id = i.documentID
-                     self.documentID = id
-                     //get the project approved
-                     let docRef = db.collection("users").document(self.documentID).collection("competition")
-                     
-                     docRef.getDocuments() { (document, error) in
+         //check whether the competition is alrdy there
+        self.moduleArray.removeAll()
+         db.collection("users").document(CURRENT_USER_UID ?? "").collection("competition").getDocuments() { (document, error) in
                          if let error = error {
                              print("Error getting documents: \(error.localizedDescription)")
                          } else {
@@ -80,13 +70,10 @@ class competitionProjectViewController: UIViewController, UITableViewDataSource,
                                  print("print \(self.moduleArray)")
                                  self.table.reloadData()
                              }
-                         }
-                     }
-                  }
-             }
+                        }
+        }
              //print("print \(self.moduleArray)")
-             //self.table.reloadData()
-         }
+             //self.table.reloadData
      }
      
      func alterLayout() {

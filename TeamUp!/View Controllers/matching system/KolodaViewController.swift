@@ -115,7 +115,12 @@ class KolodaViewController: UIViewController {
                 snapshot.documentChanges.forEach {
                     diff in
                     if diff.type == .added {
-                        self.profileArray.append(Profile(dictionary: diff.document.data())!)
+                        //create an clean version of the updates
+                        let data = diff.document.data()
+                        print("\(data)") // for debugging
+                        self.profileArray.append(Profile(dictionary: data)!)
+                        print("\(self.profileArray)") // for debugging
+                        self.kolodaView.reloadData()
                         DispatchQueue.main.async {
                             self.kolodaView.reloadData()
                         }}}}
@@ -127,7 +132,8 @@ class KolodaViewController: UIViewController {
                 snapshot.documentChanges.forEach {
                     diff in
                     if diff.type == .added {
-                        self.profileArray.append(Profile(dictionary: diff.document.data())!)
+                        let data = diff.document.data()
+                        self.profileArray.append(Profile(dictionary: data)!)
                         DispatchQueue.main.async {
                             self.kolodaView.reloadData()
                         }}}}
@@ -139,7 +145,8 @@ class KolodaViewController: UIViewController {
                 snapshot.documentChanges.forEach {
                     diff in
                     if diff.type == .added {
-                        self.profileArray.append(Profile(dictionary: diff.document.data())!)
+                        let data = diff.document.data()
+                        self.profileArray.append(Profile(dictionary: data)!)
                         DispatchQueue.main.async {
                             self.kolodaView.reloadData()
                         }}}}
@@ -153,7 +160,8 @@ class KolodaViewController: UIViewController {
                     snapshot.documentChanges.forEach {
                         diff in
                         if diff.type == .added {
-                            self.ProjectArray.append(Project(dictionary: diff.document.data())!)
+                            let data = diff.document.data()
+                            self.ProjectArray.append(Project(dictionary: data)!)
                             DispatchQueue.main.async {
                                 self.kolodaView.reloadData()
                             }
@@ -270,6 +278,7 @@ extension KolodaViewController: KolodaViewDataSource {
             view.text = "\(ProjectArray[index].name) - \(ProjectArray[index].description) - \(ProjectArray[index].roleNeeded)"
         }
         else{
+            print("\(profileArray[index].firstname) is loaded here")
             view.text = "\(profileArray[index].firstname) \(profileArray[index].lastname) - \(profileArray[index].major)"
         }
         return view

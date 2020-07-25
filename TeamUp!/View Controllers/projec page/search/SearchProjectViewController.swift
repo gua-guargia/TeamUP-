@@ -44,7 +44,7 @@ class SearchProjectViewController: UIViewController, UITableViewDataSource, UITa
                 let name = i.get("name") as! String
                 let organiser = i.get("organiser") as! String
                 let description = i.get("description") as! String
-                let roleNeeded = i.get("roleNeed") as! String
+                let roleNeeded = i.get("roleNeeded") as! String
                 let uid = i.get("uid") as! String
                 self.projectArray.append(Project(name: name, organiser: organiser, description: description, roleNeeded: roleNeeded, uid:uid))
                 print("done snapshot, \(name), \(roleNeeded)")
@@ -87,6 +87,7 @@ class SearchProjectViewController: UIViewController, UITableViewDataSource, UITa
         cell.roleLbl.text = currentProjectArray[indexPath.row].roleNeeded
         cell.nameLbl.text = currentProjectArray[indexPath.row].name
         cell.descriptionLbl.text = currentProjectArray[indexPath.row].description
+        cell.organiserUID = currentProjectArray[indexPath.row].uid
         cell.backgroundColor = UIColor.getRandomColor(index:indexPath.row)
         checkSelect(name: cell.nameLbl.text!, cell: cell)
         print("here is for the cell")
@@ -106,7 +107,7 @@ class SearchProjectViewController: UIViewController, UITableViewDataSource, UITa
         //search bar in navigation bar
         navigationItem.titleView = searchBar
         searchBar.showsScopeBar = false
-        searchBar.placeholder = "Search your modules here"
+        searchBar.placeholder = "Search project here"
         self.navigationController?.hidesBarsOnSwipe = true
     }
     
@@ -124,7 +125,6 @@ class SearchProjectViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func checkSelect(name:String, cell:ProjectTableCell) {
-        var documentID = ""
         let db = Firestore.firestore()
         
         //find uid
@@ -136,17 +136,7 @@ class SearchProjectViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         //check whether the modules is alrdy there
-        db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error.localizedDescription)")
-            } else {
-                for i in querySnapshot!.documents {
-                    let id = i.documentID
-                    documentID = id
-                    print("done snapshot, \(documentID), \(name)")
-                    let docRef = db.collection("users").document(documentID).collection("projects").document(name)
-                    
-                    docRef.getDocument { (document, error) in
+        db.collection("users").document(CURRENT_USER_UID ?? "").collection("individualParticipant").document(name).getDocument { (document, error) in
                         if let document = document, document.exists {
                             print("true, the doc exists")
                             cell.addButton.setTitle("selected", for: UIControl.State())
@@ -155,9 +145,6 @@ class SearchProjectViewController: UIViewController, UITableViewDataSource, UITa
                             cell.addButton.setTitle("+", for: UIControl.State())
                         }
                     }
-                }
-            }
-        }
     }
     
 }

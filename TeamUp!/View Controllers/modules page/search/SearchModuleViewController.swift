@@ -51,9 +51,9 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
             }
             for i in snap!.documents{
                     let id = i.documentID
-                    let name = i.get("name") as! String
-                    let code = i.get("code") as! String
-                    let teammateNumber = i.get("teammateNumber") as! String
+                    let name = i.get("name") as? String ?? ""
+                    let code = i.get("code") as? String ?? ""
+                    let teammateNumber = i.get("teammateNumber") as? String ?? ""
                     self.modulesArray.append(ModulesStruct(id: id, name: name, code: code,teammateNumber: teammateNumber))
                      print("done snapshot, \(name), \(code)")
                 //self.table.reloadData()
@@ -149,7 +149,6 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func checkSelect(code:String, cell:TableCell) {
-        var documentID = ""
         let db = Firestore.firestore()
         
         //find uid
@@ -161,17 +160,7 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         //check whether the modules is alrdy there
-        db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-                 if let error = error {
-                     print("Error getting documents: \(error.localizedDescription)")
-                 } else {
-                     for i in querySnapshot!.documents {
-                        let id = i.documentID
-                        documentID = id
-                        print("done snapshot, \(documentID), \(code)")
-                        let docRef = db.collection("users").document(documentID).collection("modules").document(code)
-                        
-                        docRef.getDocument { (document, error) in
+        db.collection("users").document(CURRENT_USER_UID ?? "").collection("modules").document(code).getDocument { (document, error) in
                             if let document = document, document.exists {
                                 print("true, the doc exists")
                                 cell.addButton.setTitle("selected", for: UIControl.State())
@@ -179,10 +168,10 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
                                 print("false, the doc doesn't exist")
                                 cell.addButton.setTitle("+", for: UIControl.State())
                             }
-                        }
-                     }
-                }
         }
     }
+                
+        
+    
     
 }

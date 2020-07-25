@@ -12,7 +12,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class participantDisplayViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet weak var table: UITableView!
     var projectArray = [ProjectDisp]()
     var documentID = ""
@@ -31,13 +31,13 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
     }
     
     @objc func handleAdd() {
-        let vc = storyboard?.instantiateViewController(identifier: "projectCreation")as! ProjectsCreationViewController
+        let vc = storyboard?.instantiateViewController(identifier: "searchProject")as! SearchProjectViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: "koloda")as! KolodaViewController
-        vc.passInfo = kolodaReader(name:"", type: "participants", status: true)
+        vc.passInfo = kolodaReader(name:"", type: "project", status: true)
         self.navigationController?.pushViewController(vc, animated: true)
         print("done, I'm pushing the display module page")
     }
@@ -53,15 +53,15 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
         }
         //check whether the modules is alrdy there
         db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-             if let error = error {
-                 print("Error getting documents: \(error.localizedDescription)")
-             } else {
-                 for i in querySnapshot!.documents {
+            if let error = error {
+                print("Error getting documents: \(error.localizedDescription)")
+            } else {
+                for i in querySnapshot!.documents {
                     let id = i.documentID
                     documentID = id
                     self.documentID = documentID
                     //get the project approved
-                    let docRef = db.collection("users").document(documentID).collection("individualParticipants")
+                    let docRef = db.collection("users").document(documentID).collection("individualParticipant")
                     
                     docRef.getDocuments() { (document, error) in
                         if let error = error {
@@ -76,30 +76,30 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
                             }
                         }
                     }
-                 }
+                }
             }
         }
     }
     
-      func checkForUpdates() {
+    func checkForUpdates() {
         let db = Firestore.firestore()
         let docRef = db.collection("users").document(self.documentID).collection("individualParticipants")
-                            
+        
         docRef.addSnapshotListener(includeMetadataChanges: true) {
-                querySnapshot, error in
-                    guard let snapshot = querySnapshot else {
-                        print("error fetching snapshots: \(error!)")
-                        return
-                }
-                snapshot.documentChanges.forEach { diff in
-                    if (diff.type == .added) {
-                                        self.projectArray.append(ProjectDisp(dictionary: diff.document.data())!)
-                                        DispatchQueue.main.async {
-                                            self.table.reloadData()
-                        }
+            querySnapshot, error in
+            guard let snapshot = querySnapshot else {
+                print("error fetching snapshots: \(error!)")
+                return
+            }
+            snapshot.documentChanges.forEach { diff in
+                if (diff.type == .added) {
+                    self.projectArray.append(ProjectDisp(dictionary: diff.document.data())!)
+                    DispatchQueue.main.async {
+                        self.table.reloadData()
                     }
                 }
             }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,10 +107,10 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard let cell = tableView.dequeueReusableCell(withIdentifier: "ParticipantCell") as? projectDisplayCell else {
-           print("here")
-           return UITableViewCell()
-       }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ParticipantCell") as? projectDisplayCell else {
+            print("here")
+            return UITableViewCell()
+        }
         cell.nameLbl.text = projectArray[indexPath.row].name
         let approval = projectArray[indexPath.row].approval
         if (approval == true) {
@@ -119,18 +119,18 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
         else {
             cell.backgroundColor = UIColor.gray
         }
-       print("here is for the cell")
-       
-       return cell
+        print("here is for the cell")
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    
-    if (editingStyle == UITableViewCell.EditingStyle.delete) {
-        // 2. Now Delete the Child from the database
-        let name = projectArray[indexPath.row].name
-        let db = Firestore.firestore()
-        let query: Query = db.collection("users").document(self.documentID).collection("individualParticipants").whereField("name", isEqualTo: name)
+        
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
+            // 2. Now Delete the Child from the database
+            let name = projectArray[indexPath.row].name
+            let db = Firestore.firestore()
+            let query: Query = db.collection("users").document(self.documentID).collection("individualParticipants").whereField("name", isEqualTo: name)
             query.getDocuments(completion: { (snapshot, error) in
                 if let error = error {
                     print(error.localizedDescription)
@@ -138,11 +138,11 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
                     for document in snapshot!.documents {
                         //print("\(document.documentID) => \(document.data())")
                         db.collection("users").document(self.documentID).collection("individualParticipants").document("\(document.documentID)").delete()}}})
-        //need to add the code to change the creator side, to delete the participant from the creator's list
-        
-        projectArray.remove(at: indexPath.row)
+            //need to add the code to change the creator side, to delete the participant from the creator's list
+            
+            projectArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
+    
 }

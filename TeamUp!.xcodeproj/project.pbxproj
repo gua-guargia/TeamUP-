@@ -158,8 +158,8 @@
 		18574E3024B5B96600831817 /* modules page */ = {
 			isa = PBXGroup;
 			children = (
-				18574E3824B5BB5E00831817 /* search */,
 				18574E3924B5BB6B00831817 /* display */,
+				18574E3824B5BB5E00831817 /* search */,
 			);
 			path = "modules page";
 			sourceTree = "<group>";

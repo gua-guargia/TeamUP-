@@ -41,13 +41,12 @@ class SearchCompetitionViewController: UIViewController, UITableViewDataSource, 
                 return
             }
             for i in snap!.documents{
-                let Name = i.get("Name") as! String
-                let Organiser = i.get("Organiser") as! String
-                let Description = i.get("Description") as! String
-                let WebLink = i.get("WebLink") as! String
-                self.competitionArray.append(Competition(Name: Name, Organiser: Organiser, Description: Description, WebLink: WebLink))
-                print("done snapshot, \(Name), \(WebLink)")
-                //self.table.reloadData()
+                let name = i.get("name") as? String ?? ""
+                let organiser = i.get("organiser") as? String ?? ""
+                let description = i.get("description") as? String ?? ""
+                let webLink = i.get("webLink") as? String ?? ""
+                self.competitionArray.append(Competition(name: name, organiser: organiser, description: description, webLink: webLink))
+                self.table.reloadData()
             }
             self.currentCompetitionArray = self.competitionArray
             
@@ -83,10 +82,10 @@ class SearchCompetitionViewController: UIViewController, UITableViewDataSource, 
             print("here")
             return UITableViewCell()
         }
-        cell.organiserLbl.text = currentCompetitionArray[indexPath.row].Organiser
-        cell.webLbl.text = currentCompetitionArray[indexPath.row].WebLink
-        cell.nameLbl.text = currentCompetitionArray[indexPath.row].Name
-        cell.descriptionLbl.text = currentCompetitionArray[indexPath.row].Description
+        cell.organiserLbl.text = currentCompetitionArray[indexPath.row].organiser
+        cell.webLbl.text = currentCompetitionArray[indexPath.row].webLink
+        cell.nameLbl.text = currentCompetitionArray[indexPath.row].name
+        cell.descriptionLbl.text = currentCompetitionArray[indexPath.row].description
         cell.backgroundColor = UIColor.getRandomColor(index:indexPath.row)
         checkSelect(name: cell.nameLbl.text!, cell: cell)
         print("here is for the cell")
@@ -118,14 +117,13 @@ class SearchCompetitionViewController: UIViewController, UITableViewDataSource, 
             return
         }
         currentCompetitionArray = competitionArray.filter({ competition -> Bool in
-            competition.Name.lowercased().contains(searchText.lowercased()) || competition.Organiser.lowercased().contains(searchText.lowercased()) || competition.Description.lowercased().contains(searchText.lowercased())
+            competition.name.lowercased().contains(searchText.lowercased()) || competition.organiser.lowercased().contains(searchText.lowercased()) || competition.description.lowercased().contains(searchText.lowercased())
         })
         table.reloadData()
     }
     
     
     func checkSelect(name:String, cell:CompetitionTableCell) {
-        var documentID = ""
         let db = Firestore.firestore()
         
         //find uid
@@ -137,17 +135,7 @@ class SearchCompetitionViewController: UIViewController, UITableViewDataSource, 
         }
         
         //check whether the modules is alrdy there
-        db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error.localizedDescription)")
-            } else {
-                for i in querySnapshot!.documents {
-                    let id = i.documentID
-                    documentID = id
-                    print("done snapshot, \(documentID), \(name)")
-                    let docRef = db.collection("users").document(documentID).collection("projects").document(name)
-                    
-                    docRef.getDocument { (document, error) in
+        db.collection("users").document(CURRENT_USER_UID ?? "").collection("competition").document(name).getDocument { (document, error) in
                         if let document = document, document.exists {
                             print("true, the doc exists")
                             cell.addButton.setTitle("selected", for: UIControl.State())
@@ -155,10 +143,8 @@ class SearchCompetitionViewController: UIViewController, UITableViewDataSource, 
                             print("false, the doc doesn't exist")
                             cell.addButton.setTitle("+", for: UIControl.State())
                         }
-                    }
-                }
-            }
         }
     }
+        
     
 }

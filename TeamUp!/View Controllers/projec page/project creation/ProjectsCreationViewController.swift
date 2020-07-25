@@ -36,7 +36,7 @@ class ProjectsCreationViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
         
-        view.backgroundColor = .gray
+        view.backgroundColor = .white
         
     }
     
@@ -74,12 +74,21 @@ class ProjectsCreationViewController: UIViewController {
             let description = ProjectDescription.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let uid = CURRENT_USER_UID ?? ""
             
-            let docRef = db.collection("users").document("uid")
+            let docRef = db.collection("users").document(uid)
 
             docRef.getDocument { (document, error) in
                 if let document = document, document.exists {
-                        let organiser = document.get("name") as? String ?? "Anoymous"
+                        let firstname = document.get("firstname") as? String ?? "Anoymous"
+                        let lastname = document.get("lastname") as? String ?? "Anoymous"
+                        let organiser = firstname + " " + lastname
                         self.db.collection("projects").document(name).setData([
+                            "name": name,
+                            "description": description,
+                            "roleNeeded" : role,
+                            "uid" : uid,
+                            "organiser":organiser
+                        ])
+                    self.db.collection("users").document(uid).collection("individualCreator").document(name).setData([
                             "name": name,
                             "description": description,
                             "roleNeeded" : role,
@@ -90,7 +99,8 @@ class ProjectsCreationViewController: UIViewController {
                     print("Document does not exist")
                 }
             }
-            
+          //  let vc = storyboard?.instantiateViewController(identifier: "projectDisplay")as! creatorDisplayViewController
+         //   vc.viewWillAppear(true)
             navigationController?.popViewController(animated: true)
             dismiss(animated: true, completion: nil)
         }

@@ -14,10 +14,14 @@ import FirebaseAuth
 class creatorDisplayViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var moduleArray = [String]()
-    var documentID = ""
     
     @IBOutlet weak var table: UITableView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        print("the viewWillAppear run")
+        loadProject()
+    }
     
     override func viewDidLoad() {
         
@@ -27,17 +31,25 @@ class creatorDisplayViewController: UIViewController, UITableViewDataSource, UIT
         
         //loadData()
         //checkForUpdates()
+        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAdd))
+        //print("creator display page")
         loadProject()
         alterLayout()
     }
     
     @objc func handleAdd() {
-        let vc = storyboard?.instantiateViewController(identifier: "searchProject")as! SearchProjectViewController
-        
+        let vc = storyboard?.instantiateViewController(identifier: "projectCreation")as! ProjectsCreationViewController
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
+    
+  /*  @objc func handleCancel() {
+        print("cancel")
+        self.dismiss(animated: true, completion: nil) //for modal view only
+        //for push view controller
+        //navigationController?.popViewController(animated: true)
+        //dismiss(animated: true, completion: nil)
+    }*/
        
     func loadProject() {
         let db = Firestore.firestore()
@@ -48,18 +60,8 @@ class creatorDisplayViewController: UIViewController, UITableViewDataSource, UIT
             return nil
         }
         //check whether the modules is alrdy there
-        db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-            self.moduleArray.removeAll()
-             if let error = error {
-                 print("Error getting documents: \(error.localizedDescription)")
-             } else {
-                 for i in querySnapshot!.documents {
-                    let id = i.documentID
-                    self.documentID = id
-                    //get the project approved
-                    let docRef = db.collection("users").document(self.documentID).collection("individualCreator")
-                    
-                    docRef.getDocuments() { (document, error) in
+        db.collection("users").document(CURRENT_USER_UID ?? "").collection("individualCreator").getDocuments(){ (document, error) in
+                        self.moduleArray.removeAll()
                         if let error = error {
                             print("Error getting documents: \(error.localizedDescription)")
                         } else {
@@ -72,11 +74,6 @@ class creatorDisplayViewController: UIViewController, UITableViewDataSource, UIT
                             }
                         }
                     }
-                 }
-            }
-            //print("print \(self.moduleArray)")
-            //self.table.reloadData()
-        }
     }
     
     func alterLayout() {
@@ -84,8 +81,14 @@ class creatorDisplayViewController: UIViewController, UITableViewDataSource, UIT
         table.estimatedSectionHeaderHeight = 100
     }
     
-    func checkForUpdates() {
+  /*  func checkForUpdates() {
         let db = Firestore.firestore()
+        var CURRENT_USER_UID: String? {
+            if let currentUserUid = Auth.auth().currentUser?.uid {
+                return currentUserUid
+            }
+            return nil
+        }
         let docRef = db.collection("users").document(self.documentID).collection("individualCreator")
                             
         docRef.addSnapshotListener(includeMetadataChanges: true) {
@@ -105,7 +108,7 @@ class creatorDisplayViewController: UIViewController, UITableViewDataSource, UIT
                     }
                 }
             }
-    }
+    }*/
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moduleArray.count
@@ -132,19 +135,24 @@ class creatorDisplayViewController: UIViewController, UITableViewDataSource, UIT
         // 2. Now Delete the Child from the database
             let name = moduleArray[indexPath.row]
             let db = Firestore.firestore()
-            let query: Query = db.collection("users").document(self.documentID).collection("individualCreator").whereField("name", isEqualTo: name)
+            var CURRENT_USER_UID: String? {
+                if let currentUserUid = Auth.auth().currentUser?.uid {
+                    return currentUserUid
+                }
+                return nil
+            }
+            let query: Query = db.collection("users").document(CURRENT_USER_UID ?? "").collection("individualCreator").whereField("name", isEqualTo: name)
             query.getDocuments(completion: { (snapshot, error) in
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
                     for document in snapshot!.documents {
                         //print("\(document.documentID) => \(document.data())")
-                        db.collection("users").document(self.documentID).collection("individualCreator").document("\(document.documentID)").delete()}}})
+                        db.collection("users").document(CURRENT_USER_UID ?? "").collection("individualCreator").document("\(document.documentID)").delete()}}})
             
             //TODO: need the code for delete the project from the project list
             
             //TODO: need the code for delete the project from the participant's list
-            
             moduleArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

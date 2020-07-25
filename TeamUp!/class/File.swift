@@ -56,17 +56,17 @@ struct ProjectDisp {
 
 
 struct Competition {
-    var Name:String
-    var Organiser:String
-    var Description:String
-    var WebLink: String
+    var name:String
+    var organiser:String
+    var description:String
+    var webLink: String
     
     var dictionary:[String:Any] {
         return [
-            "Name": Name,
-            "Organiser" : Organiser,
-            "Description" : Description,
-            "WebLink": WebLink
+            "name": name,
+            "organiser" : organiser,
+            "description" : description,
+            "webLink": webLink
         ]
     }
     
@@ -166,13 +166,13 @@ extension ProjectDisp : DocumentSerializable {
 
 extension Competition : DocumentSerializable {
     init?(dictionary: [String : Any]) {
-        guard let Name = dictionary["Name"] as? String,
-            let Organiser = dictionary["Organiser"] as? String,
-            let Description = dictionary ["Description"] as? String,
-            let WebLink = dictionary["WebLink"] as? String else {return nil}
+        guard let name = dictionary["name"] as? String,
+            let organiser = dictionary["organiser"] as? String,
+            let description = dictionary ["description"] as? String,
+            let webLink = dictionary["webLink"] as? String else {return nil}
         
         
-        self.init(Name: Name, Organiser: Organiser, Description: Description, WebLink: WebLink)
+        self.init(name: name, organiser: organiser, description: description, webLink: webLink)
     }
 }
 

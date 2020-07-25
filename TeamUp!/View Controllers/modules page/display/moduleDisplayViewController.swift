@@ -48,19 +48,9 @@ class moduleDisplayViewController: UIViewController, UITableViewDelegate, UITabl
             }
             return nil
         }
+        self.moduleArray.removeAll()
         //check whether the modules is alrdy there
-        db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-            self.moduleArray.removeAll()
-             if let error = error {
-                 print("Error getting documents: \(error.localizedDescription)")
-             } else {
-                 for i in querySnapshot!.documents {
-                    let id = i.documentID
-                    self.documentID = id
-                    //get the project approved
-                    let docRef = db.collection("users").document(self.documentID).collection("modules")
-                    
-                    docRef.getDocuments() { (document, error) in
+        db.collection("users").document(CURRENT_USER_UID ?? "").collection("modules").getDocuments() { (document, error) in
                         if let error = error {
                             print("Error getting documents: \(error.localizedDescription)")
                         } else {
@@ -72,9 +62,6 @@ class moduleDisplayViewController: UIViewController, UITableViewDelegate, UITabl
                                 self.table.reloadData()
                             }
                         }
-                    }
-                 }
-            }
         }
     }
     
