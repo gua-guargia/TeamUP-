@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         UITabBar.appearance().barTintColor = .black
-        UITabBar.appearance().tintColor = .red
+        UITabBar.appearance().tintColor = UIColor.init(red: 71/255, green: 107/255, blue: 101/255, alpha: 1)
         
         window = UIWindow()
         window?.makeKeyAndVisible()

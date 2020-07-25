@@ -15,6 +15,7 @@ import FirebaseAuth
 
 class ProfileViewController: UIViewController{
     
+    @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var userNameLabel: UILabel!
     
     @IBOutlet weak var courseLabel: UILabel!
@@ -57,9 +58,6 @@ class ProfileViewController: UIViewController{
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super .viewDidAppear(true)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +66,7 @@ class ProfileViewController: UIViewController{
         //self.navigationItem.title = "Profile"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleAddContact))
         view.backgroundColor = .gray
+        Utilities.styleHollowButton(signOutButton)
         //self.setUpData()
     }
     

@@ -20,6 +20,8 @@ class TableCell: UITableViewCell {
     
     var documentID = ""
     var documentIDCode = ""
+    var code = ""
+    var name = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,8 +53,8 @@ class TableCell: UITableViewCell {
                 return nil
             }
             
-            let code = self.codeLbl.text!
-            let name = self.nameLbl.text!
+            code = codeLbl.text as? String ?? ""
+            name = nameLbl.text as? String ?? ""
             var lastName = ""
             var firstName = ""
             var major = ""
@@ -72,6 +74,22 @@ class TableCell: UITableViewCell {
                 email = snap.get("email") as? String ?? "no email"
                 skills = snap.get("skills") as? String ?? "no skills"
                 modules_taken = snap.get("modules_taken") as? String ?? "no modules taken"
+                
+                //uPdate the info about students in modules
+                db.collection("NUS modules").document(self.code).collection("students").document(CURRENT_USER_UID ?? "").setData([
+                    "uid": CURRENT_USER_UID!,
+                    "major": major,
+                    "firstname": firstName,
+                    "lastname":lastName,
+                    "email":email,
+                    "modules_taken":modules_taken,
+                    "skills":skills]) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                }
             }
             
             //update the info about modules in user
@@ -80,27 +98,6 @@ class TableCell: UITableViewCell {
                     print("Error writing document: \(err)")
                 } else {
                     print("Document successfully written!")
-                }
-            }
-            
-            //uPdate the info about students in modules
-            db.collection("NUS modules").whereField("code", isEqualTo: code).getDocuments() { (querySnapshot, error) in
-                if let error = error {
-                    print("Error getting documents: \(error.localizedDescription)")
-                } else {
-                    for i in querySnapshot!.documents {
-                        let id = i.documentID
-                        self.documentIDCode = id
-                        print("done snapshot, \(self.documentIDCode)")
-                        db.collection("NUS modules").document(self.documentIDCode).collection("students").document(CURRENT_USER_UID!).setData([
-                            "uid": CURRENT_USER_UID!, "major": major, "firstname": firstName, "lastname":lastName,"major":major,"email":email,"modules_taken":modules_taken,"skills":skills]) { err in
-                                if let err = err {
-                                    print("Error writing document: \(err)")
-                                } else {
-                                    print("Document successfully written!")
-                                }
-                        }
-                    }
                 }
             }
         }

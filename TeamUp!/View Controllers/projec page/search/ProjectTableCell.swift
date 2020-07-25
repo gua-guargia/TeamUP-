@@ -92,7 +92,13 @@ class ProjectTableCell: UITableViewCell {
                         self.documentIDCode = id
                         print("done snapshot, \(self.documentIDCode)")
                         db.collection("projects").document(self.documentIDCode).collection("waitingList").document(CURRENT_USER_UID!).setData([
-                            "uid": CURRENT_USER_UID!, "major": major, "firstname": firstName, "lastname":lastName,"major":major,"email":email,"modules_taken":modules_taken,"skills":skills]) { err in
+                            "uid": CURRENT_USER_UID!,
+                            "major": major,
+                            "firstname": firstName,
+                            "lastname":lastName,
+                            "email":email,
+                            "modules_taken":modules_taken,
+                            "skills":skills]) { err in
                                 if let err = err {
                                     print("Error writing document: \(err)")
                                 } else {

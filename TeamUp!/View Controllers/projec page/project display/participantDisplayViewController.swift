@@ -28,6 +28,11 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
         loadProject()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAdd))
         
+        //layout
+        table.tableHeaderView = UIView()
+        table.estimatedSectionHeaderHeight = 100
+        table.rowHeight = 200
+        
     }
     
     @objc func handleAdd() {
@@ -40,6 +45,10 @@ class participantDisplayViewController: UIViewController, UITableViewDataSource,
         vc.passInfo = kolodaReader(name:"", type: "project", status: true)
         self.navigationController?.pushViewController(vc, animated: true)
         print("done, I'm pushing the display module page")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
     
     func loadProject() {

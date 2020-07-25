@@ -79,6 +79,7 @@ class competitionProjectViewController: UIViewController, UITableViewDataSource,
      func alterLayout() {
          table.tableHeaderView = UIView()
          table.estimatedSectionHeaderHeight = 100
+        table.rowHeight = 200
      }
      
      func checkForUpdates() {
@@ -120,7 +121,7 @@ class competitionProjectViewController: UIViewController, UITableViewDataSource,
      }
      
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         return 50
+         return 200
      }
      
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

@@ -30,7 +30,7 @@ class moduleDisplayViewController: UIViewController, UITableViewDelegate, UITabl
         self.table.dataSource = self
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleSearchContact))
-        view.backgroundColor = .gray
+        //view.backgroundColor = .gray
         alterLayout()
     }
     
@@ -68,6 +68,7 @@ class moduleDisplayViewController: UIViewController, UITableViewDelegate, UITabl
     func alterLayout() {
         table.tableHeaderView = UIView()
         table.estimatedSectionHeaderHeight = 100
+        table.rowHeight = 200
     }
     
     func checkForUpdates() {
@@ -109,7 +110,7 @@ class moduleDisplayViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 200
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

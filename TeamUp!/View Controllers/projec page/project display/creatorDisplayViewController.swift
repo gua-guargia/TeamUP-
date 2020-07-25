@@ -76,9 +76,14 @@ class creatorDisplayViewController: UIViewController, UITableViewDataSource, UIT
                     }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
     func alterLayout() {
         table.tableHeaderView = UIView()
         table.estimatedSectionHeaderHeight = 100
+        table.rowHeight = 200
     }
     
   /*  func checkForUpdates() {
@@ -125,9 +130,7 @@ class creatorDisplayViewController: UIViewController, UITableViewDataSource, UIT
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
+    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     
