@@ -39,19 +39,7 @@ class ChatDViewController: UIViewController, UITableViewDataSource, UITableViewD
         
            let db = Firestore.firestore()
               // TODO: Check whether this listener is only called once or not
-             db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-             if let error = error {
-                 print("Error getting documents: \(error.localizedDescription)")
-             }
-             else {
-                 for i in querySnapshot!.documents {
-                   print("meeee")
-                     let id = i.documentID
-                     self.documentIDCode = id
-                     print("done snapshot, \(self.documentIDCode)")
-                     print("current user = \(CURRENT_USER_UID)")
-                   
-                   db.collection("users").document(self.documentIDCode).collection("waitingList").getDocuments { (snap, err) in
+             db.collection("users").document(CURRENT_USER_UID!).collection("waitingList").getDocuments { (snap, err) in
                        // TODO: clear your modulesArray //to make sure the reload data doesn't stuck tgt
                        self.ContactsArray.removeAll()
                        if err != nil {
@@ -72,10 +60,6 @@ class ChatDViewController: UIViewController, UITableViewDataSource, UITableViewD
                        
                        self.table.reloadData()//to make sure everytime the page is open, the data in the table is updated!
                    }
-               
-               }
-             }
-           }
         
            print("initialize finished")
            setUpSearchBar()

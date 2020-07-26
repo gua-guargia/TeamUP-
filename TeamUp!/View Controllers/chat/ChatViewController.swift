@@ -38,6 +38,7 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
         // Do any additional setup after loading the view.
         self.title = user2Name ?? "Chat"
         print("user2 == \(user2UID)")
+        print("user2Proj == \(user2Proj)")
 
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true
@@ -63,42 +64,22 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
            let alert = UIAlertController(title: "Congratulation!" , message: "Teammate added", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
            self.present(alert, animated: true, completion: nil)
-            var CURRENT_USER_UID: String? {
-                       if let currentUserUid = Auth.auth().currentUser?.uid {
-                           return currentUserUid
-                       }
-                       return nil
-            }
             let db = Firestore.firestore()
-            db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-                if let error = error {
-                    print("Error getting documents: \(error.localizedDescription)")
-                }
-                else {
-                    for i in querySnapshot!.documents {
-                        let id = i.documentID
-                        self.documentIDCode = id
-                        print("done snapshot, \(self.documentIDCode)")
-                        print("current user = \(CURRENT_USER_UID)")
-                       db.collection("users").document(self.documentIDCode).collection("\(self.user2Type!)").whereField("name", isEqualTo: (self.user2Proj!)).getDocuments(){(querySnapshot, error) in
-                           if let error = error {
-                               print("Error getting documents: \(error.localizedDescription)")
-                           }
-                           else {
-                               for i in querySnapshot!.documents {
-                                   let id = i.documentID
-                                   self.documentCode = id
-                                   print("done snapshot, \(self.documentCode)")
-                                   
-                                   db.collection("users").document(self.documentIDCode).collection(self.user2Type!).document(self.documentCode).collection("teammate").addDocument(data:["uid":self.user2UID, "name": self.user2Name])
-                           
-                               }
-                           }
-                       }
-                   }
-               }
-           }
-       }
+       
+        db.collection("users").document(self.currentUser.uid).collection(self.user2Type!).document(self.user2Proj!).collection("teammate").addDocument(data:["uid":self.user2UID, "name": self.user2Name])
+                        
+        
+        db.collection("users").whereField("uid", isEqualTo: currentUser.uid).getDocuments(){ (snap, err) in
+            if err != nil {
+                    print((err?.localizedDescription)!)
+                    return
+            }
+            for i in snap!.documents{
+                    let name = i.get("firstname") as! String
+                db.collection("users").document(self.user2UID!).collection(self.user2Type!).document(self.user2Proj!).collection("teammate").addDocument(data:["uid":self.currentUser.uid, "name": name])
+            }
+        }
+    }
     
     func createNewChat() {
         let users = [self.currentUser.uid, self.user2UID]
@@ -122,28 +103,27 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
                              print("Unable to create chat! \(error)")
                              return
                          } else {
+                            db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (snap, err) in
+                            if err != nil {
+                                    print((err?.localizedDescription)!)
+                                    return
+                            }
+                            for i in snap!.documents{
+                                    let name = i.get("firstname") as! String
+                                db.collection("users").document(self.user2UID!).collection("waitingList").addDocument(data:["uid": CURRENT_USER_UID, "teamname":self.user2Proj, "type":self.user2Type , "name":name])
+                            }
                              self.loadChat()
                          }
                     }
             }
         }
-        db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (snap, err) in
-        if err != nil {
-                print((err?.localizedDescription)!)
-                return
-        }
-        for i in snap!.documents{
-                let name = i.get("firstname") as! String
-            db.collection("users").document(self.user2UID!).collection("waitingList").addDocument(data:["uid": CURRENT_USER_UID, "teamname":self.user2Proj, "type":self.user2Type , "name":name])
-            }
-        }
             
+     }
     }
     
 
 
     func loadChat() {
-
         var CURRENT_USER_UID: String? {
             if let currentUserUid = Auth.auth().currentUser?.uid {
                 return currentUserUid
@@ -152,18 +132,7 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
         }
     //Fetch all the chats which has current user in it
         let db = Firestore.firestore()
-        db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error.localizedDescription)")
-            }
-            else {
-                for i in querySnapshot!.documents {
-                    let id = i.documentID
-                    self.documentIDCode = id
-                    print("done snapshot, \(self.documentIDCode)")
-                    print("current user = \(CURRENT_USER_UID)")
-
-                    db.collection("users").document(self.documentIDCode).collection("chats").getDocuments(){ (chatQuerySnap, error) in
+        db.collection("users").document(CURRENT_USER_UID!).collection("chats").getDocuments(){ (chatQuerySnap, error) in
 
                         if let error = error {
                             print("Error: \(error)")
@@ -175,7 +144,7 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
                             guard let queryCount = chatQuerySnap?.documents.count else {
                                 return
                             }
-
+                            print("query== \(queryCount)")
                             if queryCount == 0 {
                                 //If documents count is zero that means there is no chat available and we need to create a new instance
                                 self.createNewChat()
@@ -216,12 +185,11 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
                             } else {
                                 print("Let's hope this error never prints!")
                             }
-                        }
+                        }//end of else
                     }
-                }
-            }
-        }
     }
+        
+    
 
 
     private func insertNewMessage(_ message: Message) {
