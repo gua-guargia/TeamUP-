@@ -36,18 +36,7 @@ class KolodaViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         print("\(passInfo)")
-        kolodaView.alphaValueSemiTransparent = kolodaAlphaValueSemiTransparent
-        kolodaView.countOfVisibleCards = kolodaCountOfVisibleCards
-        kolodaView.delegate = self
-        kolodaView.dataSource = self
-        kolodaView.animator = KolodaViewAnimator(koloda: kolodaView)
-        
         db = Firestore.firestore()
-        
-        //checkForUpdates()
-        
-        self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
-        
         currentUserInfo()
         checkForUpdates()
     }
@@ -61,6 +50,8 @@ class KolodaViewController: UIViewController {
         // Do any additional setup after loading the view.
         //  kolodaView.dataSource = self
         // kolodaView.delegate = self
+        
+        print("koloda view started - viewDidLoad")
         print("\(passInfo)")
         kolodaView.alphaValueSemiTransparent = kolodaAlphaValueSemiTransparent
         kolodaView.countOfVisibleCards = kolodaCountOfVisibleCards
@@ -263,7 +254,13 @@ extension KolodaViewController: KolodaViewDelegate {
 extension KolodaViewController: KolodaViewDataSource {
     
     func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
-        return ProjectArray.count
+        if(passInfo.type == "project") {
+            return ProjectArray.count
+            
+        }
+        else {
+            return profileArray.count
+        }
     }
     
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
@@ -273,8 +270,10 @@ extension KolodaViewController: KolodaViewDataSource {
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let view = UILabel()
         
+        print("the koloda view is loaded here")
         view.frame = CGRect.init(x: 0, y: 0, width: 300, height: 300)
         if(passInfo.type == "project") {
+            print("\(ProjectArray[index].name) is loaded here")
             view.text = "\(ProjectArray[index].name) - \(ProjectArray[index].description) - \(ProjectArray[index].roleNeeded)"
         }
         else{
