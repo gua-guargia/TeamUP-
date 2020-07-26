@@ -52,7 +52,6 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         
-        loadChat()
     }
     
     override func viewWillAppear(_ animated: Bool) {
