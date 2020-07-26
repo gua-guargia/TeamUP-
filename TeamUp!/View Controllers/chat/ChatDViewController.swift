@@ -61,7 +61,7 @@ class ChatDViewController: UIViewController, UITableViewDataSource, UITableViewD
                        for i in snap!.documents{
                                let id = i.documentID
                                let name = i.get("name") as! String
-                               let user2uid = i.get("id") as! String
+                               let user2uid = i.get("uid") as! String
                                let user2type = i.get("type") as! String
                                let user2Proj = i.get("teamname") as! String
                                self.ContactsArray.append(ContactStruct(id: id, name: name, user2uid: user2uid, user2type: user2type, user2Proj: user2Proj))
