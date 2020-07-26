@@ -34,12 +34,13 @@ class ProjectTableCell: UITableViewCell {
     }
     
     @IBAction func addTapped(_ sender: UIButton) {
-        if(addButton.title(for: UIControl.State()) == "selected"){
+        if(addButton.title(for: UIControl.State()) != "+"){
             print("selected already")
             return
         }
         else {
-            addButton.setTitle("selected", for: UIControl.State())
+            addButton.setTitle("added", for: UIControl.State())
+            addButton.titleLabel?.font = .systemFont(ofSize: 8)
             let db = Firestore.firestore()
             //update the selected modules
             var CURRENT_USER_UID: String? {

@@ -42,7 +42,8 @@ class TableCell: UITableViewCell {
             return
         }
         else {
-            addButton.setTitle("selected", for: UIControl.State())
+            addButton.setTitle("added", for: UIControl.State())
+            addButton.titleLabel?.font = .systemFont(ofSize: 8)
             let db = Firestore.firestore()
             
             //update the selected modules

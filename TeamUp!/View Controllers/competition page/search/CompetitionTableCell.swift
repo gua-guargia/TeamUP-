@@ -39,7 +39,8 @@ class CompetitionTableCell: UITableViewCell {
             return
         }
         else {
-            addButton.setTitle("selected", for: UIControl.State())
+            addButton.setTitle("added", for: UIControl.State())
+            addButton.titleLabel?.font = .systemFont(ofSize: 8)
         
             //update the selected modules
             var CURRENT_USER_UID: String? {

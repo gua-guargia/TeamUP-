@@ -96,7 +96,7 @@ class SearchProjectViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 100
     }
     
     //keep the search bar at the top of the screen
@@ -139,10 +139,12 @@ class SearchProjectViewController: UIViewController, UITableViewDataSource, UITa
         db.collection("users").document(CURRENT_USER_UID ?? "").collection("individualParticipant").document(name).getDocument { (document, error) in
                         if let document = document, document.exists {
                             print("true, the doc exists")
-                            cell.addButton.setTitle("selected", for: UIControl.State())
+                            cell.addButton.setTitle("added", for: UIControl.State())
+                            cell.addButton.titleLabel?.font = .systemFont(ofSize: 8)
                         } else {
                             print("false, the doc doesn't exist")
                             cell.addButton.setTitle("+", for: UIControl.State())
+                            cell.addButton.titleLabel?.font = .systemFont(ofSize: 20)
                         }
                     }
     }
