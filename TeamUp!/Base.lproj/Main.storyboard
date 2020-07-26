@@ -970,14 +970,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="181"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSi-Sd-2fK">
-                                                    <rect key="frame" x="186" y="80" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSi-Sd-2fK">
+                                                    <rect key="frame" x="186.33333333333334" y="80" width="41.666666666666657" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wSi-Sd-2fK" firstAttribute="centerX" secondItem="kJs-VW-fem" secondAttribute="centerX" id="SpK-5G-K63"/>
+                                                <constraint firstItem="wSi-Sd-2fK" firstAttribute="centerY" secondItem="kJs-VW-fem" secondAttribute="centerY" id="X7a-KW-RtR"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLbl" destination="wSi-Sd-2fK" id="oGd-KX-ETu"/>
@@ -1002,7 +1005,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jym-D8-l0z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9858" y="637"/>
+            <point key="canvasLocation" x="9857.971014492754" y="636.68478260869574"/>
         </scene>
         <!--ChatD View Controller-->
         <scene sceneID="2eW-Qc-G13">
@@ -1092,14 +1095,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzd-7o-fTc">
-                                                    <rect key="frame" x="186" y="56" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzd-7o-fTc">
+                                                    <rect key="frame" x="186" y="55.666666666666657" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Nzd-7o-fTc" firstAttribute="centerX" secondItem="7aa-aJ-Ncf" secondAttribute="centerX" id="G89-em-Kvl"/>
+                                                <constraint firstItem="Nzd-7o-fTc" firstAttribute="centerY" secondItem="7aa-aJ-Ncf" secondAttribute="centerY" id="v3E-y6-lm5"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLbl" destination="Nzd-7o-fTc" id="wC5-3B-i2m"/>
