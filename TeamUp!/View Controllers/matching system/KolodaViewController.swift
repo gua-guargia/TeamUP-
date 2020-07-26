@@ -205,7 +205,7 @@ extension KolodaViewController: KolodaViewDelegate {
             let alert = UIAlertController(title: nil , message: nil, preferredStyle: .alert)
             // alert.addAction(UIAlertAction(title: "OK", style: .default))
             var imageView = UIImageView(frame: CGRect(x: 10, y: 50, width: 250, height: 230))
-            imageView.image = #imageLiteral(resourceName: "tick")
+            imageView.image = #imageLiteral(resourceName: "double-tick")
             alert.view.addSubview(imageView)
             let height = NSLayoutConstraint(item: alert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
             let width = NSLayoutConstraint(item: alert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)

@@ -106,7 +106,7 @@ class SearchCompetitionViewController: UIViewController, UITableViewDataSource, 
         navigationItem.titleView = searchBar
         searchBar.showsScopeBar = false
         searchBar.placeholder = "Search the competition name/organiser/category here"
-        self.navigationController?.hidesBarsOnSwipe = true
+       // self.navigationController?.hidesBarsOnSwipe = true
     }
     
     //set up the search bar

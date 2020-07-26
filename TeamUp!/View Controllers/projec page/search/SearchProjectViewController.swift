@@ -108,7 +108,7 @@ class SearchProjectViewController: UIViewController, UITableViewDataSource, UITa
         navigationItem.titleView = searchBar
         searchBar.showsScopeBar = false
         searchBar.placeholder = "Search project here"
-        self.navigationController?.hidesBarsOnSwipe = true
+        //self.navigationController?.hidesBarsOnSwipe = true
     }
     
     //set up the search bar

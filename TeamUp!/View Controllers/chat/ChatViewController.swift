@@ -12,6 +12,7 @@ import Firebase
 import MessageKit
 import FirebaseFirestore
 import FirebaseAuth
+//import InitialsImageView
 import SDWebImage
 import CoreData
 
@@ -42,15 +43,18 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
 
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true
-        messageInputBar.inputTextView.tintColor = .blue
+        messageInputBar.inputTextView.tintColor = UIColor.init(red: 122/255, green: 187/255, blue: 196/255, alpha: 1)
         messageInputBar.sendButton.setTitleColor(.blue, for: .normal)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Friend", style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        
         
         messageInputBar.delegate = self
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        
         
     }
     
@@ -326,14 +330,14 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
     
     // MARK: - MessagesDisplayDelegate
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .blue: .lightGray
+        return isFromCurrentSender(message: message) ? .black: .lightGray
     }
 
-    /*func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        
+ /*   func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         if message.sender.senderId == currentUser.uid {
             SDWebImageManager.shared.loadImage(with: currentUser.photoURL, options: .highPriority, progress: nil) { (image, data, error, cacheType, isFinished, imageUrl) in
                 avatarView.image = image
+                //avatarView.image.setImageForName(user2Name, backgroundColor: .black, circular: true, textAttributes: nil, gradient: false)
             }
         } else {
             SDWebImageManager.shared.loadImage(with: URL(string: user2ImgUrl!), options: .highPriority, progress: nil) { (image, data, error, cacheType, isFinished, imageUrl) in

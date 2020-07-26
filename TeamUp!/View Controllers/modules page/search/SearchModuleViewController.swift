@@ -122,7 +122,7 @@ class SearchModuleViewController: UIViewController, UITableViewDataSource, UITab
         navigationItem.titleView = searchBar
         searchBar.showsScopeBar = false
         searchBar.placeholder = "Search your modules here"
-        self.navigationController?.hidesBarsOnSwipe = true
+       // self.navigationController?.hidesBarsOnSwipe = true
     }
     
  /*   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
