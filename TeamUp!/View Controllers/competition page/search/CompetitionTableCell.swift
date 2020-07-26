@@ -24,6 +24,10 @@ class CompetitionTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        descriptionLbl.numberOfLines = 0
+        descriptionLbl.lineBreakMode = .byWordWrapping
+        descriptionLbl.frame.size.width = 300
+        descriptionLbl.sizeToFit()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

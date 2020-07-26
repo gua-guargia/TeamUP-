@@ -96,7 +96,7 @@ class SearchProjectViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 300
     }
     
     //keep the search bar at the top of the screen
