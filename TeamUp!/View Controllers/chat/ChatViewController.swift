@@ -37,7 +37,7 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
 
         // Do any additional setup after loading the view.
         self.title = user2Name ?? "Chat"
-        print("\(user2UID)")
+        print("user2 == \(user2UID)")
 
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true
@@ -51,6 +51,11 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         
+        loadChat()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         loadChat()
     }
     
@@ -107,49 +112,35 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
                    return nil
         }
         let db = Firestore.firestore()
-        db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (querySnapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error.localizedDescription)")
-            }
-            else {
-                for i in querySnapshot!.documents {
-                    let id = i.documentID
-                    self.documentIDCode = id
-                    print("done snapshot, \(self.documentIDCode)")
-                    print("current user = \(CURRENT_USER_UID)")
-
-                    db.collection("users").document(self.documentIDCode).collection("chats").addDocument(data: data) { (error) in
-                        if let error = error {
-                            print("Unable to create chat! \(error)")
-                            return
-                        } else {
-                            db.collection("users").whereField("uid", isEqualTo: self.user2UID!).getDocuments() { (querySnapshot, error) in
-                             if let error = error {
-                                 print("Error getting documents: \(error.localizedDescription)")
-                             }
-                             else {
-                                 for i in querySnapshot!.documents {
-                                     let id = i.documentID
-                                     self.documentIDCode = id
-                                     print("done snapshot, \(self.documentIDCode)")
-
-                                     db.collection("users").document(self.documentIDCode).collection("chats").addDocument(data: data) { (error) in
-                                         if let error = error {
-                                             print("Unable to create chat! \(error)")
-                                             return
-                                         } else {
-                                             self.loadChat()
-                                        }
-                                    }
-                                }
-                            }
-                        }
+        db.collection("users").document(CURRENT_USER_UID!).collection("chats").addDocument(data: data) { (error) in
+                if let error = error {
+                    print("Unable to create chat! \(error)")
+                    return
+                } else {
+                    db.collection("users").document(self.user2UID!).collection("chats").addDocument(data: data) { (error) in
+                         if let error = error {
+                             print("Unable to create chat! \(error)")
+                             return
+                         } else {
+                             self.loadChat()
+                         }
                     }
-                }
             }
         }
+        db.collection("users").whereField("uid", isEqualTo: CURRENT_USER_UID!).getDocuments() { (snap, err) in
+        if err != nil {
+                print((err?.localizedDescription)!)
+                return
+        }
+        for i in snap!.documents{
+                let name = i.get("firstname") as! String
+            db.collection("users").document(self.user2UID!).collection("waitingList").addDocument(data:["uid": CURRENT_USER_UID, "teamname":self.user2Proj, "type":self.user2Type , "name":name])
+            }
+        }
+            
     }
-}
+    
+
 
     func loadChat() {
 
@@ -253,17 +244,7 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
         ]
     //Writing it to the thread using the saved document reference we saved in load chat function
         let db = Firestore.firestore()
-        db.collection("users").whereField("uid", isEqualTo: self.currentUser.uid).getDocuments() {(querySnapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error.localizedDescription)")
-            }
-            else {
-                for i in querySnapshot!.documents {
-                    let id = i.documentID
-                    self.documentIDCode = id
-                    print("done snapshot, \(self.documentIDCode)")
-
-                    db.collection("users").document(self.documentIDCode).collection("chats").getDocuments(){ (chatQuerySnap, error) in
+        db.collection("users").document(self.currentUser.uid).collection("chats").getDocuments(){ (chatQuerySnap, error) in
                             if let error = error {
                                 print("Error: \(error)")
                                 return
@@ -282,51 +263,35 @@ class ChatViewController: MessagesViewController,InputBarAccessoryViewDelegate, 
                                                 return
                                             }
                                             else{
-                                                db.collection("users").whereField("uid", isEqualTo: self.user2UID!).getDocuments() {(querySnapshot, error) in
-                                                    if let error = error {
-                                                        print("Error getting documents: \(error.localizedDescription)")
-                                                    }
-                                                    else {
-                                                        for i in querySnapshot!.documents {
-                                                            let id = i.documentID
-                                                            self.documentIDCode = id
-                                                            print("done snapshot, \(self.documentIDCode)")
+                                                db.collection("users").document(self.user2UID!).collection("chats").getDocuments(){ (chatQuerySnap, error) in
+                                                        if let error = error {
+                                                            print("Error: \(error)")
+                                                            return
+                                                        }
+                                                        else {
+                                                            for document in chatQuerySnap!.documents {
 
-                                                            db.collection("users").document(self.documentIDCode).collection("chats").getDocuments(){ (chatQuerySnap, error) in
-                                                                    if let error = error {
-                                                                        print("Error: \(error)")
-                                                                        return
-                                                                    }
-                                                                    else {
-                                                                        for doc in chatQuerySnap!.documents {
+                                                                let chat = Chat(dictionary: document.data())
+                                                                //Get the chat which has user1 id
+                                                                if ((chat?.users.contains(self.currentUser.uid)) != nil) {
 
-                                                                            let chat = Chat(dictionary: doc.data())
-                                                                            //Get the chat which has user2 id
-                                                                            if ((chat?.users.contains(self.currentUser.uid)) != nil) {
-
-                                                                                self.docReference = doc.reference
-                                                                                self.docReference?.collection("thread").addDocument(data: data, completion: { (error) in
-                                                                                    if let error = error {
-                                                                                        print("Error Sending message: \(error)")
-                                                                                        return
-                                                                                    }
-                                                                                })
-                                                                            }
+                                                                    self.docReference = document.reference
+                                                                    self.docReference?.collection("thread").addDocument(data: data, completion: { (error) in
+                                                                        if let error = error {
+                                                                            print("Error Sending message: \(error)")
+                                                                            return
                                                                         }
+                                                                    })
                                                                 }
                                                             }
-                                                        }
                                                     }
                                                 }
                                             }
                                         })
                                     }
                                 }
-                        }
+                            }
                     }
-                }
-            }
-        }
             self.messagesCollectionView.scrollToBottom()
         }
     

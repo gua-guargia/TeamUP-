@@ -51,7 +51,7 @@ class ChatDViewController: UIViewController, UITableViewDataSource, UITableViewD
                      print("done snapshot, \(self.documentIDCode)")
                      print("current user = \(CURRENT_USER_UID)")
                    
-                   db.collection("users").document(self.documentIDCode).collection("waitinglist").getDocuments { (snap, err) in
+                   db.collection("users").document(self.documentIDCode).collection("waitingList").getDocuments { (snap, err) in
                        // TODO: clear your modulesArray //to make sure the reload data doesn't stuck tgt
                        self.ContactsArray.removeAll()
                        if err != nil {
@@ -66,7 +66,7 @@ class ChatDViewController: UIViewController, UITableViewDataSource, UITableViewD
                                let user2Proj = i.get("teamname") as! String
                                self.ContactsArray.append(ContactStruct(id: id, name: name, user2uid: user2uid, user2type: user2type, user2Proj: user2Proj))
                                print("done snapshot, \(name), \(user2uid)")
-                           //self.table.reloadData()
+                            //self.table.reloadData()
                        }
                        self.currentContactsArray = self.ContactsArray
                        
